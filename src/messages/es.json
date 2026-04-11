@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Linder Hassinger",
+    "subtitle": "Senior Software Developer & Tech Lead construyendo aplicaciones web, móvil e IA a escala de producción.",
+    "cta_work": "Ver mi trabajo",
+    "cta_contact": "Trabajemos juntos",
+    "roles": ["Senior Software Developer", "Tech Lead", "Full Stack Engineer", "Experto en Next.js", "iOS Developer", "AI Tooling"]
+  },
+  "about": {
+    "title": "Sobre mí",
+    "bio": "Full Stack Developer & Tech Lead con 8+ años construyendo a escala — desde apps de streaming deportivo en Apple TV (SNY, FanDuel) hasta plataformas de viaje globales (Lonely Planet). Llevo 3+ años integrando IA en mi flujo de trabajo. Construyo rápido, limpio y listo para producción. Con base en Lima, Perú, trabajo globalmente.",
+    "location": "Lima, Perú",
+    "location_label": "Ubicado en",
+    "remote": "Remoto global",
+    "remote_label": "Disponible para",
+    "stats": {
+      "years": "8+",
+      "years_label": "Años de Experiencia",
+      "projects": "50+",
+      "projects_label": "Proyectos Entregados",
+      "technologies": "20+",
+      "technologies_label": "Tecnologías",
+      "ai": "3+",
+      "ai_label": "Años Usando IA"
+    },
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "skills": {
+    "title": "Habilidades y Tecnologías",
+    "subtitle": "Las herramientas que uso para crear productos increíbles",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Herramientas e Infra",
+      "ai": "IA e Integraciones"
+    }
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Una selección de cosas que he construido",
+    "live": "Demo en Vivo",
+    "code": "Ver Código",
+    "all": "Ver todos en GitHub",
+    "featured": "Destacado",
+    "stack": "Stack",
+    "scroll_hint": "desplázate para explorar",
+    "skip": "Saltar todo",
+    "filters": {
+      "all": "Todos",
+      "ai": "IA",
+      "fullstack": "Full Stack",
+      "frontend": "Frontend",
+      "devtools": "Dev Tools"
+    }
+  },
+  "experience": {
+    "title": "Experiencia Laboral",
+    "subtitle": "8+ años construyendo en web, móvil e iOS — en agencias, startups y marcas internacionales",
+    "entries": [
+      {
+        "title": "Senior Software Developer / Tech Lead",
+        "company": "WotDev",
+        "period": "Oct 2024 – Presente",
+        "tags": ["Node.js", "TypeScript", "AWS", "React", "Next.js", "Ruby on Rails"],
+        "context": "Consultora de software — Tech Lead y colaborador en múltiples proyectos simultáneos",
+        "bullets": [
+          "Tech Lead para Umana — arquitecté el backend de una plataforma SaaS de RRHH, diseñando APIs REST, esquema de base de datos e infraestructura AWS (EC2, RDS, S3) para un sistema multi-tenant escalable",
+          "Desarrollador full stack para Corazón Puro — integré Stripe para flujos de suscripción, manejo de webhooks y checkout seguro; entregué mejoras críticas de rendimiento",
+          "Senior Frontend Developer para Lonely Planet (Red Ventures) — contribuí a migración a gran escala de Next.js a Astro para una plataforma de viajes con millones de visitantes mensuales"
+        ]
+      },
+      {
+        "title": "Senior Software Developer",
+        "company": "VML",
+        "period": "Ene 2022 – Ago 2024",
+        "tags": ["SwiftUI", "React", "Next.js", "React Native", "Node.js", "Ruby on Rails"],
+        "context": "Agencia global de software — ingeniero incrustado para grandes marcas de medios y deportes de EE.UU.",
+        "bullets": [
+          "SNY (SportsNet New York) — Construí desde cero una app de streaming deportivo en SwiftUI, lanzando simultáneamente en iOS y Apple TV; release completo multi-plataforma (iPhone, iPad, Apple TV) en un solo ciclo acelerado",
+          "FanDuel — Construí desde cero una plataforma web de apuestas y streaming deportivo en Next.js, trabajando en un monorepo compartido con React Native móvil",
+          "MSG Go (Madison Square Garden) — Desarrollé features full stack y lideré la migración a un nuevo reproductor de video, modernizando la infraestructura de entrega de medios"
+        ]
+      },
+      {
+        "title": "Instructor de Software",
+        "company": "Tecsup",
+        "period": "Mar 2021 – Jul 2024",
+        "tags": ["React", "Python", "Swift", "Firebase"],
+        "context": "Universidad técnica — Lima, Perú",
+        "bullets": [
+          "Enseñé Fundamentos de Programación, Programación Móvil Avanzada e Intro a Bases de Datos a grupos de 20–40 estudiantes por semestre",
+          "Fui asesor de tesis, guiando a estudiantes en proyectos de software de ciclo completo desde propuesta hasta defensa",
+          "Desarrollé currículo y ejercicios prácticos cubriendo React, Python OOP y desarrollo móvil con Swift"
+        ]
+      },
+      {
+        "title": "Full Stack Developer",
+        "company": "Cuik Hotels",
+        "period": "Ene 2020 – Jun 2021",
+        "tags": ["Laravel", "Node.js", "React", "React Native", "Docker", "AWS", "Swift", "Java"],
+        "context": "Startup de tecnología hotelera — Lima, Perú",
+        "bullets": [
+          "Lancé apps de gestión hotelera en App Store (iOS) y Google Play (Android), manejando el ciclo completo de release",
+          "Desarrollé un ChatBot de WhatsApp integrado con Twilio para ofertas promocionales automatizadas a huéspedes",
+          "Construí un panel de administración tipo CMS para que el personal del hotel gestione contenido sin intervención de desarrolladores"
+        ]
+      },
+      {
+        "title": "Software Developer",
+        "company": "Perú Masivo",
+        "period": "Jul 2019 – Ene 2020",
+        "tags": ["Laravel", "AWS", "React", "Docker", "Dialogflow"],
+        "context": "Empresa de logística — Lima, Perú",
+        "bullets": [
+          "Diseñé y construí un ERP para flujos de logística y mantenimiento, reemplazando procesos manuales en hojas de cálculo",
+          "Construí un sistema de asignación y seguimiento de tareas para gerentes con dashboards de progreso e informes exportables",
+          "Implementé un sistema de bonos gamificado vinculado a puntajes de tareas, mejorando la responsabilidad del equipo"
+        ]
+      },
+      {
+        "title": "Mobile Developer",
+        "company": "DogHouser",
+        "period": "May 2019 – Mar 2020",
+        "tags": ["Node.js", "AWS", "React", "Swift", "Java"],
+        "context": "Startup de marketplace para mascotas — Lima, Perú",
+        "bullets": [
+          "Desarrollé aplicaciones nativas iOS y Android para un marketplace de cuidado de mascotas conectando dueños de perros con cuidadores",
+          "Construí el frontend de la plataforma web habilitando onboarding de usuarios, gestión de perfiles y flujos de reserva"
+        ]
+      },
+      {
+        "title": "Software Developer",
+        "company": "Guvery Latam SAC",
+        "period": "Ago 2017 – Abr 2019",
+        "tags": ["PHP", "Node.js", "GCP", "Azure", "Docker", "Swift"],
+        "context": "Startup de logística e-commerce — Lima, Perú",
+        "bullets": [
+          "Implementé Social Login (Google y Facebook) en flujos de compradores y viajeros, reduciendo la fricción en el registro",
+          "Arquitecté una capa de microservicios para notificaciones push programadas, desacoplando la lógica de entrega del monolito",
+          "Desarrollé y lancé features de la app iOS con Swift; extendí el producto con nuevos módulos de compradores y viajeros"
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Construyamos algo que el mundo aún no ha visto.",
+    "subtagline": "Abierto a proyectos freelance, posiciones full-time y todo lo interesante que haya en el medio.",
+    "made_in": "Hecho en Lima, Perú 🇵🇪",
+    "back_top": "Volver arriba"
+  },
+  "contact": {
+    "title": "Construyamos algo juntos",
+    "subtitle": "Disponible para proyectos freelance y oportunidades a tiempo completo",
+    "availability": "Disponible para proyectos freelance",
+    "name_label": "Tu Nombre",
+    "email_label": "Tu Email",
+    "message_label": "Tu Mensaje",
+    "error_name": "Por favor ingresa tu nombre (mín. 2 caracteres)",
+    "error_email": "Por favor ingresa un email válido",
+    "error_message": "Por favor escribe un mensaje (mín. 10 caracteres)",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado! Me pondré en contacto pronto.",
+    "error": "Algo salió mal. Por favor intenta de nuevo.",
+    "or": "O contáctame directamente"
+  }
+}

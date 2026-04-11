@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Linder Hassinger",
+    "subtitle": "Senior Software Developer & Tech Lead building production-grade web, mobile, and AI-powered applications at scale.",
+    "cta_work": "View my work",
+    "cta_contact": "Let's work together",
+    "roles": ["Senior Software Developer", "Tech Lead", "Full Stack Engineer", "Next.js Expert", "iOS Developer", "AI Tooling Enthusiast"]
+  },
+  "about": {
+    "title": "About Me",
+    "bio": "Full Stack Developer & Tech Lead with 8+ years shipping at scale — from sports streaming apps on Apple TV (SNY, FanDuel) to global travel platforms (Lonely Planet). I've been integrating AI into my workflow for 3+ years. I build fast, clean, and production-ready. Based in Lima, Peru, working globally.",
+    "location": "Lima, Peru",
+    "location_label": "Based in",
+    "remote": "Remote global",
+    "remote_label": "Available for",
+    "stats": {
+      "years": "8+",
+      "years_label": "Years Experience",
+      "projects": "50+",
+      "projects_label": "Projects Delivered",
+      "technologies": "20+",
+      "technologies_label": "Technologies",
+      "ai": "3+",
+      "ai_label": "Years Using AI"
+    },
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "The tools I use to build great products",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools & Infra",
+      "ai": "AI & Integrations"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A selection of things I've built",
+    "live": "Live Demo",
+    "code": "View Code",
+    "all": "View all on GitHub",
+    "featured": "Featured",
+    "stack": "Tech Stack",
+    "scroll_hint": "scroll to explore",
+    "skip": "Skip all",
+    "filters": {
+      "all": "All",
+      "ai": "AI",
+      "fullstack": "Full Stack",
+      "frontend": "Frontend",
+      "devtools": "Dev Tools"
+    }
+  },
+  "experience": {
+    "title": "Work Experience",
+    "subtitle": "8+ years building across web, mobile, and iOS — at agencies, startups, and international brands",
+    "entries": [
+      {
+        "title": "Senior Software Developer / Tech Lead",
+        "company": "WotDev",
+        "period": "Oct 2024 – Present",
+        "tags": ["Node.js", "TypeScript", "AWS", "React", "Next.js", "Ruby on Rails"],
+        "context": "Software consultancy — Tech Lead & contributor across multiple simultaneous client projects",
+        "bullets": [
+          "Tech Lead for Umana — architected backend of an HR/recruitment SaaS, designing REST APIs, database schema, and AWS infrastructure (EC2, RDS, S3) for a scalable multi-tenant system",
+          "Full stack developer for Corazón Puro — integrated Stripe for subscription flows, webhook handling, and secure checkout; delivered critical performance improvements",
+          "Senior Frontend Developer for Lonely Planet (Red Ventures) — contributed to large-scale migration from Next.js to Astro for a travel platform serving millions of monthly visitors"
+        ]
+      },
+      {
+        "title": "Senior Software Developer",
+        "company": "VML",
+        "period": "Jan 2022 – Aug 2024",
+        "tags": ["SwiftUI", "React", "Next.js", "React Native", "Node.js", "Ruby on Rails"],
+        "context": "Global software agency — embedded engineer for major US media and sports brands",
+        "bullets": [
+          "SNY (SportsNet New York) — Built a greenfield sports streaming app from scratch in SwiftUI, launching simultaneously on iOS and Apple TV; full multi-platform release (iPhone, iPad, Apple TV) in a single accelerated cycle",
+          "FanDuel — Built a greenfield sports betting & streaming web platform from zero to production in Next.js, working in a monorepo shared with React Native mobile",
+          "MSG Go (Madison Square Garden) — Developed full-stack features and led migration to a new video streaming player, modernizing media delivery infrastructure across devices"
+        ]
+      },
+      {
+        "title": "Software Instructor",
+        "company": "Tecsup",
+        "period": "Mar 2021 – Jul 2024",
+        "tags": ["React", "Python", "Swift", "Firebase"],
+        "context": "Technical university — Lima, Peru",
+        "bullets": [
+          "Taught Programming Fundamentals, Advanced Mobile Programming, and Intro to Databases to cohorts of 20–40 students per semester",
+          "Served as thesis advisor, guiding students through full-cycle software projects from proposal to final defense",
+          "Developed curriculum and practical exercises covering React, Python OOP, and mobile development with Swift"
+        ]
+      },
+      {
+        "title": "Full Stack Developer",
+        "company": "Cuik Hotels",
+        "period": "Jan 2020 – Jun 2021",
+        "tags": ["Laravel", "Node.js", "React", "React Native", "Docker", "AWS", "Swift", "Java"],
+        "context": "Hotel tech startup — Lima, Peru",
+        "bullets": [
+          "Shipped hotel management apps to App Store (iOS) and Google Play (Android), managing the full release cycle",
+          "Built a WhatsApp ChatBot integrated with Twilio for automated promotional offers, boosting guest engagement",
+          "Developed a CMS-style admin panel for hotel staff to manage content and UI configurations without developer intervention"
+        ]
+      },
+      {
+        "title": "Software Developer",
+        "company": "Perú Masivo",
+        "period": "Jul 2019 – Jan 2020",
+        "tags": ["Laravel", "AWS", "React", "Docker", "Dialogflow"],
+        "context": "Logistics company — Lima, Peru",
+        "bullets": [
+          "Designed and built an ERP covering logistics and maintenance workflows, replacing manual spreadsheet-based processes",
+          "Built a task assignment and tracking system for managers with progress dashboards and exportable reports",
+          "Implemented a gamified bonus system tied to task scoring, improving team accountability"
+        ]
+      },
+      {
+        "title": "Mobile Developer",
+        "company": "DogHouser",
+        "period": "May 2019 – Mar 2020",
+        "tags": ["Node.js", "AWS", "React", "Swift", "Java"],
+        "context": "Pet-care marketplace startup — Lima, Peru",
+        "bullets": [
+          "Developed native iOS and Android applications for a pet-care marketplace connecting dog owners with trusted caregivers",
+          "Built the web platform frontend enabling user onboarding, profile management, and booking flows"
+        ]
+      },
+      {
+        "title": "Software Developer",
+        "company": "Guvery Latam SAC",
+        "period": "Aug 2017 – Apr 2019",
+        "tags": ["PHP", "Node.js", "GCP", "Azure", "Docker", "Swift"],
+        "context": "E-commerce logistics startup — Lima, Peru",
+        "bullets": [
+          "Implemented Social Login (Google & Facebook) across buyer and traveler user flows, reducing signup friction",
+          "Architected a microservices layer for scheduled push notifications, decoupling delivery logic from the monolith",
+          "Developed and shipped iOS app features using Swift; extended core product with new buyer and traveler modules"
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Let's build something the world hasn't seen yet.",
+    "subtagline": "Open to freelance projects, full-time roles, and anything interesting in between.",
+    "made_in": "Made in Lima, Peru 🇵🇪",
+    "back_top": "Back to top"
+  },
+  "contact": {
+    "title": "Let's build something together",
+    "subtitle": "Available for freelance projects and full-time opportunities",
+    "availability": "Available for freelance projects",
+    "name_label": "Your Name",
+    "email_label": "Your Email",
+    "message_label": "Your Message",
+    "error_name": "Please enter your name (min. 2 characters)",
+    "error_email": "Please enter a valid email address",
+    "error_message": "Please write a message (min. 10 characters)",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Something went wrong. Please try again.",
+    "or": "Or reach me directly"
+  }
+}
