@@ -97,7 +97,7 @@ const jsonLd = {
   jobTitle: "AI Tech Lead & AI Consultant",
   description:
     "AI Tech Lead and consultant helping companies put AI into production, backed by 8+ years building production-grade web, mobile, and iOS software. Based in Lima, Peru, working globally.",
-  image: "https://linderhassinger.dev/og-image.png",
+  image: "https://linderhassinger.dev/en/opengraph-image",
   sameAs: [
     "https://github.com/linder3hs",
     "https://linkedin.com/in/linderhassinger",
