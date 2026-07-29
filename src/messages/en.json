@@ -14,7 +14,14 @@
     "subtitle": "Senior Software Developer & Tech Lead building production-grade web, mobile, and AI-powered applications at scale.",
     "cta_work": "View my work",
     "cta_contact": "Let's work together",
-    "roles": ["Senior Software Developer", "Tech Lead", "Full Stack Engineer", "Next.js Expert", "iOS Developer", "AI Tooling Enthusiast"]
+    "roles": [
+      "Senior Software Developer",
+      "Tech Lead",
+      "Full Stack Engineer",
+      "Next.js Expert",
+      "iOS Developer",
+      "AI Tooling Enthusiast"
+    ]
   },
   "about": {
     "title": "About Me",
@@ -52,10 +59,7 @@
     "live": "Live Demo",
     "code": "View Code",
     "all": "View all on GitHub",
-    "featured": "Featured",
     "stack": "Tech Stack",
-    "scroll_hint": "scroll to explore",
-    "skip": "Skip all",
     "view_all": "See all {count} projects",
     "case_study": "Case study",
     "index_eyebrow": "Work",
@@ -84,7 +88,14 @@
         "title": "Senior Software Developer / Tech Lead",
         "company": "WotDev",
         "period": "Oct 2024 – Present",
-        "tags": ["Node.js", "TypeScript", "AWS", "React", "Next.js", "Ruby on Rails"],
+        "tags": [
+          "Node.js",
+          "TypeScript",
+          "AWS",
+          "React",
+          "Next.js",
+          "Ruby on Rails"
+        ],
         "context": "Software consultancy — Tech Lead & contributor across multiple simultaneous client projects",
         "bullets": [
           "Tech Lead for Umana — architected backend of an HR/recruitment SaaS, designing REST APIs, database schema, and AWS infrastructure (EC2, RDS, S3) for a scalable multi-tenant system",
@@ -96,7 +107,14 @@
         "title": "Senior Software Developer",
         "company": "VML",
         "period": "Jan 2022 – Aug 2024",
-        "tags": ["SwiftUI", "React", "Next.js", "React Native", "Node.js", "Ruby on Rails"],
+        "tags": [
+          "SwiftUI",
+          "React",
+          "Next.js",
+          "React Native",
+          "Node.js",
+          "Ruby on Rails"
+        ],
         "context": "Global software agency — embedded engineer for major US media and sports brands",
         "bullets": [
           "SNY (SportsNet New York) — Built a greenfield sports streaming app from scratch in SwiftUI, launching simultaneously on iOS and Apple TV; full multi-platform release (iPhone, iPad, Apple TV) in a single accelerated cycle",
@@ -108,7 +126,12 @@
         "title": "Software Instructor",
         "company": "Tecsup",
         "period": "Mar 2021 – Jul 2024",
-        "tags": ["React", "Python", "Swift", "Firebase"],
+        "tags": [
+          "React",
+          "Python",
+          "Swift",
+          "Firebase"
+        ],
         "context": "Technical university — Lima, Peru",
         "bullets": [
           "Taught Programming Fundamentals, Advanced Mobile Programming, and Intro to Databases to cohorts of 20–40 students per semester",
@@ -120,7 +143,16 @@
         "title": "Full Stack Developer",
         "company": "Cuik Hotels",
         "period": "Jan 2020 – Jun 2021",
-        "tags": ["Laravel", "Node.js", "React", "React Native", "Docker", "AWS", "Swift", "Java"],
+        "tags": [
+          "Laravel",
+          "Node.js",
+          "React",
+          "React Native",
+          "Docker",
+          "AWS",
+          "Swift",
+          "Java"
+        ],
         "context": "Hotel tech startup — Lima, Peru",
         "bullets": [
           "Shipped hotel management apps to App Store (iOS) and Google Play (Android), managing the full release cycle",
@@ -132,7 +164,13 @@
         "title": "Software Developer",
         "company": "Perú Masivo",
         "period": "Jul 2019 – Jan 2020",
-        "tags": ["Laravel", "AWS", "React", "Docker", "Dialogflow"],
+        "tags": [
+          "Laravel",
+          "AWS",
+          "React",
+          "Docker",
+          "Dialogflow"
+        ],
         "context": "Logistics company — Lima, Peru",
         "bullets": [
           "Designed and built an ERP covering logistics and maintenance workflows, replacing manual spreadsheet-based processes",
@@ -144,7 +182,13 @@
         "title": "Mobile Developer",
         "company": "DogHouser",
         "period": "May 2019 – Mar 2020",
-        "tags": ["Node.js", "AWS", "React", "Swift", "Java"],
+        "tags": [
+          "Node.js",
+          "AWS",
+          "React",
+          "Swift",
+          "Java"
+        ],
         "context": "Pet-care marketplace startup — Lima, Peru",
         "bullets": [
           "Developed native iOS and Android applications for a pet-care marketplace connecting dog owners with trusted caregivers",
@@ -155,7 +199,14 @@
         "title": "Software Developer",
         "company": "Guvery Latam SAC",
         "period": "Aug 2017 – Apr 2019",
-        "tags": ["PHP", "Node.js", "GCP", "Azure", "Docker", "Swift"],
+        "tags": [
+          "PHP",
+          "Node.js",
+          "GCP",
+          "Azure",
+          "Docker",
+          "Swift"
+        ],
         "context": "E-commerce logistics startup — Lima, Peru",
         "bullets": [
           "Implemented Social Login (Google & Facebook) across buyer and traveler user flows, reducing signup friction",

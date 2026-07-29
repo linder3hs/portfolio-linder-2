@@ -5,7 +5,7 @@ import {
 } from "react-icons/si";
 import { TbBrandFramerMotion, TbBrain, TbChartLine, TbCode, TbWorld } from "react-icons/tb";
 import type { IconType } from "react-icons";
-import type { ProjectCategory } from "./projects";
+import { projects, type Project, type ProjectCategory } from "./projects";
 
 export const techIconMap: Record<string, { Icon: IconType; color: string }> = {
   "React":              { Icon: SiReact,              color: "#61DAFB" },
@@ -76,4 +76,47 @@ export function readableAccent(hex: string, minLightness = 0.58): string {
   return `#${[mix(r), mix(g), mix(b)]
     .map((c) => c.toString(16).padStart(2, "0"))
     .join("")}`;
+}
+
+/** How many projects use each technology. Computed once at module load. */
+const techFrequency = projects.reduce<Record<string, number>>((acc, project) => {
+  for (const tech of project.tech) acc[tech] = (acc[tech] ?? 0) + 1;
+  return acc;
+}, {});
+
+/** Stable small hash of a string, for deriving deterministic layout values. */
+function hash(input: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < input.length; i++) {
+    h ^= input.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0) / 4294967296;
+}
+
+/**
+ * Picks the technology that best distinguishes a project from the others.
+ *
+ * Taking the first entry meant every Next.js project drew the same watermark
+ * and the four featured posters were indistinguishable. Rarest-first means
+ * ai-pr-review shows GitHub API and elearning shows Prisma.
+ */
+export function distinctiveTech(project: Project): string | undefined {
+  return project.tech
+    .filter((tech) => techIconMap[tech])
+    .sort((a, b) => (techFrequency[a] ?? 0) - (techFrequency[b] ?? 0))[0];
+}
+
+/**
+ * Watermark placement derived from the slug, so two projects that land on the
+ * same technology still read as different compositions.
+ */
+export function posterComposition(slug: string) {
+  const h = hash(slug);
+  return {
+    size: 230 + Math.round(h * 90),
+    right: `${-22 + Math.round(h * 16)}%`,
+    bottom: `${-30 + Math.round(hash(slug + "b") * 22)}%`,
+    rotate: Math.round(hash(slug + "r") * 40 - 20),
+  };
 }

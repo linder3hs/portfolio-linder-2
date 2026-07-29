@@ -30,6 +30,7 @@ export function ProjectCard({
       <ProjectPoster
         project={project}
         priority={priority}
+        variant="embedded"
         className="aspect-[16/10] w-full"
       />
 

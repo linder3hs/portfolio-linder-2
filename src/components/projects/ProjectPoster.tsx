@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { metaFor, techIconMap } from "@/lib/project-meta";
+import {
+  distinctiveTech,
+  metaFor,
+  posterComposition,
+  techIconMap,
+} from "@/lib/project-meta";
 import type { Project } from "@/lib/projects";
 
 /**
@@ -12,10 +17,16 @@ export function ProjectPoster({
   project,
   priority = false,
   className = "",
+  /**
+   * "embedded" drops the poster's own title block, for cards that already print
+   * the title beneath it. Leaving it on duplicated every title in the grid.
+   */
+  variant = "standalone",
 }: {
   project: Project;
   priority?: boolean;
   className?: string;
+  variant?: "standalone" | "embedded";
 }) {
   const meta = metaFor(project.category);
 
@@ -34,9 +45,11 @@ export function ProjectPoster({
     );
   }
 
-  // Primary tech drives the watermark glyph, so two projects rarely look alike.
-  const primary = project.tech.find((t) => techIconMap[t]);
-  const PrimaryIcon = primary ? techIconMap[primary].Icon : null;
+  // Rarest technology, not the first one — otherwise every Next.js project
+  // draws the same mark and the grid reads as one repeated tile.
+  const signature = distinctiveTech(project);
+  const SignatureIcon = signature ? techIconMap[signature].Icon : null;
+  const composition = posterComposition(project.slug);
 
   return (
     <div
@@ -61,16 +74,17 @@ export function ProjectPoster({
         }}
       />
 
-      {/* Oversized watermark of the project's primary technology */}
-      {PrimaryIcon && (
-        <PrimaryIcon
+      {/* Oversized watermark, placed from a hash of the slug */}
+      {SignatureIcon && (
+        <SignatureIcon
           className="absolute"
-          size={260}
+          size={composition.size}
           style={{
             color: meta.color,
-            opacity: 0.09,
-            right: "-14%",
-            bottom: "-22%",
+            opacity: 0.1,
+            right: composition.right,
+            bottom: composition.bottom,
+            transform: `rotate(${composition.rotate}deg)`,
           }}
         />
       )}
@@ -92,18 +106,19 @@ export function ProjectPoster({
         </span>
       </div>
 
-      {/* Title block */}
-      <div className="absolute inset-x-6 bottom-6">
-        <span
-          className="font-mono text-[10px] uppercase tracking-[0.2em]"
-          style={{ color: meta.color }}
-        >
-          {meta.glyph} {project.category}
-        </span>
-        <p className="font-heading mt-1.5 text-2xl font-bold leading-tight text-white">
-          {project.title}
-        </p>
-      </div>
+      {variant === "standalone" && (
+        <div className="absolute inset-x-6 bottom-6">
+          <span
+            className="font-mono text-[10px] uppercase tracking-[0.2em]"
+            style={{ color: meta.color }}
+          >
+            {meta.glyph} {project.category}
+          </span>
+          <p className="font-heading mt-1.5 text-2xl font-bold leading-tight text-white">
+            {project.title}
+          </p>
+        </div>
+      )}
 
       {/* Top edge accent */}
       <div

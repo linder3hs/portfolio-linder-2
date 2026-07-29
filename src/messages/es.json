@@ -14,7 +14,14 @@
     "subtitle": "Senior Software Developer & Tech Lead construyendo aplicaciones web, móvil e IA a escala de producción.",
     "cta_work": "Ver mi trabajo",
     "cta_contact": "Trabajemos juntos",
-    "roles": ["Senior Software Developer", "Tech Lead", "Full Stack Engineer", "Experto en Next.js", "iOS Developer", "AI Tooling"]
+    "roles": [
+      "Senior Software Developer",
+      "Tech Lead",
+      "Full Stack Engineer",
+      "Experto en Next.js",
+      "iOS Developer",
+      "AI Tooling"
+    ]
   },
   "about": {
     "title": "Sobre mí",
@@ -52,10 +59,7 @@
     "live": "Demo en Vivo",
     "code": "Ver Código",
     "all": "Ver todos en GitHub",
-    "featured": "Destacado",
     "stack": "Stack",
-    "scroll_hint": "desplázate para explorar",
-    "skip": "Saltar todo",
     "view_all": "Ver los {count} proyectos",
     "case_study": "Caso de estudio",
     "index_eyebrow": "Trabajo",
@@ -84,7 +88,14 @@
         "title": "Senior Software Developer / Tech Lead",
         "company": "WotDev",
         "period": "Oct 2024 – Presente",
-        "tags": ["Node.js", "TypeScript", "AWS", "React", "Next.js", "Ruby on Rails"],
+        "tags": [
+          "Node.js",
+          "TypeScript",
+          "AWS",
+          "React",
+          "Next.js",
+          "Ruby on Rails"
+        ],
         "context": "Consultora de software — Tech Lead y colaborador en múltiples proyectos simultáneos",
         "bullets": [
           "Tech Lead para Umana — arquitecté el backend de una plataforma SaaS de RRHH, diseñando APIs REST, esquema de base de datos e infraestructura AWS (EC2, RDS, S3) para un sistema multi-tenant escalable",
@@ -96,7 +107,14 @@
         "title": "Senior Software Developer",
         "company": "VML",
         "period": "Ene 2022 – Ago 2024",
-        "tags": ["SwiftUI", "React", "Next.js", "React Native", "Node.js", "Ruby on Rails"],
+        "tags": [
+          "SwiftUI",
+          "React",
+          "Next.js",
+          "React Native",
+          "Node.js",
+          "Ruby on Rails"
+        ],
         "context": "Agencia global de software — ingeniero incrustado para grandes marcas de medios y deportes de EE.UU.",
         "bullets": [
           "SNY (SportsNet New York) — Construí desde cero una app de streaming deportivo en SwiftUI, lanzando simultáneamente en iOS y Apple TV; release completo multi-plataforma (iPhone, iPad, Apple TV) en un solo ciclo acelerado",
@@ -108,7 +126,12 @@
         "title": "Instructor de Software",
         "company": "Tecsup",
         "period": "Mar 2021 – Jul 2024",
-        "tags": ["React", "Python", "Swift", "Firebase"],
+        "tags": [
+          "React",
+          "Python",
+          "Swift",
+          "Firebase"
+        ],
         "context": "Universidad técnica — Lima, Perú",
         "bullets": [
           "Enseñé Fundamentos de Programación, Programación Móvil Avanzada e Intro a Bases de Datos a grupos de 20–40 estudiantes por semestre",
@@ -120,7 +143,16 @@
         "title": "Full Stack Developer",
         "company": "Cuik Hotels",
         "period": "Ene 2020 – Jun 2021",
-        "tags": ["Laravel", "Node.js", "React", "React Native", "Docker", "AWS", "Swift", "Java"],
+        "tags": [
+          "Laravel",
+          "Node.js",
+          "React",
+          "React Native",
+          "Docker",
+          "AWS",
+          "Swift",
+          "Java"
+        ],
         "context": "Startup de tecnología hotelera — Lima, Perú",
         "bullets": [
           "Lancé apps de gestión hotelera en App Store (iOS) y Google Play (Android), manejando el ciclo completo de release",
@@ -132,7 +164,13 @@
         "title": "Software Developer",
         "company": "Perú Masivo",
         "period": "Jul 2019 – Ene 2020",
-        "tags": ["Laravel", "AWS", "React", "Docker", "Dialogflow"],
+        "tags": [
+          "Laravel",
+          "AWS",
+          "React",
+          "Docker",
+          "Dialogflow"
+        ],
         "context": "Empresa de logística — Lima, Perú",
         "bullets": [
           "Diseñé y construí un ERP para flujos de logística y mantenimiento, reemplazando procesos manuales en hojas de cálculo",
@@ -144,7 +182,13 @@
         "title": "Mobile Developer",
         "company": "DogHouser",
         "period": "May 2019 – Mar 2020",
-        "tags": ["Node.js", "AWS", "React", "Swift", "Java"],
+        "tags": [
+          "Node.js",
+          "AWS",
+          "React",
+          "Swift",
+          "Java"
+        ],
         "context": "Startup de marketplace para mascotas — Lima, Perú",
         "bullets": [
           "Desarrollé aplicaciones nativas iOS y Android para un marketplace de cuidado de mascotas conectando dueños de perros con cuidadores",
@@ -155,7 +199,14 @@
         "title": "Software Developer",
         "company": "Guvery Latam SAC",
         "period": "Ago 2017 – Abr 2019",
-        "tags": ["PHP", "Node.js", "GCP", "Azure", "Docker", "Swift"],
+        "tags": [
+          "PHP",
+          "Node.js",
+          "GCP",
+          "Azure",
+          "Docker",
+          "Swift"
+        ],
         "context": "Startup de logística e-commerce — Lima, Perú",
         "bullets": [
           "Implementé Social Login (Google y Facebook) en flujos de compradores y viajeros, reduciendo la fricción en el registro",
