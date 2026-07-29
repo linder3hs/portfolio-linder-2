@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageToggle } from "./LanguageToggle";
+import { Logo } from "./Logo";
 
 const sectionLinks = [
   { key: "about", id: "about" },
@@ -84,10 +85,13 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
-          className="font-heading text-gradient rounded text-xl font-bold outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          className="flex items-center gap-2.5 rounded outline-none focus-visible:ring-2 focus-visible:ring-white/60"
           aria-label="Linder Hassinger — home"
         >
-          LH
+          <Logo size={26} />
+          <span className="font-heading hidden text-sm font-semibold tracking-tight text-white/80 transition-colors hover:text-white sm:block">
+            Linder Hassinger
+          </span>
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">

@@ -193,6 +193,7 @@ export function Hero() {
         >
           {[
             "Claude API",
+            "Claude Code",
             "OpenAI API",
             "Python",
             "Django",
@@ -215,7 +216,10 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1"
+        // Hidden on short viewports: with the AI stack added, the chip row
+        // reaches this and the two collide at ~620px of viewport height, which
+        // is what a 1366x768 laptop actually has once browser chrome is out.
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 [@media(max-height:700px)]:hidden"
       >
         <span className="font-mono text-xs tracking-widest text-white/40">SCROLL</span>
         <motion.div
