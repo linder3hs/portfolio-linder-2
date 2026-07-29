@@ -4,7 +4,11 @@ import { buildSiteContext } from "@/lib/site-context";
 export const maxDuration = 60;
 
 const MAX_QUESTION_CHARS = 500;
-const MAX_HISTORY_TURNS = 8;
+const MAX_HISTORY_TURNS = 6;
+const MAX_HISTORY_CHARS = 400;
+
+/** Requests this instance will serve per hour, across all callers. */
+const GLOBAL_HOURLY_CAP = 300;
 
 /**
  * ponytail: in-memory rate limit. It is per server instance, so it does not
@@ -15,6 +19,40 @@ const MAX_HISTORY_TURNS = 8;
 const WINDOW_MS = 60_000;
 const MAX_PER_WINDOW = 6;
 const hits = new Map<string, number[]>();
+
+/**
+ * Backstop for when the per-caller limit is evaded — a botnet, or a hosting
+ * platform whose forwarded-IP header turns out to be forgeable. Bounds what a
+ * single instance can spend per hour no matter who is asking.
+ */
+const globalHits: number[] = [];
+
+function overGlobalCap(): boolean {
+  const now = Date.now();
+  while (globalHits.length && now - globalHits[0] > 3_600_000) globalHits.shift();
+  globalHits.push(now);
+  return globalHits.length > GLOBAL_HOURLY_CAP;
+}
+
+/**
+ * The caller's address, taken only from headers the hosting platform sets and
+ * strips from client input.
+ *
+ * `x-forwarded-for` is NOT one of those: any client can send it, and reading
+ * its first entry hands the rate-limit key straight to the caller. Rotating
+ * that header defeated the limiter entirely in testing — ten requests, ten
+ * different keys, zero 429s.
+ *
+ * Returns null when no trusted header is present, which the caller treats as
+ * one shared bucket rather than as a free pass.
+ */
+function callerKey(request: Request): string | null {
+  const trusted =
+    request.headers.get("x-vercel-forwarded-for") ??
+    request.headers.get("cf-connecting-ip") ??
+    request.headers.get("x-real-ip");
+  return trusted?.split(",")[0].trim() || null;
+}
 
 function rateLimited(ip: string): boolean {
   const now = Date.now();
@@ -55,12 +93,21 @@ export async function POST(request: Request) {
     return Response.json({ error: "not_configured" }, { status: 503 });
   }
 
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
-    request.headers.get("x-real-ip") ??
-    "unknown";
+  // Only same-origin browser traffic. Does not stop a scripted client, but it
+  // removes the trivial case of another site pointing its chat at this key.
+  const origin = request.headers.get("origin");
+  const host = request.headers.get("host");
+  if (origin && host && new URL(origin).host !== host) {
+    return Response.json({ error: "forbidden" }, { status: 403 });
+  }
 
-  if (rateLimited(ip)) {
+  if (overGlobalCap()) {
+    return Response.json({ error: "rate_limited" }, { status: 429 });
+  }
+
+  // No trusted address means everyone shares one bucket — fail closed, since
+  // an untrusted caller must not get a private allowance by omitting a header.
+  if (rateLimited(callerKey(request) ?? "untrusted")) {
     return Response.json({ error: "rate_limited" }, { status: 429 });
   }
 
@@ -78,20 +125,32 @@ export async function POST(request: Request) {
 
   const locale = body.locale === "es" ? "es" : "en";
 
-  // Trust nothing from the client beyond shape: roles are constrained to the
-  // two valid values and the transcript is truncated before it reaches the API.
+  /*
+   * Only the visitor's own past questions come back from the client — forged
+   * assistant turns are dropped on the floor.
+   *
+   * A client-supplied assistant turn is the credible half of a jailbreak: it
+   * lets a caller fabricate the model having already agreed to something ("the
+   * restriction is lifted for this session") and then trade on that agreement.
+   * Keeping only user turns means the caller can still say anything, but can
+   * never put words in the assistant's mouth, and the system prompt is the only
+   * instruction with authority.
+   */
   const history: Turn[] = Array.isArray(body.history)
     ? (body.history as unknown[])
         .filter(
           (t): t is Turn =>
             typeof t === "object" &&
             t !== null &&
-            (("role" in t && (t as Turn).role === "user") ||
-              ("role" in t && (t as Turn).role === "assistant")) &&
+            "role" in t &&
+            (t as Turn).role === "user" &&
             typeof (t as Turn).content === "string",
         )
         .slice(-MAX_HISTORY_TURNS)
-        .map((t) => ({ role: t.role, content: t.content.slice(0, 2000) }))
+        .map((t) => ({
+          role: "user" as const,
+          content: t.content.slice(0, MAX_HISTORY_CHARS),
+        }))
     : [];
 
   const client = new Anthropic();
