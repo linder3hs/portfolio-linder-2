@@ -47,14 +47,14 @@ export function About() {
             <div className="flex flex-wrap gap-3 mb-8">
               <motion.span
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/60 cursor-default"
+                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/75 cursor-default"
               >
                 <FiMapPin className="text-purple-400" size={14} />
                 {t("location")}
               </motion.span>
               <motion.span
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/60 cursor-default"
+                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/75 cursor-default"
               >
                 <FiGlobe className="text-purple-400" size={14} />
                 {t("remote")}
@@ -122,7 +122,7 @@ export function About() {
                 >
                   <CountUp target={stat.target} suffix={stat.suffix} />
                 </div>
-                <div className="relative z-10 text-white/50 text-sm">
+                <div className="relative z-10 text-white/65 text-sm">
                   {t(stat.labelKey)}
                 </div>
               </motion.div>

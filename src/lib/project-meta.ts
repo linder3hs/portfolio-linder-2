@@ -47,3 +47,33 @@ export const categoryMeta: Record<
 export function metaFor(category: ProjectCategory) {
   return categoryMeta[category] ?? categoryMeta.fullstack;
 }
+
+/**
+ * Brand colors are picked to sit on white. On #0A0A0F several of them are
+ * effectively invisible (Django #092E20, Prisma #2D3748). This raises lightness
+ * to a floor so an icon stays recognisable without becoming unreadable.
+ *
+ * Icons only — body text uses a neutral, since a hue-shifted brand color is
+ * never a reliable way to hit 4.5:1.
+ */
+export function readableAccent(hex: string, minLightness = 0.58): string {
+  const m = /^#?([\da-f]{6})$/i.exec(hex.trim());
+  if (!m) return hex;
+
+  const int = parseInt(m[1], 16);
+  const r = ((int >> 16) & 255) / 255;
+  const g = ((int >> 8) & 255) / 255;
+  const b = (int & 255) / 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  if (l >= minLightness) return hex;
+
+  // Blend toward white by however much lightness is missing.
+  const t = (minLightness - l) / (1 - l);
+  const mix = (c: number) => Math.round((c + (1 - c) * t) * 255);
+  return `#${[mix(r), mix(g), mix(b)]
+    .map((c) => c.toString(16).padStart(2, "0"))
+    .join("")}`;
+}

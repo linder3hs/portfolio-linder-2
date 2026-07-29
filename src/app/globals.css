@@ -116,7 +116,9 @@ body {
 
 /* ─── Text effects ───────────────────────────────────────── */
 .text-gradient {
-  background: linear-gradient(135deg, #7C3AED, #C084FC);
+  /* Lightened from #7C3AED: the old start colour sat at ~2.9:1 on #0A0A0F,
+     and this class is used for every section heading. */
+  background: linear-gradient(135deg, #A78BFA, #E9D5FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

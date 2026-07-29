@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
+import { readableAccent } from "@/lib/project-meta";
 
 interface ExperienceEntry {
   title: string;
@@ -49,7 +50,7 @@ export function Experience() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gradient mb-4">
             {t("title")}
           </h2>
-          <p className="text-white/40 text-sm">{t("subtitle")}</p>
+          <p className="text-white/60 text-sm">{t("subtitle")}</p>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mt-4" />
         </motion.div>
 
@@ -107,19 +108,19 @@ export function Experience() {
                       </h3>
                       <p
                         className="text-sm font-semibold mt-0.5"
-                        style={{ color: dot.bg }}
+                        style={{ color: readableAccent(dot.bg) }}
                       >
                         {entry.company}
                       </p>
                     </div>
-                    <span className="text-xs font-mono text-white/35 bg-white/[0.04] px-3 py-1 rounded-full border border-white/[0.06] shrink-0">
+                    <span className="text-xs font-mono text-white/55 bg-white/[0.04] px-3 py-1 rounded-full border border-white/[0.06] shrink-0">
                       {entry.period}
                     </span>
                   </div>
 
                   {/* Context label */}
                   {entry.context && (
-                    <p className="text-white/35 text-xs italic mb-4 leading-relaxed">
+                    <p className="text-white/55 text-xs italic mb-4 leading-relaxed">
                       {entry.context}
                     </p>
                   )}
@@ -130,7 +131,7 @@ export function Experience() {
                       {entry.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] font-mono px-2 py-0.5 rounded-full text-white/40 bg-white/[0.04] border border-white/[0.06]"
+                          className="text-[10px] font-mono px-2 py-0.5 rounded-full text-white/60 bg-white/[0.04] border border-white/[0.06]"
                         >
                           {tag}
                         </span>
@@ -147,7 +148,7 @@ export function Experience() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.07 + j * 0.05 }}
-                        className="text-white/60 text-sm flex gap-3 leading-relaxed"
+                        className="text-white/70 text-sm flex gap-3 leading-relaxed"
                       >
                         <span
                           className="mt-1.5 w-1 h-1 rounded-full shrink-0"

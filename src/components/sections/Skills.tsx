@@ -33,6 +33,7 @@ import {
 import { FiCloud } from "react-icons/fi";
 import { TbBrandFramerMotion, TbBrain } from "react-icons/tb";
 import type { IconType } from "react-icons";
+import { readableAccent } from "@/lib/project-meta";
 
 interface Skill {
   name: string;
@@ -119,7 +120,7 @@ export function Skills() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-gradient mb-4">
             {t("title")}
           </h2>
-          <p className="text-white/40 text-sm">{t("subtitle")}</p>
+          <p className="text-white/60 text-sm">{t("subtitle")}</p>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mt-4" />
         </motion.div>
 
@@ -140,13 +141,13 @@ export function Skills() {
                   <div
                     className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                     style={{
-                      background: `${cat.iconColor}15`,
-                      border: `1px solid ${cat.iconColor}30`,
+                      background: `${readableAccent(cat.iconColor)}1A`,
+                      border: `1px solid ${readableAccent(cat.iconColor)}33`,
                     }}
                   >
-                    <CatIcon size={18} color={cat.iconColor} />
+                    <CatIcon size={18} color={readableAccent(cat.iconColor)} />
                   </div>
-                  <h3 className="font-heading font-semibold text-white/80">
+                  <h3 className="font-heading font-semibold text-white/90">
                     {t(`categories.${cat.key}`)}
                   </h3>
                 </div>
@@ -155,10 +156,11 @@ export function Skills() {
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill, skillIdx) => {
                     const SkillIcon = skill.Icon;
+                    const accent = readableAccent(skill.color);
                     return (
                       <motion.div
                         key={skill.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.85 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{
@@ -166,15 +168,16 @@ export function Skills() {
                           delay: catIdx * 0.1 + skillIdx * 0.04,
                           ease: "backOut",
                         }}
-                        whileHover={{ scale: 1.08, y: -2 }}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium cursor-default transition-all duration-200"
+                        whileHover={{ scale: 1.06, y: -2 }}
+                        // Label is neutral; only the icon carries the brand hue.
+                        // Coloring the label was making several badges unreadable.
+                        className="flex cursor-default items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-white/80 transition-all duration-200"
                         style={{
-                          background: `${skill.color}10`,
-                          border: `1px solid ${skill.color}25`,
-                          color: skill.color === "#ffffff" || skill.color === "#000020" ? "rgba(255,255,255,0.7)" : skill.color,
+                          background: `${accent}12`,
+                          border: `1px solid ${accent}33`,
                         }}
                       >
-                        <SkillIcon size={11} />
+                        <SkillIcon size={11} style={{ color: accent }} />
                         <span>{skill.name}</span>
                       </motion.div>
                     );
