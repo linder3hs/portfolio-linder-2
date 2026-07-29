@@ -43,8 +43,7 @@
     },
     "github": "GitHub",
     "linkedin": "LinkedIn",
-    "book_call": "Book a 30-min call",
-    "photo_alt": "Linder Hassinger"
+    "book_call": "Book a 30-min call"
   },
   "skills": {
     "title": "Skills & Technologies",
@@ -243,7 +242,8 @@
     "sending": "Sending...",
     "success": "Message sent! I'll get back to you soon.",
     "error": "Something went wrong. Please try again.",
-    "or": "Or reach me directly"
+    "or": "Or reach me directly",
+    "book_call": "Book a 30-min call"
   },
   "ask": {
     "eyebrow": "Live demo",

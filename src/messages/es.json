@@ -43,8 +43,7 @@
     },
     "github": "GitHub",
     "linkedin": "LinkedIn",
-    "book_call": "Agenda una llamada de 30 min",
-    "photo_alt": "Linder Hassinger"
+    "book_call": "Agenda una llamada de 30 min"
   },
   "skills": {
     "title": "Habilidades y Tecnologías",
@@ -243,7 +242,8 @@
     "sending": "Enviando...",
     "success": "¡Mensaje enviado! Me pondré en contacto pronto.",
     "error": "Algo salió mal. Por favor intenta de nuevo.",
-    "or": "O contáctame directamente"
+    "or": "O contáctame directamente",
+    "book_call": "Agenda una llamada de 30 min"
   },
   "ask": {
     "eyebrow": "Demo en vivo",

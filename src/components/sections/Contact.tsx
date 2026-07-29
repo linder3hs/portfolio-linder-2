@@ -4,7 +4,8 @@ import { useEffect, useId, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { Send } from "lucide-react";
+import { Calendar, Send } from "lucide-react";
+import { BOOKING_URL } from "@/lib/site";
 import { sendContactEmail } from "@/app/[locale]/actions";
 
 type FormErrors = { name?: string; email?: string; message?: string };
@@ -13,9 +14,23 @@ const inputClass =
   "w-full rounded-xl bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/45 focus-visible:ring-2 focus-visible:ring-purple-400";
 
 const directLinks = [
+  // Booking first when configured — a consultant's highest-intent action.
+  ...(BOOKING_URL
+    ? [
+        {
+          Icon: Calendar,
+          label: "book",
+          value: BOOKING_URL.replace(/^https?:\/\//, ""),
+          href: BOOKING_URL,
+          external: true,
+          featured: true,
+        },
+      ]
+    : []),
   {
     Icon: FiMail,
     label: "Email",
+    featured: false,
     value: "linderhassinger00@gmail.com",
     href: "mailto:linderhassinger00@gmail.com",
     external: false,
@@ -23,6 +38,7 @@ const directLinks = [
   {
     Icon: FiGithub,
     label: "GitHub",
+    featured: false,
     value: "github.com/linder3hs",
     href: "https://github.com/linder3hs",
     external: true,
@@ -30,6 +46,7 @@ const directLinks = [
   {
     Icon: FiLinkedin,
     label: "LinkedIn",
+    featured: false,
     value: "linkedin.com/in/linderhassinger",
     href: "https://linkedin.com/in/linderhassinger",
     external: true,
@@ -266,14 +283,18 @@ export function Contact() {
           >
             <p className="mb-2 text-sm text-white/60">{t("or")}</p>
 
-            {directLinks.map(({ Icon, label, value, href, external }) => (
+            {directLinks.map(({ Icon, label, value, href, external, featured }) => (
               <a
                 key={label}
                 href={href}
                 {...(external
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                className="glass group flex items-center gap-4 rounded-xl border border-white/[0.08] p-4 outline-none transition-all duration-300 hover:border-purple-400/50 focus-visible:ring-2 focus-visible:ring-purple-400"
+                className={`glass group flex items-center gap-4 rounded-xl p-4 outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-purple-400 ${
+                  featured
+                    ? "border border-purple-400/45 bg-purple-500/10 hover:border-purple-400/70"
+                    : "border border-white/[0.08] hover:border-purple-400/50"
+                }`}
               >
                 <span
                   aria-hidden
@@ -282,7 +303,9 @@ export function Contact() {
                   <Icon className="text-purple-300" size={18} />
                 </span>
                 <span>
-                  <span className="mb-0.5 block text-xs text-white/60">{label}</span>
+                  <span className="mb-0.5 block text-xs text-white/60">
+                    {featured ? t("book_call") : label}
+                  </span>
                   <span className="block text-sm font-medium text-white/85">
                     {value}
                   </span>

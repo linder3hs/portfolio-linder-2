@@ -1,48 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiMapPin, FiGlobe } from "react-icons/fi";
 import { Calendar } from "lucide-react";
 import { CountUp } from "@/components/ui/CountUp";
-
-/**
- * Photo path, e.g. NEXT_PUBLIC_PHOTO_SRC=/linder.jpg after dropping a square
- * image into /public. Defaults to the monogram — pointing next/image at a file
- * that does not exist returns a 400 and renders a broken portrait, so the
- * fallback has to be the default rather than the exception.
- */
-const PHOTO_SRC = process.env.NEXT_PUBLIC_PHOTO_SRC;
-
-/**
- * Scheduling link (Cal.com, Calendly, …). The CTA only renders when this is
- * set, so an unset value degrades to the contact form rather than a dead link.
- */
-const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL;
-
-function Portrait({ alt }: { alt: string }) {
-  return (
-    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl border border-white/12 bg-white/[0.04]">
-      {PHOTO_SRC ? (
-        <Image
-          src={PHOTO_SRC}
-          alt={alt}
-          fill
-          sizes="64px"
-          className="object-cover"
-        />
-      ) : (
-        <span
-          aria-hidden
-          className="font-heading flex h-full w-full items-center justify-center text-xl font-bold text-white/70"
-        >
-          LH
-        </span>
-      )}
-    </div>
-  );
-}
+import { BOOKING_URL } from "@/lib/site";
+import { readableAccent } from "@/lib/project-meta";
 
 const stats = [
   { target: 8, suffix: "+", labelKey: "stats.years_label", color: "#7C3AED" },
@@ -78,12 +42,9 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-8 flex items-start gap-5">
-              <Portrait alt={t("photo_alt")} />
-              <p className="font-heading text-xl md:text-2xl text-white/75 leading-snug tracking-tight">
-                {t("bio")}
-              </p>
-            </div>
+            <p className="font-heading text-xl md:text-2xl text-white/75 leading-snug tracking-tight mb-8">
+              {t("bio")}
+            </p>
 
             {/* Location + Remote badges */}
             <div className="flex flex-wrap gap-3 mb-8">
@@ -173,7 +134,9 @@ export function About() {
 
                 <div
                   className="relative z-10 font-heading text-4xl font-bold mb-2"
-                  style={{ color: stat.color }}
+                  // Same lightness floor as the skill badges — #7C3AED sits
+                  // near 2.9:1 on this background even at display size.
+                  style={{ color: readableAccent(stat.color) }}
                 >
                   <CountUp target={stat.target} suffix={stat.suffix} />
                 </div>
