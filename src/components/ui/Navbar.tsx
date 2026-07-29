@@ -1,149 +1,210 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageToggle } from "./LanguageToggle";
 
-const navLinks = [
-  { key: "about", href: "#about" },
-  { key: "skills", href: "#skills" },
-  { key: "projects", href: "#projects" },
-  { key: "experience", href: "#experience" },
-  { key: "contact", href: "#contact" },
+const sectionLinks = [
+  { key: "about", id: "about" },
+  { key: "skills", id: "skills" },
+  { key: "projects", id: "projects" },
+  { key: "experience", id: "experience" },
+  { key: "contact", id: "contact" },
 ];
+
+/**
+ * Tracks which section is in view. IntersectionObserver instead of a scroll
+ * handler: no per-event layout reads, and the listener is registered once.
+ */
+function useActiveSection(enabled: boolean) {
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    if (!enabled) return;
+
+    const elements = sectionLinks
+      .map(({ id }) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (elements.length === 0) return;
+
+    const visible = new Map<string, number>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          visible.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+        }
+        let best = "";
+        let bestRatio = 0;
+        for (const [id, ratio] of visible) {
+          if (ratio > bestRatio) {
+            best = id;
+            bestRatio = ratio;
+          }
+        }
+        if (bestRatio > 0) setActive(best);
+      },
+      {
+        // Discount the area behind the fixed navbar so a section isn't "active"
+        // while it's still hidden under it.
+        rootMargin: "-64px 0px -35% 0px",
+        threshold: [0, 0.15, 0.35, 0.6, 1],
+      },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [enabled]);
+
+  return active;
+}
 
 export function Navbar() {
   const t = useTranslations("nav");
-  const [visible, setVisible] = useState(true);
-  const [lastY, setLastY] = useState(0);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const activeSection = useActiveSection(isHome);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentY = window.scrollY;
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 220,
+    damping: 40,
+    restDelta: 0.001,
+  });
 
-      // Hide/show navbar
-      if (currentY < 80) {
-        setVisible(true);
-      } else {
-        setVisible(currentY < lastY);
-      }
-      setLastY(currentY);
-
-      // Active section detection
-      const offset = 120;
-      const sections = navLinks.map(({ href }) => {
-        const el = document.querySelector(href) as HTMLElement | null;
-        return { id: href.slice(1), top: el ? el.offsetTop : 0 };
-      });
-
-      const scrollY = currentY + offset;
-      let current = "";
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (scrollY >= sections[i].top) {
-          current = sections[i].id;
-          break;
-        }
-      }
-      setActiveSection(current);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastY]);
-
-  const handleLinkClick = () => setMenuOpen(false);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <>
-      <AnimatePresence>
-        {visible && (
-          <motion.nav
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -100, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-black/20 border-b border-white/[0.06]"
-          >
-            <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-black/40 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        <Link
+          href="/"
+          className="font-heading text-gradient rounded text-xl font-bold outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          aria-label="Linder Hassinger — home"
+        >
+          LH
+        </Link>
+
+        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+          {sectionLinks.map(({ key, id }) => {
+            const isActive = isHome && activeSection === id;
+            const href = isHome ? `#${id}` : `/#${id}`;
+            const className =
+              "relative rounded text-sm font-medium outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white/60";
+            const style = {
+              color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.62)",
+            };
+            const indicator = (
+              <span
+                aria-hidden
+                className="absolute -bottom-1 left-1/2 h-0.5 -translate-x-1/2 rounded-full transition-all duration-300"
+                style={{
+                  width: isActive ? 16 : 0,
+                  background: "linear-gradient(to right, #7C3AED, #C084FC)",
+                  opacity: isActive ? 1 : 0,
+                }}
+              />
+            );
+
+            return isHome ? (
               <a
-                href="#"
-                className="font-heading font-bold text-xl text-gradient"
+                key={key}
+                href={href}
+                className={className}
+                style={style}
+                aria-current={isActive ? "true" : undefined}
               >
-                LH
+                {t(key)}
+                {indicator}
               </a>
+            ) : (
+              <Link key={key} href={href} className={className} style={style}>
+                {t(key)}
+                {indicator}
+              </Link>
+            );
+          })}
 
-              {/* Desktop links */}
-              <div className="hidden md:flex items-center gap-8">
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.key;
-                  return (
-                    <a
-                      key={link.key}
-                      href={link.href}
-                      className="relative text-sm font-medium transition-colors duration-200 group"
-                      style={{ color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.5)" }}
-                    >
-                      {t(link.key)}
-                      {/* Active dot indicator */}
-                      <span
-                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 rounded-full transition-all duration-300"
-                        style={{
-                          width: isActive ? 16 : 0,
-                          height: 2,
-                          background: "linear-gradient(to right, #7C3AED, #C084FC)",
-                          opacity: isActive ? 1 : 0,
-                        }}
-                      />
-                    </a>
-                  );
-                })}
-              </div>
+          <Link
+            href="/projects"
+            className="rounded-full border border-white/12 px-3.5 py-1.5 text-sm font-medium text-white/70 outline-none transition-colors duration-200 hover:border-purple-400/40 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+          >
+            {t("all_projects")}
+          </Link>
+        </nav>
 
-              <div className="flex items-center gap-3">
-                <LanguageToggle />
-                <button
-                  className="md:hidden text-white/70 hover:text-white transition-colors"
-                  onClick={() => setMenuOpen(!menuOpen)}
-                  aria-label="Toggle menu"
-                >
-                  {menuOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
-              </div>
-            </div>
+        <div className="flex items-center gap-3">
+          <LanguageToggle />
+          <button
+            type="button"
+            className="rounded text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60 md:hidden"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={t("toggle_menu")}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
 
-            {/* Mobile menu */}
-            <AnimatePresence>
-              {menuOpen && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="md:hidden border-t border-white/[0.06] backdrop-blur-xl bg-black/30"
-                >
-                  <div className="px-6 py-4 flex flex-col gap-4">
-                    {navLinks.map((link) => (
-                      <a
-                        key={link.key}
-                        href={link.href}
-                        onClick={handleLinkClick}
-                        className="text-white/70 hover:text-white text-sm transition-colors duration-200 font-medium py-1"
-                      >
-                        {t(link.key)}
-                      </a>
-                    ))}
-                  </div>
-                </motion.div>
+      <AnimatePresence initial={false}>
+        {menuOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden border-t border-white/[0.07] bg-black/50 backdrop-blur-xl md:hidden"
+          >
+            <nav aria-label="Mobile" className="flex flex-col gap-1 px-6 py-4">
+              {sectionLinks.map(({ key, id }) =>
+                isHome ? (
+                  <a
+                    key={key}
+                    href={`#${id}`}
+                    onClick={closeMenu}
+                    className="rounded py-2 text-sm font-medium text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+                  >
+                    {t(key)}
+                  </a>
+                ) : (
+                  <Link
+                    key={key}
+                    href={`/#${id}`}
+                    onClick={closeMenu}
+                    className="rounded py-2 text-sm font-medium text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+                  >
+                    {t(key)}
+                  </Link>
+                ),
               )}
-            </AnimatePresence>
-          </motion.nav>
+              <Link
+                href="/projects"
+                onClick={closeMenu}
+                className="mt-2 rounded border-t border-white/[0.07] pt-3 text-sm font-medium text-purple-300 outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              >
+                {t("all_projects")}
+              </Link>
+            </nav>
+          </motion.div>
         )}
       </AnimatePresence>
-    </>
+
+      <motion.div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-px origin-left"
+        style={{
+          scaleX: progress,
+          background: "linear-gradient(to right, #7C3AED, #C084FC)",
+        }}
+      />
+    </header>
   );
 }

@@ -4,7 +4,9 @@
     "skills": "Habilidades",
     "projects": "Proyectos",
     "experience": "Experiencia",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "all_projects": "Todos los proyectos",
+    "toggle_menu": "Abrir o cerrar el menú de navegación"
   },
   "hero": {
     "greeting": "Hola, soy",
@@ -54,6 +56,18 @@
     "stack": "Stack",
     "scroll_hint": "desplázate para explorar",
     "skip": "Saltar todo",
+    "view_all": "Ver los {count} proyectos",
+    "case_study": "Caso de estudio",
+    "index_eyebrow": "Trabajo",
+    "index_title": "Proyectos",
+    "index_subtitle": "Todo lo que he publicado — proyectos personales, experimentos y herramientas que uso de verdad. Filtra por lo que estés buscando.",
+    "back_to_all": "Todos los proyectos",
+    "problem": "El problema",
+    "solution": "El enfoque",
+    "highlights": "Detalles destacados",
+    "next_project": "Siguiente proyecto",
+    "filter_label": "Filtrar proyectos por categoría",
+    "results": "{count, plural, one {# proyecto} other {# proyectos}} mostrados",
     "filters": {
       "all": "Todos",
       "ai": "IA",

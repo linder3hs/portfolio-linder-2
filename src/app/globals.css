@@ -79,6 +79,16 @@
 /* ─── Base ───────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  /* Sections are anchor targets and the navbar is fixed — without this, a
+     jump to #about lands with the heading hidden behind the bar. */
+  scroll-padding-top: 5rem;
+}
+
+/* Visible keyboard focus everywhere. Components opt out only by supplying
+   their own focus-visible ring. */
+:focus-visible {
+  outline: 2px solid rgba(192, 132, 252, 0.9);
+  outline-offset: 2px;
 }
 
 body {
@@ -192,6 +202,34 @@ body {
   border: 1px dashed rgba(192,132,252,0.15);
   border-radius: 50%;
   animation: spin-reverse 15s linear infinite;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+/*
+  Kills the decorative loops. Framer Motion components read the same media
+  query via useReducedMotion, so this only has to cover the CSS animations.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* The shimmer is a gradient animation on text — freeze it on a legible frame
+     rather than leaving the text mid-sweep. */
+  .text-shimmer {
+    background: linear-gradient(90deg, #ffffff, #C084FC);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
 }
 
 /* ─── Gradient border ────────────────────────────────────── */

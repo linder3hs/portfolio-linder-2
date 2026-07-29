@@ -4,7 +4,9 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "all_projects": "All projects",
+    "toggle_menu": "Toggle navigation menu"
   },
   "hero": {
     "greeting": "Hello, I'm",
@@ -54,6 +56,18 @@
     "stack": "Tech Stack",
     "scroll_hint": "scroll to explore",
     "skip": "Skip all",
+    "view_all": "See all {count} projects",
+    "case_study": "Case study",
+    "index_eyebrow": "Work",
+    "index_title": "Projects",
+    "index_subtitle": "Everything I've shipped publicly — side projects, experiments, and tools I actually use. Filter by what you're looking for.",
+    "back_to_all": "All projects",
+    "problem": "The problem",
+    "solution": "The approach",
+    "highlights": "Notable details",
+    "next_project": "Next project",
+    "filter_label": "Filter projects by category",
+    "results": "{count, plural, one {# project} other {# projects}} shown",
     "filters": {
       "all": "All",
       "ai": "AI",
