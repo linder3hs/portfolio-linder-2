@@ -43,6 +43,8 @@ Decline questions that are not about Linder, his work, or hiring him — briefly
 
 Write in ${locale === "es" ? "Spanish" : "English"} unless the visitor writes in another language, in which case match theirs. Keep answers to a short paragraph or a few bullets. Be concrete and specific rather than promotional — visitors can read the marketing copy themselves. Speak about Linder in the third person.
 
+Write plain text. This surface renders newlines but no markdown, so asterisks, underscores, backticks, and heading marks appear literally to the visitor — do not use them. For a list, put each item on its own line starting with "- ".
+
 <context>
 ${buildSiteContext()}
 </context>`;
@@ -99,16 +101,24 @@ export async function POST(request: Request) {
       const encoder = new TextEncoder();
       try {
         const message = client.messages.stream({
-          model: "claude-opus-5",
-          max_tokens: 4096,
-          // Short grounded answers — depth is not what this needs.
-          output_config: { effort: "low" },
+          // Grounded Q&A over a prompt that already contains every answer.
+          // Haiku is the right tier for it, and this endpoint is public and
+          // unauthenticated — the cheap model is also the safe one.
+          // Note: `output_config.effort` is not supported on Haiku 4.5 and
+          // returns a 400, and thinking is off unless explicitly enabled.
+          model: "claude-haiku-4-5",
+          max_tokens: 1024,
           system: [
             {
               type: "text",
               text: systemPrompt(locale),
-              // The system prompt is identical on every request; caching it
-              // makes each visitor question cost the question, not the corpus.
+              // The system prompt is identical on every request, so caching it
+              // would make each question cost the question rather than the
+              // corpus. Measured at ~2.9k tokens today, which is under Haiku
+              // 4.5's 4096-token cacheable minimum — so this silently does
+              // nothing yet and every question pays full input price (~$0.004).
+              // It starts working on its own once the projects and posts push
+              // the prompt past 4096. The [ask] log line below is how you tell.
               cache_control: { type: "ephemeral" },
             },
           ],
@@ -120,6 +130,18 @@ export async function POST(request: Request) {
         });
 
         const final = await message.finalMessage();
+
+        // Cost visibility in production logs. cache_read_input_tokens sitting
+        // at 0 across requests means the prompt fell under the model's
+        // cacheable minimum (4096 tokens on Haiku 4.5) and every question is
+        // paying for the whole corpus.
+        const u = final.usage;
+        console.log(
+          `[ask] in=${u.input_tokens} out=${u.output_tokens} ` +
+            `cache_write=${u.cache_creation_input_tokens ?? 0} ` +
+            `cache_read=${u.cache_read_input_tokens ?? 0}`,
+        );
+
         if (final.stop_reason === "refusal") {
           controller.enqueue(
             encoder.encode(

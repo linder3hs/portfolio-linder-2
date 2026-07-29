@@ -119,7 +119,7 @@ export function AskLinder() {
                   className={
                     turn.role === "user"
                       ? "ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-purple-500/15 px-4 py-2.5 text-sm text-white/90"
-                      : "max-w-[92%] text-sm leading-relaxed text-white/75"
+                      : "max-w-[92%] whitespace-pre-line text-sm leading-relaxed text-white/75"
                   }
                 >
                   {turn.content ||
