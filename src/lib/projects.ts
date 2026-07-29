@@ -25,8 +25,9 @@ export interface Project {
   featured: boolean;
   year: number;
   /**
-   * Optional real screenshot under /public/projects/<slug>.png (1200x750).
-   * When absent the generated <ProjectPoster> is used instead.
+   * Screenshot of the live site, under /public/projects/<slug>.jpg.
+   * When absent the generated <ProjectPoster> is used instead — so a new
+   * project can ship before anyone captures its screenshot.
    */
   image?: string;
   /** Case-study copy for /projects/<slug>. */
@@ -39,6 +40,7 @@ export const projects: Project[] = [
   {
     id: "1",
     slug: "ai-linkedin",
+    image: "/projects/ai-linkedin.jpg",
     title: "AI LinkedIn Optimizer",
     description: "AI-powered tool to optimize your LinkedIn profile for maximum visibility and recruiter appeal.",
     descriptionEs: "Herramienta con IA para optimizar tu perfil de LinkedIn y maximizar visibilidad ante reclutadores.",
@@ -64,6 +66,7 @@ export const projects: Project[] = [
   {
     id: "2",
     slug: "ai-pr-review",
+    image: "/projects/ai-pr-review.jpg",
     title: "AI PR Review",
     description: "Automated code review tool powered by AI that analyzes pull requests and suggests improvements.",
     descriptionEs: "Herramienta de revisión de código automatizada con IA que analiza pull requests y sugiere mejoras.",
@@ -89,6 +92,7 @@ export const projects: Project[] = [
   {
     id: "6",
     slug: "elearning",
+    image: "/projects/elearning.jpg",
     title: "eLearning Platform",
     description: "Full-featured LMS with video courses, progress tracking, certificates, and admin dashboard.",
     descriptionEs: "LMS completo con cursos en video, seguimiento de progreso, certificados y panel de administración.",
@@ -114,6 +118,7 @@ export const projects: Project[] = [
   {
     id: "4",
     slug: "devconf",
+    image: "/projects/devconf.jpg",
     title: "DevConf",
     description: "Developer conference platform with schedule management, speaker profiles, and session booking.",
     descriptionEs: "Plataforma de conferencias para desarrolladores con gestión de horarios, perfiles de ponentes y reserva de sesiones.",
@@ -139,6 +144,7 @@ export const projects: Project[] = [
   {
     id: "3",
     slug: "compare-macs",
+    image: "/projects/compare-macs.jpg",
     title: "Mac Comparator",
     description: "Interactive side-by-side comparison tool for Apple Mac models with detailed spec sheets.",
     descriptionEs: "Herramienta interactiva de comparación lado a lado de modelos Mac de Apple con fichas técnicas detalladas.",
@@ -159,6 +165,7 @@ export const projects: Project[] = [
   {
     id: "5",
     slug: "duolingo",
+    image: "/projects/duolingo.jpg",
     title: "Duolingo Clone",
     description: "Gamified language learning application with lessons, streaks, and progress tracking.",
     descriptionEs: "Aplicación de aprendizaje de idiomas gamificada con lecciones, rachas y seguimiento de progreso.",
@@ -179,6 +186,7 @@ export const projects: Project[] = [
   {
     id: "7",
     slug: "financial",
+    image: "/projects/financial.jpg",
     title: "Financial Dashboard",
     description: "Personal finance dashboard with expense tracking, budget planning, and visual analytics.",
     descriptionEs: "Panel de finanzas personales con seguimiento de gastos, planificación de presupuesto y análisis visual.",
@@ -199,6 +207,7 @@ export const projects: Project[] = [
   {
     id: "8",
     slug: "js",
+    image: "/projects/js.jpg",
     title: "JS Playground",
     description: "Interactive JavaScript playground with live code execution, console output, and shareable snippets.",
     descriptionEs: "Playground interactivo de JavaScript con ejecución de código en vivo, salida de consola y fragmentos compartibles.",
@@ -219,6 +228,7 @@ export const projects: Project[] = [
   {
     id: "9",
     slug: "playground",
+    image: "/projects/playground.jpg",
     title: "Dev Playground",
     description: "Multi-language development sandbox for experimenting with code and sharing experiments.",
     descriptionEs: "Sandbox de desarrollo multi-lenguaje para experimentar con código y compartir experimentos.",
@@ -239,6 +249,7 @@ export const projects: Project[] = [
   {
     id: "10",
     slug: "readme",
+    image: "/projects/readme.jpg",
     title: "README Generator",
     description: "AI-powered README generator that creates professional documentation for GitHub repositories.",
     descriptionEs: "Generador de README con IA que crea documentación profesional para repositorios de GitHub.",
@@ -259,6 +270,7 @@ export const projects: Project[] = [
   {
     id: "13",
     slug: "vision-board",
+    image: "/projects/vision-board.jpg",
     title: "Vision Board",
     description: "Digital vision board for visualizing goals with drag-and-drop image collages and mood boards.",
     descriptionEs: "Tablero de visión digital para visualizar metas con collages de imágenes arrastrables y tableros de estado de ánimo.",
@@ -279,6 +291,7 @@ export const projects: Project[] = [
   {
     id: "11",
     slug: "todoapp",
+    image: "/projects/todoapp.jpg",
     title: "Todo App",
     description: "Minimalist task management app with drag-and-drop, priorities, and local persistence.",
     descriptionEs: "Aplicación minimalista de gestión de tareas con arrastrar y soltar, prioridades y persistencia local.",
@@ -291,6 +304,7 @@ export const projects: Project[] = [
   {
     id: "12",
     slug: "trivia",
+    image: "/projects/trivia.jpg",
     title: "Trivia App",
     description: "Interactive trivia game with multiple categories, difficulty levels, and real-time leaderboard.",
     descriptionEs: "Juego de trivia interactivo con múltiples categorías, niveles de dificultad y tabla de clasificación en tiempo real.",

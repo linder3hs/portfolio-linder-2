@@ -6,6 +6,7 @@ import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
+import { AskLinder } from "@/components/ai/AskLinder";
 
 function Divider() {
   return (
@@ -37,6 +38,8 @@ export default async function Home({
       <Skills />
       <Divider />
       <Projects />
+      <Divider />
+      <AskLinder />
       <Divider />
       <Experience />
       <Divider />

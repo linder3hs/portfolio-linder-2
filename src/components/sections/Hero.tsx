@@ -10,7 +10,9 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ArrowDown } from "lucide-react";
-import { SiReact, SiNextdotjs, SiTypescript } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiOpenai, SiPython, SiDjango } from "react-icons/si";
+import { TbBrain } from "react-icons/tb";
+import { readableAccent } from "@/lib/project-meta";
 import { Typewriter } from "@/components/ui/AnimatedText";
 import { HeroBackdrop } from "@/components/three/HeroBackdrop";
 
@@ -24,11 +26,17 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
-/** Three, not six. The icons frame the headline instead of competing with it. */
+/**
+ * AI first, then the platform stack. The two AI marks sit highest and largest
+ * because they carry the positioning; the rest frame the headline.
+ */
 const floatingIcons = [
-  { Icon: SiReact, color: "#61DAFB", style: { top: "18%", left: "9%" }, size: 26 },
-  { Icon: SiNextdotjs, color: "#E5E7EB", style: { top: "26%", right: "11%" }, size: 24 },
-  { Icon: SiTypescript, color: "#5B8DEF", style: { bottom: "24%", left: "7%" }, size: 24 },
+  { Icon: TbBrain, color: "#E09A78", style: { top: "15%", left: "8%" }, size: 34, label: "Claude" },
+  { Icon: SiOpenai, color: "#7DD3C0", style: { top: "20%", right: "9%" }, size: 32, label: "OpenAI" },
+  { Icon: SiPython, color: "#5B8DEF", style: { top: "52%", left: "5%" }, size: 26, label: "Python" },
+  { Icon: SiDjango, color: readableAccent("#092E20"), style: { top: "60%", right: "6%" }, size: 26, label: "Django" },
+  { Icon: SiReact, color: "#61DAFB", style: { bottom: "22%", left: "11%" }, size: 24, label: "React" },
+  { Icon: SiNextdotjs, color: "#E5E7EB", style: { bottom: "26%", right: "12%" }, size: 24, label: "Next.js" },
 ];
 
 function MagneticButton({
@@ -98,7 +106,7 @@ export function Hero() {
         }}
       />
 
-      {floatingIcons.map(({ Icon, color, style, size }, i) => (
+      {floatingIcons.map(({ Icon, color, style, size, label }, i) => (
         <motion.div
           key={i}
           aria-hidden
@@ -117,7 +125,8 @@ export function Hero() {
               delay: i * 0.4,
             }}
             className="glass rounded-xl p-2.5"
-            style={{ borderColor: `${color}33` }}
+            style={{ borderColor: `${color}40`, boxShadow: `0 0 24px ${color}18` }}
+            title={label}
           >
             <Icon size={size} color={color} />
           </motion.div>
@@ -182,7 +191,15 @@ export function Hero() {
           variants={item}
           className="mt-12 flex flex-wrap items-center justify-center gap-3"
         >
-          {["React", "Next.js", "TypeScript", "Node.js"].map((tech) => (
+          {[
+            "Claude API",
+            "OpenAI API",
+            "Python",
+            "Django",
+            "React",
+            "Next.js",
+            "TypeScript",
+          ].map((tech) => (
             <span
               key={tech}
               className="glass rounded-full border border-white/[0.08] px-3 py-1 font-mono text-xs text-white/50"

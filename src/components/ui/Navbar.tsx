@@ -131,6 +131,13 @@ export function Navbar() {
           })}
 
           <Link
+            href="/writing"
+            className="rounded text-sm font-medium text-white/62 outline-none transition-colors duration-200 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+          >
+            {t("writing")}
+          </Link>
+
+          <Link
             href="/projects"
             className="rounded-full border border-white/12 px-3.5 py-1.5 text-sm font-medium text-white/70 outline-none transition-colors duration-200 hover:border-purple-400/40 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
           >
@@ -185,6 +192,13 @@ export function Navbar() {
                   </Link>
                 ),
               )}
+              <Link
+                href="/writing"
+                onClick={closeMenu}
+                className="rounded py-2 text-sm font-medium text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+              >
+                {t("writing")}
+              </Link>
               <Link
                 href="/projects"
                 onClick={closeMenu}

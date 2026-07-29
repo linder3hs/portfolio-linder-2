@@ -81,6 +81,12 @@ export function Footer() {
               </Link>
             ))}
             <Link
+              href="/writing"
+              className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
+            >
+              {nav("writing")}
+            </Link>
+            <Link
               href="/projects"
               className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
             >

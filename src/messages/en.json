@@ -6,7 +6,8 @@
     "experience": "Experience",
     "contact": "Contact",
     "all_projects": "All projects",
-    "toggle_menu": "Toggle navigation menu"
+    "toggle_menu": "Toggle navigation menu",
+    "writing": "Writing"
   },
   "hero": {
     "greeting": "Hello, I'm",
@@ -17,15 +18,15 @@
     "roles": [
       "AI Tech Lead",
       "AI Consultant",
+      "Python & Django Expert",
       "Senior Software Developer",
       "Full Stack Engineer",
-      "Next.js Expert",
-      "iOS Developer"
+      "Next.js Expert"
     ]
   },
   "about": {
     "title": "About Me",
-    "bio": "AI Tech Lead and consultant with 8+ years shipping production software. I lead AI engineering at WotDev and advise companies on putting AI into real products — deciding where an LLM actually earns its place, then taking it from prototype to production. Before that I built at scale: sports streaming on Apple TV (SNY, FanDuel) and global travel platforms (Lonely Planet). Based in Lima, Peru, working globally.",
+    "bio": "AI Tech Lead and consultant with 8+ years shipping production software. I lead AI engineering at WotDev and advise companies on putting AI into real products — deciding where an LLM actually earns its place, then taking it from prototype to production. Deep on Python and Django on the backend, React and Next.js on the front. Before that I built at scale: sports streaming on Apple TV (SNY, FanDuel) and global travel platforms (Lonely Planet). Based in Lima, Peru, working globally.",
     "location": "Lima, Peru",
     "location_label": "Based in",
     "remote": "Remote global",
@@ -41,11 +42,13 @@
       "ai_label": "Years Building with AI"
     },
     "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "book_call": "Book a 30-min call",
+    "photo_alt": "Linder Hassinger"
   },
   "skills": {
     "title": "Skills & Technologies",
-    "subtitle": "AI first, on top of eight years of production engineering",
+    "subtitle": "AI and Python first, on top of eight years of production engineering",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
@@ -241,5 +244,34 @@
     "success": "Message sent! I'll get back to you soon.",
     "error": "Something went wrong. Please try again.",
     "or": "Or reach me directly"
+  },
+  "ask": {
+    "eyebrow": "Live demo",
+    "title": "Ask about my work",
+    "subtitle": "This is a real Claude API integration, grounded in the content of this site — the same kind of feature I build for clients. Streaming, rate limited, and it declines what it doesn't know.",
+    "label": "Your question",
+    "placeholder": "What has Linder built with LLMs?",
+    "send": "Send question",
+    "thinking": "Thinking",
+    "disclaimer": "Answers are generated and can be wrong. For anything that matters, email Linder.",
+    "suggestions": [
+      "What AI work has he actually shipped?",
+      "Is he available for consulting?",
+      "How deep is his Python and Django experience?"
+    ],
+    "errors": {
+      "generic": "Something broke. Try again in a moment.",
+      "rate_limited": "That's a few too many questions at once — wait a minute and try again.",
+      "offline": "The demo isn't configured right now. Email Linder directly at linderhassinger00@gmail.com."
+    }
+  },
+  "writing": {
+    "index_eyebrow": "Writing",
+    "index_title": "Notes",
+    "index_subtitle": "Opinions on building with LLMs, formed by shipping them. Short, specific, and occasionally contrarian.",
+    "back_to_all": "All notes",
+    "read": "Read",
+    "next_post": "Next note",
+    "reading_time": "{minutes} min read"
   }
 }

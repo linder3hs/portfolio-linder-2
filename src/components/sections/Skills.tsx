@@ -79,13 +79,13 @@ const skillCategories: {
   },
   {
     key: "backend",
-    icon: SiNodedotjs,
-    iconColor: "#339933",
+    icon: SiPython,
+    iconColor: "#3776AB",
     skills: [
-      { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
-      { name: "Express", Icon: SiExpress, color: "#ffffff" },
       { name: "Python", Icon: SiPython, color: "#3776AB" },
       { name: "Django", Icon: SiDjango, color: "#092E20" },
+      { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+      { name: "Express", Icon: SiExpress, color: "#ffffff" },
       { name: "Rails", Icon: SiRubyonrails, color: "#CC0000" },
       { name: "GraphQL", Icon: SiGraphql, color: "#E10098" },
       { name: "Prisma", Icon: SiPrisma, color: "#2D3748" },

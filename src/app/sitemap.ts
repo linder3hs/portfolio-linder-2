@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { projects } from "@/lib/projects";
+import { posts } from "@/lib/posts";
 
 const BASE_URL = "https://linderhassinger.dev";
 
@@ -19,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths: Array<{ path: string; priority: number; changeFrequency: "monthly" | "weekly" }> = [
     { path: "", priority: 1, changeFrequency: "monthly" },
     { path: "/projects", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/writing", priority: 0.9, changeFrequency: "weekly" as const },
+    ...posts.map((post) => ({
+      path: `/writing/${post.slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    })),
     ...projects.map((project) => ({
       path: `/projects/${project.slug}`,
       priority: project.featured ? 0.8 : 0.6,
