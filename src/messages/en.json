@@ -11,51 +11,52 @@
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Linder Hassinger",
-    "subtitle": "Senior Software Developer & Tech Lead building production-grade web, mobile, and AI-powered applications at scale.",
+    "subtitle": "AI Tech Lead and consultant. I help companies get AI into production — backed by 8+ years building the web, mobile, and iOS systems it has to plug into.",
     "cta_work": "View my work",
     "cta_contact": "Let's work together",
     "roles": [
+      "AI Tech Lead",
+      "AI Consultant",
       "Senior Software Developer",
-      "Tech Lead",
       "Full Stack Engineer",
       "Next.js Expert",
-      "iOS Developer",
-      "AI Tooling Enthusiast"
+      "iOS Developer"
     ]
   },
   "about": {
     "title": "About Me",
-    "bio": "Full Stack Developer & Tech Lead with 8+ years shipping at scale — from sports streaming apps on Apple TV (SNY, FanDuel) to global travel platforms (Lonely Planet). I've been integrating AI into my workflow for 3+ years. I build fast, clean, and production-ready. Based in Lima, Peru, working globally.",
+    "bio": "AI Tech Lead and consultant with 8+ years shipping production software. I lead AI engineering at WotDev and advise companies on putting AI into real products — deciding where an LLM actually earns its place, then taking it from prototype to production. Before that I built at scale: sports streaming on Apple TV (SNY, FanDuel) and global travel platforms (Lonely Planet). Based in Lima, Peru, working globally.",
     "location": "Lima, Peru",
     "location_label": "Based in",
     "remote": "Remote global",
     "remote_label": "Available for",
     "stats": {
       "years": "8+",
-      "years_label": "Years Experience",
+      "years_label": "Years Engineering",
       "projects": "50+",
       "projects_label": "Projects Delivered",
       "technologies": "20+",
       "technologies_label": "Technologies",
       "ai": "3+",
-      "ai_label": "Years Using AI"
+      "ai_label": "Years Building with AI"
     },
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
   "skills": {
     "title": "Skills & Technologies",
-    "subtitle": "The tools I use to build great products",
+    "subtitle": "AI first, on top of eight years of production engineering",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
       "tools": "Tools & Infra",
-      "ai": "AI & Integrations"
-    }
+      "ai": "AI & LLM Engineering"
+    },
+    "ai_blurb": "Deciding where an LLM earns its place in a product — and where it doesn't. Prompt and context design, evaluation, streaming UX, cost and latency tradeoffs, and the guardrails production use requires."
   },
   "projects": {
     "title": "Featured Projects",
-    "subtitle": "A selection of things I've built",
+    "subtitle": "AI tools I built and use, plus the platform work behind them",
     "live": "Live Demo",
     "code": "View Code",
     "all": "View all on GitHub",
@@ -64,7 +65,7 @@
     "case_study": "Case study",
     "index_eyebrow": "Work",
     "index_title": "Projects",
-    "index_subtitle": "Everything I've shipped publicly — side projects, experiments, and tools I actually use. Filter by what you're looking for.",
+    "index_subtitle": "Everything I've shipped publicly — AI tooling, side projects, and experiments I actually use. Filter by what you're looking for.",
     "back_to_all": "All projects",
     "problem": "The problem",
     "solution": "The approach",
@@ -82,23 +83,26 @@
   },
   "experience": {
     "title": "Work Experience",
-    "subtitle": "8+ years building across web, mobile, and iOS — at agencies, startups, and international brands",
+    "subtitle": "8+ years across AI, web, mobile, and iOS — at agencies, startups, and international brands",
     "entries": [
       {
-        "title": "Senior Software Developer / Tech Lead",
+        "title": "AI Tech Lead / Senior Software Developer",
         "company": "WotDev",
         "period": "Oct 2024 – Present",
         "tags": [
+          "AI",
+          "LLM APIs",
+          "Claude API",
           "Node.js",
           "TypeScript",
           "AWS",
-          "React",
-          "Next.js",
-          "Ruby on Rails"
+          "Next.js"
         ],
-        "context": "Software consultancy — Tech Lead & contributor across multiple simultaneous client projects",
+        "context": "Software consultancy — AI Tech Lead, and engineering consultant across multiple simultaneous client projects",
         "bullets": [
-          "Tech Lead for Umana — architected backend of an HR/recruitment SaaS, designing REST APIs, database schema, and AWS infrastructure (EC2, RDS, S3) for a scalable multi-tenant system",
+          "AI Tech Lead — lead AI engineering across client work: scoping where an LLM genuinely fits, designing the prompting and evaluation layer around it, and carrying features from prototype through to production",
+          "AI consulting for client companies — advise engineering teams on integrating LLMs into existing products, covering model selection, cost and latency tradeoffs, and the guardrails production use actually requires",
+          "Tech Lead for Umana — architected the backend of an HR/recruitment SaaS, designing REST APIs, database schema, and AWS infrastructure (EC2, RDS, S3) for a scalable multi-tenant system",
           "Full stack developer for Corazón Puro — integrated Stripe for subscription flows, webhook handling, and secure checkout; delivered critical performance improvements",
           "Senior Frontend Developer for Lonely Planet (Red Ventures) — contributed to large-scale migration from Next.js to Astro for a travel platform serving millions of monthly visitors"
         ]
@@ -218,14 +222,14 @@
   },
   "footer": {
     "tagline": "Let's build something the world hasn't seen yet.",
-    "subtagline": "Open to freelance projects, full-time roles, and anything interesting in between.",
+    "subtagline": "Open to AI consulting engagements, freelance projects, full-time roles, and anything interesting in between.",
     "made_in": "Made in Lima, Peru 🇵🇪",
     "back_top": "Back to top"
   },
   "contact": {
     "title": "Let's build something together",
-    "subtitle": "Available for freelance projects and full-time opportunities",
-    "availability": "Available for freelance projects",
+    "subtitle": "Available for AI consulting engagements and full-time opportunities",
+    "availability": "Taking on AI consulting work",
     "name_label": "Your Name",
     "email_label": "Your Email",
     "message_label": "Your Message",

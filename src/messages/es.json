@@ -11,51 +11,52 @@
   "hero": {
     "greeting": "Hola, soy",
     "name": "Linder Hassinger",
-    "subtitle": "Senior Software Developer & Tech Lead construyendo aplicaciones web, móvil e IA a escala de producción.",
+    "subtitle": "AI Tech Lead y consultor. Ayudo a empresas a llevar IA a producción — con 8+ años construyendo los sistemas web, móvil e iOS donde tiene que integrarse.",
     "cta_work": "Ver mi trabajo",
     "cta_contact": "Trabajemos juntos",
     "roles": [
+      "AI Tech Lead",
+      "Consultor de IA",
       "Senior Software Developer",
-      "Tech Lead",
       "Full Stack Engineer",
       "Experto en Next.js",
-      "iOS Developer",
-      "AI Tooling"
+      "iOS Developer"
     ]
   },
   "about": {
     "title": "Sobre mí",
-    "bio": "Full Stack Developer & Tech Lead con 8+ años construyendo a escala — desde apps de streaming deportivo en Apple TV (SNY, FanDuel) hasta plataformas de viaje globales (Lonely Planet). Llevo 3+ años integrando IA en mi flujo de trabajo. Construyo rápido, limpio y listo para producción. Con base en Lima, Perú, trabajo globalmente.",
+    "bio": "AI Tech Lead y consultor con 8+ años entregando software en producción. Lidero la ingeniería de IA en WotDev y asesoro a empresas para meter IA en productos reales — decidiendo dónde un LLM realmente aporta, y llevándolo de prototipo a producción. Antes construí a escala: streaming deportivo en Apple TV (SNY, FanDuel) y plataformas de viaje globales (Lonely Planet). Con base en Lima, Perú, trabajo globalmente.",
     "location": "Lima, Perú",
     "location_label": "Ubicado en",
     "remote": "Remoto global",
     "remote_label": "Disponible para",
     "stats": {
       "years": "8+",
-      "years_label": "Años de Experiencia",
+      "years_label": "Años de Ingeniería",
       "projects": "50+",
       "projects_label": "Proyectos Entregados",
       "technologies": "20+",
       "technologies_label": "Tecnologías",
       "ai": "3+",
-      "ai_label": "Años Usando IA"
+      "ai_label": "Años Construyendo con IA"
     },
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
   "skills": {
     "title": "Habilidades y Tecnologías",
-    "subtitle": "Las herramientas que uso para crear productos increíbles",
+    "subtitle": "IA primero, sobre ocho años de ingeniería en producción",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
       "tools": "Herramientas e Infra",
-      "ai": "IA e Integraciones"
-    }
+      "ai": "IA e Ingeniería de LLMs"
+    },
+    "ai_blurb": "Decidir dónde un LLM se gana su lugar en un producto — y dónde no. Diseño de prompts y contexto, evaluación, UX en streaming, tradeoffs de costo y latencia, y los guardarraíles que exige el uso en producción."
   },
   "projects": {
     "title": "Proyectos Destacados",
-    "subtitle": "Una selección de cosas que he construido",
+    "subtitle": "Herramientas de IA que construí y uso, más el trabajo de plataforma detrás",
     "live": "Demo en Vivo",
     "code": "Ver Código",
     "all": "Ver todos en GitHub",
@@ -64,7 +65,7 @@
     "case_study": "Caso de estudio",
     "index_eyebrow": "Trabajo",
     "index_title": "Proyectos",
-    "index_subtitle": "Todo lo que he publicado — proyectos personales, experimentos y herramientas que uso de verdad. Filtra por lo que estés buscando.",
+    "index_subtitle": "Todo lo que he publicado — herramientas de IA, proyectos personales y experimentos que uso de verdad. Filtra por lo que estés buscando.",
     "back_to_all": "Todos los proyectos",
     "problem": "El problema",
     "solution": "El enfoque",
@@ -82,22 +83,25 @@
   },
   "experience": {
     "title": "Experiencia Laboral",
-    "subtitle": "8+ años construyendo en web, móvil e iOS — en agencias, startups y marcas internacionales",
+    "subtitle": "8+ años entre IA, web, móvil e iOS — en agencias, startups y marcas internacionales",
     "entries": [
       {
-        "title": "Senior Software Developer / Tech Lead",
+        "title": "AI Tech Lead / Senior Software Developer",
         "company": "WotDev",
         "period": "Oct 2024 – Presente",
         "tags": [
+          "IA",
+          "APIs de LLM",
+          "Claude API",
           "Node.js",
           "TypeScript",
           "AWS",
-          "React",
-          "Next.js",
-          "Ruby on Rails"
+          "Next.js"
         ],
-        "context": "Consultora de software — Tech Lead y colaborador en múltiples proyectos simultáneos",
+        "context": "Consultora de software — AI Tech Lead y consultor de ingeniería en múltiples proyectos simultáneos",
         "bullets": [
+          "AI Tech Lead — lidero la ingeniería de IA en el trabajo con clientes: definir dónde un LLM realmente encaja, diseñar la capa de prompting y evaluación a su alrededor, y llevar las features de prototipo a producción",
+          "Consultoría de IA para empresas cliente — asesoro a equipos de ingeniería en la integración de LLMs dentro de productos existentes, cubriendo elección de modelo, tradeoffs de costo y latencia, y los guardarraíles que el uso en producción realmente exige",
           "Tech Lead para Umana — arquitecté el backend de una plataforma SaaS de RRHH, diseñando APIs REST, esquema de base de datos e infraestructura AWS (EC2, RDS, S3) para un sistema multi-tenant escalable",
           "Desarrollador full stack para Corazón Puro — integré Stripe para flujos de suscripción, manejo de webhooks y checkout seguro; entregué mejoras críticas de rendimiento",
           "Senior Frontend Developer para Lonely Planet (Red Ventures) — contribuí a migración a gran escala de Next.js a Astro para una plataforma de viajes con millones de visitantes mensuales"
@@ -218,14 +222,14 @@
   },
   "footer": {
     "tagline": "Construyamos algo que el mundo aún no ha visto.",
-    "subtagline": "Abierto a proyectos freelance, posiciones full-time y todo lo interesante que haya en el medio.",
+    "subtagline": "Abierto a consultoría de IA, proyectos freelance, posiciones full-time y todo lo interesante que haya en el medio.",
     "made_in": "Hecho en Lima, Perú 🇵🇪",
     "back_top": "Volver arriba"
   },
   "contact": {
     "title": "Construyamos algo juntos",
-    "subtitle": "Disponible para proyectos freelance y oportunidades a tiempo completo",
-    "availability": "Disponible para proyectos freelance",
+    "subtitle": "Disponible para consultoría de IA y oportunidades a tiempo completo",
+    "availability": "Tomando trabajos de consultoría de IA",
     "name_label": "Tu Nombre",
     "email_label": "Tu Email",
     "message_label": "Tu Mensaje",

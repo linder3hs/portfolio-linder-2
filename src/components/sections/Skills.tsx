@@ -28,7 +28,6 @@ import {
   SiOpenai,
   SiExpo,
   SiStripe,
-  SiWebpack,
 } from "react-icons/si";
 import { FiCloud } from "react-icons/fi";
 import { TbBrandFramerMotion, TbBrain } from "react-icons/tb";
@@ -41,7 +40,26 @@ interface Skill {
   color: string;
 }
 
-const skillCategories: { key: string; icon: IconType; iconColor: string; skills: Skill[] }[] = [
+const skillCategories: {
+  key: string;
+  icon: IconType;
+  iconColor: string;
+  wide?: boolean;
+  skills: Skill[];
+}[] = [
+  {
+    // AI leads the grid and spans full width — this is the positioning, not a
+    // footnote. It is deliberately short: only tools actually in use go here.
+    key: "ai",
+    icon: TbBrain,
+    iconColor: "#CC785C",
+    wide: true,
+    skills: [
+      { name: "Claude API", Icon: SiOpenai, color: "#74AA9C" },
+      { name: "OpenAI API", Icon: SiOpenai, color: "#74AA9C" },
+      { name: "Claude Code", Icon: TbBrain, color: "#CC785C" },
+    ],
+  },
   {
     key: "frontend",
     icon: SiReact,
@@ -52,9 +70,11 @@ const skillCategories: { key: string; icon: IconType; iconColor: string; skills:
       { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
       { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
       { name: "Framer Motion", Icon: TbBrandFramerMotion, color: "#E8468C" },
+      { name: "Redux", Icon: SiRedux, color: "#764ABC" },
+      { name: "React Native", Icon: SiReact, color: "#61DAFB" },
+      { name: "Expo", Icon: SiExpo, color: "#4630EB" },
       { name: "HTML5", Icon: SiHtml5, color: "#E34F26" },
       { name: "CSS3", Icon: SiCss, color: "#1572B6" },
-      { name: "Redux", Icon: SiRedux, color: "#764ABC" },
     ],
   },
   {
@@ -69,7 +89,7 @@ const skillCategories: { key: string; icon: IconType; iconColor: string; skills:
       { name: "Rails", Icon: SiRubyonrails, color: "#CC0000" },
       { name: "GraphQL", Icon: SiGraphql, color: "#E10098" },
       { name: "Prisma", Icon: SiPrisma, color: "#2D3748" },
-      { name: "REST APIs", Icon: SiWebpack, color: "#8DD6F9" },
+      { name: "WebSockets", Icon: SiNodedotjs, color: "#339933" },
     ],
   },
   {
@@ -84,22 +104,9 @@ const skillCategories: { key: string; icon: IconType; iconColor: string; skills:
       { name: "Vercel", Icon: SiVercel, color: "#ffffff" },
       { name: "Git", Icon: SiGit, color: "#F05032" },
       { name: "GitHub Actions", Icon: SiGithubactions, color: "#2088FF" },
+      { name: "Stripe", Icon: SiStripe, color: "#635BFF" },
       { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
-    ],
-  },
-  {
-    key: "ai",
-    icon: SiOpenai,
-    iconColor: "#74AA9C",
-    skills: [
-      { name: "OpenAI API",  Icon: SiOpenai,  color: "#74AA9C" },
-      { name: "Claude API",  Icon: SiOpenai,  color: "#74AA9C" },
-      { name: "Claude Code", Icon: TbBrain,   color: "#CC785C" },
-      { name: "React Native",Icon: SiReact,   color: "#61DAFB" },
-      { name: "Expo",        Icon: SiExpo,    color: "#4630EB" },
-      { name: "Stripe",      Icon: SiStripe,  color: "#635BFF" },
-      { name: "WebSockets",  Icon: SiNodedotjs, color: "#339933" },
-      { name: "Framer",      Icon: SiFramer,  color: "#0055FF" },
+      { name: "Framer", Icon: SiFramer, color: "#0055FF" },
     ],
   },
 ];
@@ -134,7 +141,7 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-                className="rounded-xl p-6 bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] transition-all duration-300 hover:border-purple-500/30 hover:shadow-[0_0_40px_rgba(124,58,237,0.08)] group"
+                className={`rounded-xl p-6 bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] transition-all duration-300 hover:border-purple-500/30 hover:shadow-[0_0_40px_rgba(124,58,237,0.08)] group ${cat.wide ? "md:col-span-2" : ""}`}
               >
                 {/* Category header */}
                 <div className="flex items-center gap-3 mb-5">
@@ -151,6 +158,17 @@ export function Skills() {
                     {t(`categories.${cat.key}`)}
                   </h3>
                 </div>
+
+                {/*
+                  The AI card carries a sentence as well as chips. Three chips
+                  alone read as an empty section, which undercuts the one
+                  category the page is meant to lead with.
+                */}
+                {cat.wide && (
+                  <p className="mb-5 max-w-2xl text-sm leading-relaxed text-white/65">
+                    {t("ai_blurb")}
+                  </p>
+                )}
 
                 {/* Skill badges with icons */}
                 <div className="flex flex-wrap gap-2">
