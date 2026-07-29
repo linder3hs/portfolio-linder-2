@@ -91,8 +91,6 @@ export function Projects() {
         ref={sectionRef}
         style={{ height: `${total * 100}dvh` }}
         className="relative"
-        aria-roledescription="carousel"
-        aria-label={t("title")}
       >
         <div className="sticky top-0 h-[100dvh] overflow-hidden">
           <motion.div
@@ -148,9 +146,15 @@ export function Projects() {
 
             {/* Main row */}
             <div className="flex flex-1 flex-col items-center gap-10 py-6 lg:flex-row lg:gap-16">
+              {/*
+                No aria-live here: the panel changes on scroll, and re-reading
+                the whole block on every step is noise, not help. The dots
+                below carry the position instead.
+              */}
               <div
                 className="flex w-full flex-col justify-center lg:w-1/2"
-                aria-live="polite"
+                role="group"
+                aria-label={project.title}
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -277,7 +281,7 @@ export function Projects() {
               </p>
 
               <div
-                role="tablist"
+                role="group"
                 aria-label={t("title")}
                 onKeyDown={handleDotKeys}
                 className="flex items-center gap-2"
@@ -286,10 +290,8 @@ export function Projects() {
                   <button
                     key={p.slug}
                     type="button"
-                    role="tab"
-                    aria-selected={di === activeIndex}
                     aria-label={p.title}
-                    tabIndex={di === activeIndex ? 0 : -1}
+                    aria-current={di === activeIndex ? "true" : undefined}
                     onClick={() => scrollToProject(di)}
                     className="rounded-full outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/60"
                     style={{
