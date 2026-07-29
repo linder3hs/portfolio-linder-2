@@ -21,9 +21,12 @@ export function LanguageToggle() {
 
   return (
     <button
+      type="button"
       onClick={switchLocale}
       disabled={isPending}
-      className="px-3 py-1.5 text-xs font-mono font-semibold border border-white/20 hover:border-purple-500/50 rounded-full transition-all duration-300 text-white/70 hover:text-white disabled:opacity-50 tracking-widest"
+      lang={locale === "en" ? "es" : "en"}
+      aria-label={locale === "en" ? "Cambiar idioma a español" : "Switch language to English"}
+      className="rounded-full border border-white/20 px-3 py-1.5 font-mono text-xs font-semibold tracking-widest text-white/75 outline-none transition-all duration-300 hover:border-purple-400/50 hover:text-white focus-visible:ring-2 focus-visible:ring-purple-400 disabled:opacity-50"
     >
       {locale === "en" ? "ES" : "EN"}
     </button>

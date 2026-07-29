@@ -3,7 +3,10 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiMapPin, FiGlobe } from "react-icons/fi";
+import { Calendar } from "lucide-react";
 import { CountUp } from "@/components/ui/CountUp";
+import { BOOKING_URL } from "@/lib/site";
+import { readableAccent } from "@/lib/project-meta";
 
 const stats = [
   { target: 8, suffix: "+", labelKey: "stats.years_label", color: "#7C3AED" },
@@ -47,14 +50,14 @@ export function About() {
             <div className="flex flex-wrap gap-3 mb-8">
               <motion.span
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/60 cursor-default"
+                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/75 cursor-default"
               >
                 <FiMapPin className="text-purple-400" size={14} />
                 {t("location")}
               </motion.span>
               <motion.span
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/60 cursor-default"
+                className="flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/75 cursor-default"
               >
                 <FiGlobe className="text-purple-400" size={14} />
                 {t("remote")}
@@ -62,7 +65,20 @@ export function About() {
             </div>
 
             {/* Social links */}
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
+              {BOOKING_URL && (
+                <motion.a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-2 rounded-full border border-purple-400/45 bg-purple-500/15 px-5 py-2.5 text-sm font-semibold text-purple-200 outline-none transition-all duration-300 hover:text-white focus-visible:ring-2 focus-visible:ring-purple-400"
+                >
+                  <Calendar size={16} aria-hidden />
+                  {t("book_call")}
+                </motion.a>
+              )}
               <motion.a
                 href="https://github.com/linder3hs"
                 target="_blank"
@@ -118,11 +134,13 @@ export function About() {
 
                 <div
                   className="relative z-10 font-heading text-4xl font-bold mb-2"
-                  style={{ color: stat.color }}
+                  // Same lightness floor as the skill badges — #7C3AED sits
+                  // near 2.9:1 on this background even at display size.
+                  style={{ color: readableAccent(stat.color) }}
                 >
                   <CountUp target={stat.target} suffix={stat.suffix} />
                 </div>
-                <div className="relative z-10 text-white/50 text-sm">
+                <div className="relative z-10 text-white/65 text-sm">
                   {t(stat.labelKey)}
                 </div>
               </motion.div>

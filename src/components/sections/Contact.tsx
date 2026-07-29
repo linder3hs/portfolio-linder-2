@@ -1,22 +1,66 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useId, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { Send } from "lucide-react";
+import { Calendar, Send } from "lucide-react";
+import { BOOKING_URL } from "@/lib/site";
 import { sendContactEmail } from "@/app/[locale]/actions";
 
 type FormErrors = { name?: string; email?: string; message?: string };
 
+const inputClass =
+  "w-full rounded-xl bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/45 focus-visible:ring-2 focus-visible:ring-purple-400";
+
+const directLinks = [
+  // Booking first when configured — a consultant's highest-intent action.
+  ...(BOOKING_URL
+    ? [
+        {
+          Icon: Calendar,
+          label: "book",
+          value: BOOKING_URL.replace(/^https?:\/\//, ""),
+          href: BOOKING_URL,
+          external: true,
+          featured: true,
+        },
+      ]
+    : []),
+  {
+    Icon: FiMail,
+    label: "Email",
+    featured: false,
+    value: "linderhassinger00@gmail.com",
+    href: "mailto:linderhassinger00@gmail.com",
+    external: false,
+  },
+  {
+    Icon: FiGithub,
+    label: "GitHub",
+    featured: false,
+    value: "github.com/linder3hs",
+    href: "https://github.com/linder3hs",
+    external: true,
+  },
+  {
+    Icon: FiLinkedin,
+    label: "LinkedIn",
+    featured: false,
+    value: "linkedin.com/in/linderhassinger",
+    href: "https://linkedin.com/in/linderhassinger",
+    external: true,
+  },
+];
+
 export function Contact() {
   const t = useTranslations("contact");
+  const formId = useId();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
 
-  // Auto-clear success message after 5 seconds
   useEffect(() => {
     if (status !== "success") return;
     const timer = setTimeout(() => setStatus("idle"), 5000);
@@ -25,12 +69,8 @@ export function Contact() {
 
   const validate = (data: typeof formData): FormErrors => {
     const errors: FormErrors = {};
-    if (!data.name.trim() || data.name.trim().length < 2) {
-      errors.name = t("error_name");
-    }
-    if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
-      errors.email = t("error_email");
-    }
+    if (!data.name.trim() || data.name.trim().length < 2) errors.name = t("error_name");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) errors.email = t("error_email");
     if (!data.message.trim() || data.message.trim().length < 10) {
       errors.message = t("error_message");
     }
@@ -42,6 +82,8 @@ export function Contact() {
     const errors = validate(formData);
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
+      // Move focus to the first invalid field so keyboard users land on the problem.
+      document.getElementById(`${formId}-${Object.keys(errors)[0]}`)?.focus();
       return;
     }
     setFieldErrors({});
@@ -60,158 +102,171 @@ export function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear the field error as the user types
     if (fieldErrors[name as keyof FormErrors]) {
       setFieldErrors((prev) => ({ ...prev, [name]: undefined }));
     }
     if (status === "error") setStatus("idle");
   };
 
+  /** Label + control + error, wired together for assistive tech. */
+  const fieldProps = (name: keyof FormErrors) => {
+    const id = `${formId}-${name}`;
+    const error = fieldErrors[name];
+    return {
+      id,
+      name,
+      value: formData[name],
+      onChange: handleChange,
+      "aria-invalid": error ? true : undefined,
+      "aria-describedby": error ? `${id}-error` : undefined,
+      className: inputClass,
+      style: {
+        border: `1px solid ${error ? "rgba(248,113,113,0.6)" : "rgba(255,255,255,0.1)"}`,
+      },
+    };
+  };
+
+  /** Plain function, not a component: keeps the element type stable across renders. */
+  const renderFieldError = (name: keyof FormErrors) => {
+    const error = fieldErrors[name];
+    if (!error) return null;
+    return (
+      <motion.p
+        id={`${formId}-${name}-error`}
+        initial={{ opacity: 0, y: -4 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="px-1 text-xs text-red-300"
+      >
+        {error}
+      </motion.p>
+    );
+  };
+
   return (
-    <section id="contact" className="py-24 px-4">
-      <div className="max-w-3xl mx-auto">
+    <section id="contact" className="px-4 py-24">
+      <div className="mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-emerald-400 text-xs font-medium">
+          <div className="glass mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
+            <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden />
+            <span className="text-xs font-medium text-emerald-300">
               {t("availability")}
             </span>
           </div>
 
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gradient mb-4">
+          <h2 className="font-heading text-gradient mb-4 text-3xl font-bold md:text-4xl">
             {t("title")}
           </h2>
-          <p className="text-white/40 text-sm">{t("subtitle")}</p>
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mt-4" />
+          <p className="text-sm text-white/60">{t("subtitle")}</p>
+          <div
+            aria-hidden
+            className="mx-auto mt-4 h-px w-16 bg-gradient-to-r from-transparent via-purple-500 to-transparent"
+          />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Form */}
+        <div className="grid gap-8 md:grid-cols-2">
           <motion.form
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
+            noValidate
             className="flex flex-col gap-4"
           >
+            {/*
+              Labels are visually hidden rather than absent: a placeholder
+              disappears on input and is never announced as a name.
+            */}
             <div className="flex flex-col gap-1">
+              <label htmlFor={`${formId}-name`} className="sr-only">
+                {t("name_label")}
+              </label>
               <input
                 type="text"
-                name="name"
+                autoComplete="name"
                 placeholder={t("name_label")}
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] text-white placeholder:text-white/30 focus:outline-none transition-colors text-sm"
-                style={{
-                  border: `1px solid ${fieldErrors.name ? "rgba(248,113,113,0.5)" : "rgba(255,255,255,0.08)"}`,
-                }}
+                {...fieldProps("name")}
               />
-              {fieldErrors.name && (
-                <motion.p
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-xs px-1"
-                >
-                  {fieldErrors.name}
-                </motion.p>
-              )}
+              {renderFieldError("name")}
             </div>
 
             <div className="flex flex-col gap-1">
+              <label htmlFor={`${formId}-email`} className="sr-only">
+                {t("email_label")}
+              </label>
               <input
                 type="email"
-                name="email"
+                autoComplete="email"
                 placeholder={t("email_label")}
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] text-white placeholder:text-white/30 focus:outline-none transition-colors text-sm"
-                style={{
-                  border: `1px solid ${fieldErrors.email ? "rgba(248,113,113,0.5)" : "rgba(255,255,255,0.08)"}`,
-                }}
+                {...fieldProps("email")}
               />
-              {fieldErrors.email && (
-                <motion.p
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-xs px-1"
-                >
-                  {fieldErrors.email}
-                </motion.p>
-              )}
+              {renderFieldError("email")}
             </div>
 
             <div className="flex flex-col gap-1">
+              <label htmlFor={`${formId}-message`} className="sr-only">
+                {t("message_label")}
+              </label>
               <textarea
-                name="message"
                 rows={5}
                 placeholder={t("message_label")}
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] text-white placeholder:text-white/30 focus:outline-none transition-colors text-sm resize-none"
-                style={{
-                  border: `1px solid ${fieldErrors.message ? "rgba(248,113,113,0.5)" : "rgba(255,255,255,0.08)"}`,
-                }}
+                {...fieldProps("message")}
+                className={`${inputClass} resize-none`}
               />
-              {fieldErrors.message && (
-                <motion.p
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-xs px-1"
-                >
-                  {fieldErrors.message}
-                </motion.p>
-              )}
+              {renderFieldError("message")}
             </div>
 
-            {status === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-emerald-400 text-sm text-center py-3 glass rounded-xl border border-emerald-500/20"
-              >
-                {t("success")}
-              </motion.div>
-            )}
-
-            {status === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-red-400 text-sm text-center py-3 glass rounded-xl border border-red-500/20"
-              >
-                {errorMsg}
-              </motion.div>
-            )}
+            {/* Submission result is announced, not just shown. */}
+            <div role="status" aria-live="polite">
+              {status === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="glass rounded-xl border border-emerald-500/25 py-3 text-center text-sm text-emerald-300"
+                >
+                  {t("success")}
+                </motion.div>
+              )}
+              {status === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="glass rounded-xl border border-red-500/25 py-3 text-center text-sm text-red-300"
+                >
+                  {errorMsg}
+                </motion.div>
+              )}
+            </div>
 
             {status !== "success" && (
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-violet-500 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] text-white"
+                className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] focus-visible:ring-2 focus-visible:ring-white/70 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {status === "sending" ? (
                   <>
-                    <motion.div
+                    <motion.span
+                      aria-hidden
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                      className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white"
                     />
                     {t("sending")}
                   </>
                 ) : (
                   <>
-                    <Send size={15} />
+                    <Send size={15} aria-hidden />
                     {t("send")}
                   </>
                 )}
@@ -219,7 +274,6 @@ export function Contact() {
             )}
           </motion.form>
 
-          {/* Direct contact */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -227,56 +281,37 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col justify-center gap-4"
           >
-            <p className="text-white/40 text-sm mb-2">{t("or")}</p>
+            <p className="mb-2 text-sm text-white/60">{t("or")}</p>
 
-            <a
-              href="mailto:linderhassinger00@gmail.com"
-              className="flex items-center gap-4 p-4 glass rounded-xl transition-all duration-300 hover:border-purple-500/50 group border border-white/[0.08]"
-            >
-              <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:bg-purple-500/20 transition-colors">
-                <FiMail className="text-purple-400" size={18} />
-              </div>
-              <div>
-                <div className="text-xs text-white/40 mb-0.5">Email</div>
-                <div className="text-white/80 text-sm font-medium">
-                  linderhassinger00@gmail.com
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="https://github.com/linder3hs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 glass rounded-xl transition-all duration-300 hover:border-purple-500/50 group border border-white/[0.08]"
-            >
-              <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:bg-purple-500/20 transition-colors">
-                <FiGithub className="text-purple-400" size={18} />
-              </div>
-              <div>
-                <div className="text-xs text-white/40 mb-0.5">GitHub</div>
-                <div className="text-white/80 text-sm font-medium">
-                  github.com/linder3hs
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="https://linkedin.com/in/linderhassinger"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 glass rounded-xl transition-all duration-300 hover:border-purple-500/50 group border border-white/[0.08]"
-            >
-              <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:bg-purple-500/20 transition-colors">
-                <FiLinkedin className="text-purple-400" size={18} />
-              </div>
-              <div>
-                <div className="text-xs text-white/40 mb-0.5">LinkedIn</div>
-                <div className="text-white/80 text-sm font-medium">
-                  linkedin.com/in/linderhassinger
-                </div>
-              </div>
-            </a>
+            {directLinks.map(({ Icon, label, value, href, external, featured }) => (
+              <a
+                key={label}
+                href={href}
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className={`glass group flex items-center gap-4 rounded-xl p-4 outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-purple-400 ${
+                  featured
+                    ? "border border-purple-400/45 bg-purple-500/10 hover:border-purple-400/70"
+                    : "border border-white/[0.08] hover:border-purple-400/50"
+                }`}
+              >
+                <span
+                  aria-hidden
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-purple-400/25 bg-purple-500/10 transition-colors group-hover:bg-purple-500/20"
+                >
+                  <Icon className="text-purple-300" size={18} />
+                </span>
+                <span>
+                  <span className="mb-0.5 block text-xs text-white/60">
+                    {featured ? t("book_call") : label}
+                  </span>
+                  <span className="block text-sm font-medium text-white/85">
+                    {value}
+                  </span>
+                </span>
+              </a>
+            ))}
           </motion.div>
         </div>
       </div>

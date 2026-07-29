@@ -4,56 +4,77 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "all_projects": "All projects",
+    "toggle_menu": "Toggle navigation menu",
+    "writing": "Writing"
   },
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Linder Hassinger",
-    "subtitle": "Senior Software Developer & Tech Lead building production-grade web, mobile, and AI-powered applications at scale.",
+    "subtitle": "AI Tech Lead and consultant. I help companies get AI into production — backed by 8+ years building the web, mobile, and iOS systems it has to plug into.",
     "cta_work": "View my work",
     "cta_contact": "Let's work together",
-    "roles": ["Senior Software Developer", "Tech Lead", "Full Stack Engineer", "Next.js Expert", "iOS Developer", "AI Tooling Enthusiast"]
+    "roles": [
+      "AI Tech Lead",
+      "AI Consultant",
+      "Python & Django Expert",
+      "Senior Software Developer",
+      "Full Stack Engineer",
+      "Next.js Expert"
+    ]
   },
   "about": {
     "title": "About Me",
-    "bio": "Full Stack Developer & Tech Lead with 8+ years shipping at scale — from sports streaming apps on Apple TV (SNY, FanDuel) to global travel platforms (Lonely Planet). I've been integrating AI into my workflow for 3+ years. I build fast, clean, and production-ready. Based in Lima, Peru, working globally.",
+    "bio": "AI Tech Lead and consultant with 8+ years shipping production software. I lead AI engineering at WotDev and advise companies on putting AI into real products — deciding where an LLM actually earns its place, then taking it from prototype to production. Deep on Python and Django on the backend, React and Next.js on the front. Before that I built at scale: sports streaming on Apple TV (SNY, FanDuel) and global travel platforms (Lonely Planet). Based in Lima, Peru, working globally.",
     "location": "Lima, Peru",
     "location_label": "Based in",
     "remote": "Remote global",
     "remote_label": "Available for",
     "stats": {
       "years": "8+",
-      "years_label": "Years Experience",
+      "years_label": "Years Engineering",
       "projects": "50+",
       "projects_label": "Projects Delivered",
       "technologies": "20+",
       "technologies_label": "Technologies",
       "ai": "3+",
-      "ai_label": "Years Using AI"
+      "ai_label": "Years Building with AI"
     },
     "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "book_call": "Book a 30-min call"
   },
   "skills": {
     "title": "Skills & Technologies",
-    "subtitle": "The tools I use to build great products",
+    "subtitle": "AI and Python first, on top of eight years of production engineering",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
       "tools": "Tools & Infra",
-      "ai": "AI & Integrations"
-    }
+      "ai": "AI & LLM Engineering"
+    },
+    "ai_blurb": "Deciding where an LLM earns its place in a product — and where it doesn't. Prompt and context design, evaluation, streaming UX, cost and latency tradeoffs, and the guardrails production use requires."
   },
   "projects": {
     "title": "Featured Projects",
-    "subtitle": "A selection of things I've built",
+    "subtitle": "AI tools I built and use, plus the platform work behind them",
     "live": "Live Demo",
     "code": "View Code",
     "all": "View all on GitHub",
-    "featured": "Featured",
     "stack": "Tech Stack",
-    "scroll_hint": "scroll to explore",
-    "skip": "Skip all",
+    "view_all": "See all {count} projects",
+    "case_study": "Case study",
+    "index_eyebrow": "Work",
+    "index_title": "Projects",
+    "index_subtitle": "Everything I've shipped publicly — AI tooling, side projects, and experiments I actually use. Filter by what you're looking for.",
+    "back_to_all": "All projects",
+    "problem": "The problem",
+    "solution": "The approach",
+    "highlights": "Notable details",
+    "next_project": "Next project",
+    "filter_label": "Filter projects by category",
+    "results": "{count, plural, one {# project} other {# projects}} shown",
     "filters": {
       "all": "All",
       "ai": "AI",
@@ -64,16 +85,26 @@
   },
   "experience": {
     "title": "Work Experience",
-    "subtitle": "8+ years building across web, mobile, and iOS — at agencies, startups, and international brands",
+    "subtitle": "8+ years across AI, web, mobile, and iOS — at agencies, startups, and international brands",
     "entries": [
       {
-        "title": "Senior Software Developer / Tech Lead",
+        "title": "AI Tech Lead / Senior Software Developer",
         "company": "WotDev",
         "period": "Oct 2024 – Present",
-        "tags": ["Node.js", "TypeScript", "AWS", "React", "Next.js", "Ruby on Rails"],
-        "context": "Software consultancy — Tech Lead & contributor across multiple simultaneous client projects",
+        "tags": [
+          "AI",
+          "LLM APIs",
+          "Claude API",
+          "Node.js",
+          "TypeScript",
+          "AWS",
+          "Next.js"
+        ],
+        "context": "Software consultancy — AI Tech Lead, and engineering consultant across multiple simultaneous client projects",
         "bullets": [
-          "Tech Lead for Umana — architected backend of an HR/recruitment SaaS, designing REST APIs, database schema, and AWS infrastructure (EC2, RDS, S3) for a scalable multi-tenant system",
+          "AI Tech Lead — lead AI engineering across client work: scoping where an LLM genuinely fits, designing the prompting and evaluation layer around it, and carrying features from prototype through to production",
+          "AI consulting for client companies — advise engineering teams on integrating LLMs into existing products, covering model selection, cost and latency tradeoffs, and the guardrails production use actually requires",
+          "Tech Lead for Umana — architected the backend of an HR/recruitment SaaS, designing REST APIs, database schema, and AWS infrastructure (EC2, RDS, S3) for a scalable multi-tenant system",
           "Full stack developer for Corazón Puro — integrated Stripe for subscription flows, webhook handling, and secure checkout; delivered critical performance improvements",
           "Senior Frontend Developer for Lonely Planet (Red Ventures) — contributed to large-scale migration from Next.js to Astro for a travel platform serving millions of monthly visitors"
         ]
@@ -82,7 +113,14 @@
         "title": "Senior Software Developer",
         "company": "VML",
         "period": "Jan 2022 – Aug 2024",
-        "tags": ["SwiftUI", "React", "Next.js", "React Native", "Node.js", "Ruby on Rails"],
+        "tags": [
+          "SwiftUI",
+          "React",
+          "Next.js",
+          "React Native",
+          "Node.js",
+          "Ruby on Rails"
+        ],
         "context": "Global software agency — embedded engineer for major US media and sports brands",
         "bullets": [
           "SNY (SportsNet New York) — Built a greenfield sports streaming app from scratch in SwiftUI, launching simultaneously on iOS and Apple TV; full multi-platform release (iPhone, iPad, Apple TV) in a single accelerated cycle",
@@ -94,7 +132,12 @@
         "title": "Software Instructor",
         "company": "Tecsup",
         "period": "Mar 2021 – Jul 2024",
-        "tags": ["React", "Python", "Swift", "Firebase"],
+        "tags": [
+          "React",
+          "Python",
+          "Swift",
+          "Firebase"
+        ],
         "context": "Technical university — Lima, Peru",
         "bullets": [
           "Taught Programming Fundamentals, Advanced Mobile Programming, and Intro to Databases to cohorts of 20–40 students per semester",
@@ -106,7 +149,16 @@
         "title": "Full Stack Developer",
         "company": "Cuik Hotels",
         "period": "Jan 2020 – Jun 2021",
-        "tags": ["Laravel", "Node.js", "React", "React Native", "Docker", "AWS", "Swift", "Java"],
+        "tags": [
+          "Laravel",
+          "Node.js",
+          "React",
+          "React Native",
+          "Docker",
+          "AWS",
+          "Swift",
+          "Java"
+        ],
         "context": "Hotel tech startup — Lima, Peru",
         "bullets": [
           "Shipped hotel management apps to App Store (iOS) and Google Play (Android), managing the full release cycle",
@@ -118,7 +170,13 @@
         "title": "Software Developer",
         "company": "Perú Masivo",
         "period": "Jul 2019 – Jan 2020",
-        "tags": ["Laravel", "AWS", "React", "Docker", "Dialogflow"],
+        "tags": [
+          "Laravel",
+          "AWS",
+          "React",
+          "Docker",
+          "Dialogflow"
+        ],
         "context": "Logistics company — Lima, Peru",
         "bullets": [
           "Designed and built an ERP covering logistics and maintenance workflows, replacing manual spreadsheet-based processes",
@@ -130,7 +188,13 @@
         "title": "Mobile Developer",
         "company": "DogHouser",
         "period": "May 2019 – Mar 2020",
-        "tags": ["Node.js", "AWS", "React", "Swift", "Java"],
+        "tags": [
+          "Node.js",
+          "AWS",
+          "React",
+          "Swift",
+          "Java"
+        ],
         "context": "Pet-care marketplace startup — Lima, Peru",
         "bullets": [
           "Developed native iOS and Android applications for a pet-care marketplace connecting dog owners with trusted caregivers",
@@ -141,7 +205,14 @@
         "title": "Software Developer",
         "company": "Guvery Latam SAC",
         "period": "Aug 2017 – Apr 2019",
-        "tags": ["PHP", "Node.js", "GCP", "Azure", "Docker", "Swift"],
+        "tags": [
+          "PHP",
+          "Node.js",
+          "GCP",
+          "Azure",
+          "Docker",
+          "Swift"
+        ],
         "context": "E-commerce logistics startup — Lima, Peru",
         "bullets": [
           "Implemented Social Login (Google & Facebook) across buyer and traveler user flows, reducing signup friction",
@@ -153,14 +224,14 @@
   },
   "footer": {
     "tagline": "Let's build something the world hasn't seen yet.",
-    "subtagline": "Open to freelance projects, full-time roles, and anything interesting in between.",
+    "subtagline": "Open to AI consulting engagements, freelance projects, full-time roles, and anything interesting in between.",
     "made_in": "Made in Lima, Peru 🇵🇪",
     "back_top": "Back to top"
   },
   "contact": {
     "title": "Let's build something together",
-    "subtitle": "Available for freelance projects and full-time opportunities",
-    "availability": "Available for freelance projects",
+    "subtitle": "Available for AI consulting engagements and full-time opportunities",
+    "availability": "Taking on AI consulting work",
     "name_label": "Your Name",
     "email_label": "Your Email",
     "message_label": "Your Message",
@@ -171,6 +242,36 @@
     "sending": "Sending...",
     "success": "Message sent! I'll get back to you soon.",
     "error": "Something went wrong. Please try again.",
-    "or": "Or reach me directly"
+    "or": "Or reach me directly",
+    "book_call": "Book a 30-min call"
+  },
+  "ask": {
+    "eyebrow": "Live demo",
+    "title": "Ask about my work",
+    "subtitle": "This is a real Claude API integration, grounded in the content of this site — the same kind of feature I build for clients. Streaming, rate limited, and it declines what it doesn't know.",
+    "label": "Your question",
+    "placeholder": "What has Linder built with LLMs?",
+    "send": "Send question",
+    "thinking": "Thinking",
+    "disclaimer": "Answers are generated and can be wrong. For anything that matters, email Linder.",
+    "suggestions": [
+      "What AI work has he actually shipped?",
+      "Is he available for consulting?",
+      "How deep is his Python and Django experience?"
+    ],
+    "errors": {
+      "generic": "Something broke. Try again in a moment.",
+      "rate_limited": "That's a few too many questions at once — wait a minute and try again.",
+      "offline": "The demo isn't configured right now. Email Linder directly at linderhassinger00@gmail.com."
+    }
+  },
+  "writing": {
+    "index_eyebrow": "Writing",
+    "index_title": "Notes",
+    "index_subtitle": "Opinions on building with LLMs, formed by shipping them. Short, specific, and occasionally contrarian.",
+    "back_to_all": "All notes",
+    "read": "Read",
+    "next_post": "Next note",
+    "reading_time": "{minutes} min read"
   }
 }

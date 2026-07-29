@@ -1,15 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiArrowUp } from "react-icons/fi";
+import { Link } from "@/i18n/navigation";
 
 const navLinks = [
-  { labelKey: "about",      href: "#about"      },
-  { labelKey: "skills",     href: "#skills"     },
-  { labelKey: "projects",   href: "#projects"   },
-  { labelKey: "experience", href: "#experience" },
-  { labelKey: "contact",    href: "#contact"    },
+  { labelKey: "about",      hash: "about"      },
+  { labelKey: "skills",     hash: "skills"     },
+  { labelKey: "projects",   hash: "projects"   },
+  { labelKey: "experience", hash: "experience" },
+  { labelKey: "contact",    hash: "contact"    },
 ];
 
 const socials = [
@@ -20,8 +21,10 @@ const socials = [
 export function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
+  const reduceMotion = useReducedMotion();
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () =>
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
 
   return (
     <footer className="relative border-t border-white/[0.06] overflow-hidden">
@@ -53,7 +56,7 @@ export function Footer() {
           <p className="font-heading text-2xl md:text-3xl font-semibold text-white/80 leading-snug mb-3">
             {t("tagline")}
           </p>
-          <p className="text-white/35 text-sm max-w-sm mx-auto leading-relaxed">
+          <p className="text-white/55 text-sm max-w-sm mx-auto leading-relaxed">
             {t("subtagline")}
           </p>
         </motion.div>
@@ -69,14 +72,26 @@ export function Footer() {
           {/* Nav links */}
           <div className="flex items-center gap-6 flex-wrap justify-center">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.labelKey}
-                href={link.href}
-                className="text-white/35 hover:text-white/75 text-sm transition-colors duration-200"
+                href={`/#${link.hash}`}
+                className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
               >
                 {nav(link.labelKey)}
-              </a>
+              </Link>
             ))}
+            <Link
+              href="/writing"
+              className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
+            >
+              {nav("writing")}
+            </Link>
+            <Link
+              href="/projects"
+              className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
+            >
+              {nav("all_projects")}
+            </Link>
           </div>
 
           <div className="hidden sm:block w-px h-4 bg-white/10" />
@@ -92,7 +107,7 @@ export function Footer() {
                 aria-label={label}
                 whileHover={{ scale: 1.15, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-white/35 hover:text-white/75 transition-colors duration-200"
+                className="text-white/55 hover:text-white transition-colors duration-200"
               >
                 <Icon size={17} />
               </motion.a>
@@ -111,7 +126,7 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.25 }}
           className="flex flex-col sm:flex-row items-center justify-between gap-4"
         >
-          <p className="text-white/20 text-xs font-mono text-center sm:text-left">
+          <p className="text-white/45 text-xs font-mono text-center sm:text-left">
             © {new Date().getFullYear()} Linder Hassinger
             <span className="mx-2 text-purple-500/30">·</span>
             {t("made_in")}
@@ -122,7 +137,7 @@ export function Footer() {
             onClick={scrollToTop}
             whileHover={{ scale: 1.08, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-1.5 text-xs font-medium text-white/25 hover:text-white/60 transition-colors duration-200"
+            className="flex items-center gap-1.5 text-xs font-medium text-white/55 hover:text-white transition-colors duration-200"
           >
             {t("back_top")}
             <FiArrowUp size={12} />

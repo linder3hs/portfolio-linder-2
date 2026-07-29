@@ -1,47 +1,42 @@
 "use client";
 
-import { motion, type Variants, useMotionValue, useSpring } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { Typewriter } from "@/components/ui/AnimatedText";
-import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiPython,
-} from "react-icons/si";
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  type Variants,
+} from "framer-motion";
+import { useTranslations } from "next-intl";
+import { ArrowDown } from "lucide-react";
+import { SiReact, SiNextdotjs, SiOpenai, SiPython, SiDjango } from "react-icons/si";
+import { TbBrain } from "react-icons/tb";
+import { readableAccent } from "@/lib/project-meta";
+import { Typewriter } from "@/components/ui/AnimatedText";
+import { HeroBackdrop } from "@/components/three/HeroBackdrop";
 
 const container: Variants = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.18, delayChildren: 0.1 },
-  },
+  show: { opacity: 1, transition: { staggerChildren: 0.14, delayChildren: 0.08 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
+/**
+ * AI first, then the platform stack. The two AI marks sit highest and largest
+ * because they carry the positioning; the rest frame the headline.
+ */
 const floatingIcons = [
-  { Icon: SiReact, color: "#61DAFB", top: "15%", left: "8%", delay: 0, size: 28 },
-  { Icon: SiNextdotjs, color: "#ffffff", top: "25%", right: "10%", delay: 1.2, size: 26 },
-  { Icon: SiTypescript, color: "#3178C6", top: "65%", left: "5%", delay: 0.6, size: 24 },
-  { Icon: SiTailwindcss, color: "#06B6D4", bottom: "25%", right: "7%", delay: 1.8, size: 26 },
-  { Icon: SiNodedotjs, color: "#339933", top: "75%", left: "12%", delay: 2.4, size: 22 },
-  { Icon: SiPython, color: "#3776AB", top: "40%", right: "5%", delay: 0.9, size: 22 },
-];
-
-const codeSnippets = [
-  { text: "const dev = 'Linder';", top: "18%", left: "3%", delay: 1 },
-  { text: "npm run build ✓", top: "55%", right: "2%", delay: 2.5 },
-  { text: "<Portfolio />", bottom: "20%", left: "2%", delay: 0.5 },
-  { text: "git push origin main", top: "80%", right: "3%", delay: 3 },
-  { text: "type Dev = 'awesome'", top: "8%", right: "15%", delay: 1.8 },
+  { Icon: TbBrain, color: "#E09A78", style: { top: "15%", left: "8%" }, size: 34, label: "Claude" },
+  { Icon: SiOpenai, color: "#7DD3C0", style: { top: "20%", right: "9%" }, size: 32, label: "OpenAI" },
+  { Icon: SiPython, color: "#5B8DEF", style: { top: "52%", left: "5%" }, size: 26, label: "Python" },
+  { Icon: SiDjango, color: readableAccent("#092E20"), style: { top: "60%", right: "6%" }, size: 26, label: "Django" },
+  { Icon: SiReact, color: "#61DAFB", style: { bottom: "22%", left: "11%" }, size: 24, label: "React" },
+  { Icon: SiNextdotjs, color: "#E5E7EB", style: { bottom: "26%", right: "12%" }, size: 24, label: "Next.js" },
 ];
 
 function MagneticButton({
@@ -54,22 +49,22 @@ function MagneticButton({
   className: string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
+  const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 300, damping: 20 });
   const springY = useSpring(y, { stiffness: 300, damping: 20 });
 
   const handleMove = (e: React.MouseEvent) => {
+    if (reduceMotion) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    x.set((e.clientX - cx) * 0.35);
-    y.set((e.clientY - cy) * 0.35);
+    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.3);
+    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.3);
   };
 
-  const handleLeave = () => {
+  const reset = () => {
     x.set(0);
     y.set(0);
   };
@@ -78,9 +73,9 @@ function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
-      style={{ x: springX, y: springY }}
+      style={reduceMotion ? undefined : { x: springX, y: springY }}
       onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
+      onMouseLeave={reset}
       className={className}
     >
       {children}
@@ -90,196 +85,147 @@ function MagneticButton({
 
 export function Hero() {
   const t = useTranslations("hero");
+  const reduceMotion = useReducedMotion();
   const roles = t.raw("roles") as string[];
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Animated blobs */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-purple-700/20 rounded-full blur-3xl animate-blob pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none" />
-      <div className="absolute bottom-1/3 left-1/3 w-72 h-72 bg-fuchsia-700/15 rounded-full blur-3xl animate-blob animation-delay-4000 pointer-events-none" />
+      <HeroBackdrop />
 
-      {/* Grid background */}
+      {/* Grid — the only static texture left; the depth now comes from the 3D field. */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
             "linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "64px 64px",
         }}
       />
 
-      {/* Top radial glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 90% 60% at 50% -10%, rgba(124, 58, 237, 0.3), transparent)",
-        }}
-      />
-
-      {/* Orbit rings */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <div
-          className="orbit-ring absolute"
-          style={{ width: 600, height: 600, top: -300, left: -300 }}
-        />
-        <div
-          className="orbit-ring-reverse absolute"
-          style={{ width: 800, height: 800, top: -400, left: -400 }}
-        />
-      </div>
-
-      {/* Floating tech icons */}
-      {floatingIcons.map(({ Icon, color, delay, size, ...pos }, i) => (
+      {floatingIcons.map(({ Icon, color, style, size, label }, i) => (
         <motion.div
           key={i}
-          className="absolute pointer-events-none hidden md:flex items-center justify-center"
-          style={{ ...pos }}
-          initial={{ opacity: 0, scale: 0 }}
+          aria-hidden
+          className="pointer-events-none absolute hidden md:block"
+          style={style}
+          initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: delay + 1.5, duration: 0.5, ease: "backOut" }}
+          transition={{ delay: 1.1 + i * 0.15, duration: 0.5, ease: "backOut" }}
         >
           <motion.div
-            animate={{
-              y: [0, -12, 0],
-              rotate: [0, 5, -5, 0],
-            }}
+            animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
             transition={{
-              duration: 4 + i * 0.5,
+              duration: 5 + i,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 0.3,
+              delay: i * 0.4,
             }}
-            className="relative"
+            className="glass rounded-xl p-2.5"
+            style={{ borderColor: `${color}40`, boxShadow: `0 0 24px ${color}18` }}
+            title={label}
           >
-            {/* Glow ring behind icon */}
-            <div
-              className="absolute inset-0 rounded-full blur-md opacity-40"
-              style={{ background: color, transform: "scale(1.8)" }}
-            />
-            <div
-              className="relative z-10 p-2.5 rounded-xl glass"
-              style={{ border: `1px solid ${color}30` }}
-            >
-              <Icon size={size} color={color} />
-            </div>
+            <Icon size={size} color={color} />
           </motion.div>
         </motion.div>
       ))}
 
-      {/* Floating code snippets */}
-      {codeSnippets.map((snippet, i) => (
-        <motion.div
-          key={i}
-          className="absolute pointer-events-none hidden lg:block"
-          style={{ ...Object.fromEntries(Object.entries(snippet).filter(([k]) => ["top","left","right","bottom"].includes(k))) }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0.4, 0.2, 0.35, 0] }}
-          transition={{
-            delay: snippet.delay,
-            duration: 10,
-            repeat: Infinity,
-            repeatDelay: 3 + i * 2,
-          }}
-        >
-          <div className="font-mono text-xs text-purple-300/40 glass px-3 py-1.5 rounded-lg whitespace-nowrap">
-            {snippet.text}
-          </div>
-        </motion.div>
-      ))}
-
-      {/* Main content */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+        className="relative z-10 mx-auto max-w-4xl px-4 text-center"
       >
         <motion.div variants={item} className="mb-4">
-          <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-mono text-purple-300 tracking-widest uppercase border border-purple-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+          <span className="glass inline-flex items-center gap-2 rounded-full border border-purple-400/25 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-purple-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-400" aria-hidden />
             {t("greeting")}
           </span>
         </motion.div>
 
+        {/*
+          The glitch animation is gone: it was applied to the one string on the
+          page that has to stay legible.
+        */}
         <motion.h1
           variants={item}
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-white leading-tight text-glitch"
+          className="font-heading mb-6 text-5xl font-bold leading-tight text-white md:text-7xl lg:text-8xl"
         >
           <span className="text-shimmer">{t("name")}</span>
         </motion.h1>
 
         <motion.div
           variants={item}
-          className="text-xl md:text-3xl font-heading mb-6 h-10 flex items-center justify-center"
+          className="font-heading mb-6 flex h-10 items-center justify-center text-xl md:text-3xl"
         >
           <Typewriter words={roles} />
         </motion.div>
 
         <motion.p
           variants={item}
-          className="text-white/50 text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+          className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/60"
         >
           {t("subtitle")}
         </motion.p>
 
-        <motion.div
-          variants={item}
-          className="flex gap-4 justify-center flex-wrap"
-        >
+        <motion.div variants={item} className="flex flex-wrap justify-center gap-4">
           <MagneticButton
             href="#projects"
-            className="relative px-8 py-3.5 bg-primary hover:bg-violet-500 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_40px_rgba(124,58,237,0.6)] text-white overflow-hidden group block"
+            className="group relative block overflow-hidden rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] focus-visible:ring-2 focus-visible:ring-white/70"
           >
             <span className="relative z-10">{t("cta_work")}</span>
-            {/* shimmer sweep on hover */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           </MagneticButton>
 
           <MagneticButton
             href="#contact"
-            className="relative px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 text-white/80 hover:text-white overflow-hidden group block gradient-border glass"
+            className="gradient-border glass group relative block overflow-hidden rounded-full px-8 py-3.5 text-sm font-semibold text-white/85 outline-none transition-colors duration-300 hover:text-white focus-visible:ring-2 focus-visible:ring-white/70"
           >
             <span className="relative z-10">{t("cta_contact")}</span>
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent" />
           </MagneticButton>
         </motion.div>
 
-        {/* Tech badge row */}
         <motion.div
           variants={item}
-          className="mt-12 flex items-center justify-center gap-3 flex-wrap"
+          className="mt-12 flex flex-wrap items-center justify-center gap-3"
         >
-          {["React", "Next.js", "TypeScript", "Node.js"].map((tech, i) => (
-            <motion.span
+          {[
+            "Claude API",
+            "Claude Code",
+            "OpenAI API",
+            "Python",
+            "Django",
+            "React",
+            "Next.js",
+            "TypeScript",
+          ].map((tech) => (
+            <span
               key={tech}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 2 + i * 0.1, duration: 0.4, ease: "backOut" }}
-              className="text-xs font-mono text-white/30 glass px-3 py-1 rounded-full border border-white/[0.06]"
+              className="glass rounded-full border border-white/[0.08] px-3 py-1 font-mono text-xs text-white/50"
             >
               {tech}
-            </motion.span>
+            </span>
           ))}
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
+        aria-hidden
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        transition={{ delay: 2, duration: 0.8 }}
+        // Hidden on short viewports: with the AI stack added, the chip row
+        // reaches this and the two collide at ~620px of viewport height, which
+        // is what a 1366x768 laptop actually has once browser chrome is out.
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 [@media(max-height:700px)]:hidden"
       >
-        <span className="text-white/20 text-xs font-mono tracking-widest">SCROLL</span>
+        <span className="font-mono text-xs tracking-widest text-white/40">SCROLL</span>
         <motion.div
-          animate={{ y: [0, 6, 0] }}
+          animate={reduceMotion ? undefined : { y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="text-white/30"
+          className="text-white/50"
         >
           <ArrowDown size={16} />
         </motion.div>

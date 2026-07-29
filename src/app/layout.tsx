@@ -15,14 +15,27 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Linder Hassinger | Senior Software Developer & Tech Lead",
+  title: "Linder Hassinger | AI Tech Lead & AI Consultant",
   description:
-    "Senior Software Developer & Tech Lead with 8+ years building production-grade web, mobile, and AI-powered applications. React, Next.js, TypeScript specialist based in Lima, Peru.",
+    "AI Tech Lead and consultant helping companies put AI into production, backed by 8+ years building production-grade web, mobile, and iOS software. Claude and OpenAI APIs, React, Next.js, TypeScript. Based in Lima, Peru, working globally.",
   keywords: [
     "Linder Hassinger",
     "linder hassinger developer",
     "linder hassinger portfolio",
     "linder3hs",
+    "AI Tech Lead",
+    "AI consultant",
+    "AI consulting",
+    "LLM integration consultant",
+    "AI engineer",
+    "Claude API developer",
+    "OpenAI API developer",
+    "AI consultant Peru",
+    "Python developer",
+    "Django developer",
+    "Python Django expert",
+    "Django consultant",
+    "AI consultant Latin America",
     "Senior Software Developer",
     "Tech Lead",
     "Full Stack Engineer",
@@ -54,17 +67,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://linderhassinger.dev",
-    title: "Linder Hassinger | Senior Software Developer & Tech Lead",
+    title: "Linder Hassinger | AI Tech Lead & AI Consultant",
     description:
-      "Senior Software Developer & Tech Lead with 8+ years building at scale — from Apple TV streaming apps to AI-powered tools. Based in Lima, Peru.",
+      "AI Tech Lead and consultant. I help companies get AI into production, backed by 8+ years building at scale — from Apple TV streaming apps to LLM-powered tools. Based in Lima, Peru.",
     siteName: "Linder Hassinger Portfolio",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Linder Hassinger | Senior Software Developer & Tech Lead",
+    title: "Linder Hassinger | AI Tech Lead & AI Consultant",
     description:
-      "Senior Software Developer & Tech Lead with 8+ years building at scale. React, Next.js, TypeScript & AI specialist.",
+      "AI Tech Lead and consultant. Putting AI into production for companies, on top of 8+ years of production engineering.",
     creator: "@linder3hs",
     site: "@linder3hs",
   },
@@ -85,10 +98,10 @@ const jsonLd = {
   "@type": "Person",
   name: "Linder Hassinger",
   url: "https://linderhassinger.dev",
-  jobTitle: "Senior Software Developer & Tech Lead",
+  jobTitle: "AI Tech Lead & AI Consultant",
   description:
-    "Senior Software Developer & Tech Lead with 8+ years building production-grade web, mobile, and AI-powered applications. React, Next.js, TypeScript specialist based in Lima, Peru.",
-  image: "https://linderhassinger.dev/og-image.png",
+    "AI Tech Lead and consultant helping companies put AI into production, backed by 8+ years building production-grade web, mobile, and iOS software. Based in Lima, Peru, working globally.",
+  image: "https://linderhassinger.dev/en/opengraph-image",
   sameAs: [
     "https://github.com/linder3hs",
     "https://linkedin.com/in/linderhassinger",
@@ -100,6 +113,15 @@ const jsonLd = {
     addressCountry: "PE",
   },
   knowsAbout: [
+    "Artificial Intelligence",
+    "AI Consulting",
+    "LLM Integration",
+    "Python",
+    "Django",
+    "Large Language Models",
+    "Claude API",
+    "OpenAI API",
+    "AI Product Engineering",
     "React",
     "Next.js",
     "TypeScript",
@@ -108,12 +130,22 @@ const jsonLd = {
     "SwiftUI",
     "iOS Development",
     "Full Stack Development",
-    "AI Development",
     "Tech Leadership",
   ],
   worksFor: {
     "@type": "Organization",
     name: "WotDev",
+  },
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "AI consulting",
+      serviceType: "AI and LLM integration consulting",
+      description:
+        "Advising engineering teams on integrating LLMs into existing products: where AI genuinely fits, model selection, cost and latency tradeoffs, and the guardrails production use requires.",
+      areaServed: "Worldwide",
+    },
   },
 };
 
