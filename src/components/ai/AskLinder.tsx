@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowUp, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUp, Sparkles } from "lucide-react";
+import { ctaHref, ctaLinkProps } from "@/lib/site";
 
 type Turn = { role: "user" | "assistant"; content: string };
 
@@ -192,6 +193,22 @@ export function AskLinder() {
         </div>
 
         <p className="mt-3 text-center text-xs text-white/45">{t("disclaimer")}</p>
+
+        {/*
+          The demo is the strongest proof on the page — it should hand the
+          visitor the next step instead of ending on a disclaimer.
+        */}
+        <div className="mt-8 flex flex-col items-center gap-3 text-center">
+          <p className="text-sm text-white/65">{t("cta")}</p>
+          <a
+            href={ctaHref()}
+            {...ctaLinkProps}
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] focus-visible:ring-2 focus-visible:ring-white/70"
+          >
+            {t("cta_action")}
+            <ArrowRight size={15} aria-hidden />
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -1,20 +1,22 @@
 {
   "nav": {
     "about": "About",
+    "services": "Services",
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
     "contact": "Contact",
     "all_projects": "All projects",
     "toggle_menu": "Toggle navigation menu",
-    "writing": "Writing"
+    "writing": "Writing",
+    "cta": "Let's talk"
   },
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Linder Hassinger",
-    "subtitle": "AI Tech Lead and consultant. I help companies get AI into production — backed by 8+ years building the web, mobile, and iOS systems it has to plug into.",
+    "subtitle": "AI Tech Lead and consultant. I take AI to production for companies that already have a product — backed by 8+ years building the web, mobile, and iOS systems it has to plug into.",
     "cta_work": "View my work",
-    "cta_contact": "Let's work together",
+    "cta_contact": "Let's talk about your project",
     "roles": [
       "AI Tech Lead",
       "AI Consultant",
@@ -23,6 +25,51 @@
       "Full Stack Engineer",
       "Next.js Expert"
     ]
+  },
+  "clients": {
+    "title": "Shipped work for"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "How we work together",
+    "subtitle": "Three ways to start. All three end in something running in production, not a PDF.",
+    "items": [
+      {
+        "name": "AI audit",
+        "duration": "1–2 weeks",
+        "summary": "Your team wants to use AI but nobody knows where to start — or there's a prototype that never quite ships.",
+        "bullets": [
+          "I review the product, the data, and the current stack",
+          "I identify where an LLM pays for itself — and where it doesn't",
+          "Cost, latency, and risk estimates per use case"
+        ],
+        "outcome": "Deliverable: a prioritized plan with the first feature ready to build."
+      },
+      {
+        "name": "AI feature to production",
+        "duration": "4–8 weeks",
+        "summary": "You know what you want to build. You need someone to take it from idea to something that survives real users.",
+        "bullets": [
+          "Prompt, context, and evaluation design",
+          "Integration with your backend and UI, streaming included",
+          "Guardrails, rate limiting, and cost control"
+        ],
+        "outcome": "Deliverable: the feature in production, with your team able to maintain it."
+      },
+      {
+        "name": "Ongoing technical advisory",
+        "duration": "Monthly",
+        "summary": "You have an engineering team and need AI judgment without adding a senior head count.",
+        "bullets": [
+          "Architecture review and model decisions",
+          "Code review and pairing with your team",
+          "Async availability plus a weekly session"
+        ],
+        "outcome": "Deliverable: your team making better calls without waiting on me."
+      }
+    ],
+    "cta": "Let's talk about your project",
+    "note": "Your case doesn't fit any of these? Reach out anyway — the first call is free and exists to find out whether this makes sense."
   },
   "about": {
     "title": "About Me",
@@ -62,6 +109,7 @@
     "live": "Live Demo",
     "code": "View Code",
     "all": "View all on GitHub",
+    "cta": "Want something like this for your product?",
     "stack": "Tech Stack",
     "view_all": "See all {count} projects",
     "case_study": "Case study",
@@ -223,26 +271,41 @@
     ]
   },
   "footer": {
-    "tagline": "Let's build something the world hasn't seen yet.",
-    "subtagline": "Open to AI consulting engagements, freelance projects, full-time roles, and anything interesting in between.",
+    "tagline": "Got a project in mind?",
+    "subtagline": "I take on AI consulting engagements and development projects. Tell me what you need and I'll tell you on the first call whether I can help.",
     "made_in": "Made in Lima, Peru 🇵🇪",
     "back_top": "Back to top"
   },
   "contact": {
-    "title": "Let's build something together",
-    "subtitle": "Available for AI consulting engagements and full-time opportunities",
-    "availability": "Taking on AI consulting work",
+    "title": "Tell me about your project",
+    "subtitle": "I answer every message within 24 hours. If there's a fit, I'll propose a 30-minute call.",
+    "availability": "Taking on projects for next quarter",
     "name_label": "Your Name",
     "email_label": "Your Email",
-    "message_label": "Your Message",
+    "message_label": "Your message",
+    "message_placeholder": "The problem, where it stands today, and what you'd like to happen",
+    "type_label": "What do you need?",
+    "types": [
+      "AI consulting or audit",
+      "Build an AI feature",
+      "Full web or mobile project",
+      "Ongoing technical advisory",
+      "Something else"
+    ],
+    "timeline_label": "When does it start?",
+    "timelines": [
+      "As soon as possible",
+      "In 1–3 months",
+      "Still exploring"
+    ],
     "error_name": "Please enter your name (min. 2 characters)",
     "error_email": "Please enter a valid email address",
     "error_message": "Please write a message (min. 10 characters)",
-    "send": "Send Message",
+    "send": "Send message",
     "sending": "Sending...",
-    "success": "Message sent! I'll get back to you soon.",
+    "success": "Message sent! I'll reply within 24 hours.",
     "error": "Something went wrong. Please try again.",
-    "or": "Or reach me directly",
+    "or": "Rather skip the form?",
     "book_call": "Book a 30-min call"
   },
   "ask": {
@@ -254,10 +317,12 @@
     "send": "Send question",
     "thinking": "Thinking",
     "disclaimer": "Answers are generated and can be wrong. For anything that matters, email Linder.",
+    "cta": "This is the kind of thing I build for clients",
+    "cta_action": "Let's talk about your project",
     "suggestions": [
       "What AI work has he actually shipped?",
-      "Is he available for consulting?",
-      "How deep is his Python and Django experience?"
+      "What would working with him on my project look like?",
+      "Is he available now, and for what kind of work?"
     ],
     "errors": {
       "generic": "Something broke. Try again in a moment.",

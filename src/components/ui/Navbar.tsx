@@ -2,18 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Calendar, Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { BOOKING_URL, ctaLinkProps } from "@/lib/site";
+import { cn } from "@/lib/utils";
 import { LanguageToggle } from "./LanguageToggle";
 import { Logo } from "./Logo";
 
 const sectionLinks = [
+  { key: "services", id: "services" },
   { key: "about", id: "about" },
-  { key: "skills", id: "skills" },
   { key: "projects", id: "projects" },
   { key: "experience", id: "experience" },
-  { key: "contact", id: "contact" },
 ];
 
 /**
@@ -62,6 +63,53 @@ function useActiveSection(enabled: boolean) {
   }, [enabled]);
 
   return active;
+}
+
+/**
+ * Booking link when configured, contact anchor otherwise. The anchor needs the
+ * leading slash off the home route, which is the only reason this branches.
+ */
+function CtaButton({
+  isHome,
+  label,
+  // Display class lives with the caller: the desktop button hides on small
+  // screens, and a hardcoded `inline-flex` here would fight it.
+  className = "inline-flex",
+  onClick,
+}: {
+  isHome: boolean;
+  label: string;
+  className?: string;
+  onClick?: () => void;
+}) {
+  const style = cn(
+    "items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_20px_rgba(124,58,237,0.45)] focus-visible:ring-2 focus-visible:ring-white/70",
+    className,
+  );
+  const content = (
+    <>
+      <Calendar size={14} aria-hidden />
+      {label}
+    </>
+  );
+
+  if (BOOKING_URL) {
+    return (
+      <a href={BOOKING_URL} {...ctaLinkProps} onClick={onClick} className={style}>
+        {content}
+      </a>
+    );
+  }
+
+  return isHome ? (
+    <a href="#contact" onClick={onClick} className={style}>
+      {content}
+    </a>
+  ) : (
+    <Link href="/#contact" onClick={onClick} className={style}>
+      {content}
+    </Link>
+  );
 }
 
 export function Navbar() {
@@ -140,16 +188,16 @@ export function Navbar() {
           >
             {t("writing")}
           </Link>
-
-          <Link
-            href="/projects"
-            className="rounded-full border border-white/12 px-3.5 py-1.5 text-sm font-medium text-white/70 outline-none transition-colors duration-200 hover:border-purple-400/40 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
-          >
-            {t("all_projects")}
-          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
+          {/*
+            The one persistent CTA on the site. It points at the scheduling
+            link when one is configured and at the contact form otherwise, so
+            it is never a dead end.
+          */}
+          <CtaButton isHome={isHome} label={t("cta")} className="hidden sm:inline-flex" />
+
           <LanguageToggle />
           <button
             type="button"
@@ -206,10 +254,17 @@ export function Navbar() {
               <Link
                 href="/projects"
                 onClick={closeMenu}
-                className="mt-2 rounded border-t border-white/[0.07] pt-3 text-sm font-medium text-purple-300 outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                className="rounded py-2 text-sm font-medium text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
               >
                 {t("all_projects")}
               </Link>
+
+              <CtaButton
+                isHome={isHome}
+                label={t("cta")}
+                onClick={closeMenu}
+                className="mt-3 flex justify-center py-2.5"
+              />
             </nav>
           </motion.div>
         )}

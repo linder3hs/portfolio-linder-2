@@ -12,6 +12,7 @@ import {
   type Project,
 } from "@/lib/projects";
 import { metaFor, techIconMap } from "@/lib/project-meta";
+import { ctaHref, ctaLinkProps } from "@/lib/site";
 import { ProjectPoster } from "@/components/projects/ProjectPoster";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -200,7 +201,16 @@ export function Projects() {
           ))}
         </div>
 
+        {/* Exit ramp: the grid is where interest peaks, so the ask lives here too. */}
         <div className="mt-12 flex flex-wrap items-center gap-3">
+          <a
+            href={ctaHref()}
+            {...ctaLinkProps}
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] focus-visible:ring-2 focus-visible:ring-white/70"
+          >
+            {t("cta")}
+            <ArrowUpRight size={15} aria-hidden />
+          </a>
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-6 py-2.5 text-sm font-medium text-white/75 outline-none transition-colors duration-300 hover:border-purple-400/40 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"

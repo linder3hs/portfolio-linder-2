@@ -56,9 +56,20 @@ const directLinks = [
 export function Contact() {
   const t = useTranslations("contact");
   const formId = useId();
+  const projectTypes = t.raw("types") as string[];
+  const timelines = t.raw("timelines") as string[];
+
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  // Both selects default to their first option, so the qualifying fields can
+  // never come back empty and never block a submit.
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    projectType: projectTypes[0],
+    timeline: timelines[0],
+  });
   const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
 
   useEffect(() => {
@@ -94,7 +105,13 @@ export function Contact() {
 
     if (result.success) {
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        projectType: projectTypes[0],
+        timeline: timelines[0],
+      });
     } else {
       setStatus("error");
       setErrorMsg(result.error ?? t("error"));
@@ -102,7 +119,7 @@ export function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -181,7 +198,7 @@ export function Contact() {
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
             noValidate
-            className="flex flex-col gap-4"
+            className="order-2 flex flex-col gap-4 md:order-1"
           >
             {/*
               Labels are visually hidden rather than absent: a placeholder
@@ -213,13 +230,66 @@ export function Contact() {
               {renderFieldError("email")}
             </div>
 
+            {/*
+              Two native selects: they qualify the lead (what, and when) without
+              adding a field anyone has to think about, and they cost nothing to
+              answer. Native `select` also gets the OS picker on mobile for free.
+            */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor={`${formId}-projectType`}
+                  className="px-1 text-xs text-white/55"
+                >
+                  {t("type_label")}
+                </label>
+                <select
+                  id={`${formId}-projectType`}
+                  name="projectType"
+                  value={formData.projectType}
+                  onChange={handleChange}
+                  className={`${inputClass} appearance-none [&>option]:bg-[#0A0A0F]`}
+                  style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  {projectTypes.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor={`${formId}-timeline`}
+                  className="px-1 text-xs text-white/55"
+                >
+                  {t("timeline_label")}
+                </label>
+                <select
+                  id={`${formId}-timeline`}
+                  name="timeline"
+                  value={formData.timeline}
+                  onChange={handleChange}
+                  className={`${inputClass} appearance-none [&>option]:bg-[#0A0A0F]`}
+                  style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  {timelines.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
             <div className="flex flex-col gap-1">
               <label htmlFor={`${formId}-message`} className="sr-only">
                 {t("message_label")}
               </label>
               <textarea
                 rows={5}
-                placeholder={t("message_label")}
+                placeholder={t("message_placeholder")}
                 {...fieldProps("message")}
                 className={`${inputClass} resize-none`}
               />
@@ -279,7 +349,9 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col justify-center gap-4"
+            // Booking sits above the form on mobile: the visitor who already
+            // wants a call shouldn't have to scroll past a five-field form.
+            className="order-1 flex flex-col justify-center gap-4 md:order-2"
           >
             <p className="mb-2 text-sm text-white/60">{t("or")}</p>
 

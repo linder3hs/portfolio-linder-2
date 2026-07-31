@@ -3,9 +3,15 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { FiGithub, FiLinkedin, FiArrowUp } from "react-icons/fi";
+import { Calendar } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { BOOKING_URL, ctaLinkProps } from "@/lib/site";
+
+const ctaClass =
+  "mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] focus-visible:ring-2 focus-visible:ring-white/70";
 
 const navLinks = [
+  { labelKey: "services",   hash: "services"   },
   { labelKey: "about",      hash: "about"      },
   { labelKey: "skills",     hash: "skills"     },
   { labelKey: "projects",   hash: "projects"   },
@@ -59,6 +65,23 @@ export function Footer() {
           <p className="text-white/55 text-sm max-w-sm mx-auto leading-relaxed">
             {t("subtagline")}
           </p>
+
+          {/*
+            Last thing on the page is the ask, not a list of links. The footer
+            renders on every route, so the non-booking fallback goes through the
+            i18n Link — a bare "/#contact" would drop the locale prefix.
+          */}
+          {BOOKING_URL ? (
+            <a href={BOOKING_URL} {...ctaLinkProps} className={ctaClass}>
+              <Calendar size={15} aria-hidden />
+              {nav("cta")}
+            </a>
+          ) : (
+            <Link href="/#contact" className={ctaClass}>
+              <Calendar size={15} aria-hidden />
+              {nav("cta")}
+            </Link>
+          )}
         </motion.div>
 
         {/* Nav + socials row */}

@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { ArrowDown } from "lucide-react";
 import { SiReact, SiNextdotjs, SiOpenai, SiPython, SiDjango } from "react-icons/si";
 import { TbBrain } from "react-icons/tb";
+import { ctaHref, ctaLinkProps } from "@/lib/site";
 import { readableAccent } from "@/lib/project-meta";
 import { Typewriter } from "@/components/ui/AnimatedText";
 import { HeroBackdrop } from "@/components/three/HeroBackdrop";
@@ -43,10 +44,15 @@ function MagneticButton({
   children,
   href,
   className,
+  ...rest
 }: {
   children: React.ReactNode;
   href: string;
   className: string;
+  // Narrow on purpose: spreading all anchor props collides with framer-motion's
+  // own onDrag/onAnimationStart signatures.
+  target?: string;
+  rel?: string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const reduceMotion = useReducedMotion();
@@ -77,6 +83,7 @@ function MagneticButton({
       onMouseMove={handleMove}
       onMouseLeave={reset}
       className={className}
+      {...rest}
     >
       {children}
     </motion.a>
@@ -171,19 +178,24 @@ export function Hero() {
           {t("subtitle")}
         </motion.p>
 
+        {/*
+          Contact is the primary action, not "view my work": this page exists to
+          start conversations, and the work is one scroll away either way.
+        */}
         <motion.div variants={item} className="flex flex-wrap justify-center gap-4">
           <MagneticButton
-            href="#projects"
+            href={ctaHref()}
+            {...ctaLinkProps}
             className="group relative block overflow-hidden rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            <span className="relative z-10">{t("cta_work")}</span>
+            <span className="relative z-10">{t("cta_contact")}</span>
           </MagneticButton>
 
           <MagneticButton
-            href="#contact"
+            href="#projects"
             className="gradient-border glass group relative block overflow-hidden rounded-full px-8 py-3.5 text-sm font-semibold text-white/85 outline-none transition-colors duration-300 hover:text-white focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            <span className="relative z-10">{t("cta_contact")}</span>
+            <span className="relative z-10">{t("cta_work")}</span>
           </MagneticButton>
         </motion.div>
 
