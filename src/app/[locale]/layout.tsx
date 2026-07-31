@@ -18,7 +18,22 @@ export async function generateMetadata({
   const { locale } = await params;
   const isEs = locale === "es";
 
+  /*
+   * Without these, /es inherited the root layout's English title and
+   * description — the Spanish result in Google was an English snippet. Child
+   * routes (projects, writing) set their own and override this.
+   */
+  const title = isEs
+    ? "Linder Hassinger | Consultor de IA y AI Tech Lead"
+    : "Linder Hassinger | AI Tech Lead & AI Consultant";
+
+  const description = isEs
+    ? "Consultor de IA y AI Tech Lead. Llevo IA a producción para empresas, con 8+ años construyendo software web, móvil e iOS. Python, Django, Claude y OpenAI API. Desde Lima, Perú."
+    : "AI Tech Lead and consultant. I take AI to production for companies, backed by 8+ years building web, mobile, and iOS software. Python, Django, Claude and OpenAI APIs. Based in Lima, Peru.";
+
   return {
+    title,
+    description,
     alternates: {
       canonical: `/${locale}`,
       languages: {
@@ -28,9 +43,13 @@ export async function generateMetadata({
       },
     },
     openGraph: {
+      title,
+      description,
+      url: `/${locale}`,
       locale: isEs ? "es_PE" : "en_US",
       alternateLocale: isEs ? "en_US" : "es_PE",
     },
+    twitter: { title, description },
   };
 }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import en from "@/messages/en.json";
 import "./globals.css";
 
 const inter = Inter({
@@ -136,16 +137,51 @@ const jsonLd = {
     "@type": "Organization",
     name: "WotDev",
   },
-  makesOffer: {
+  // The real engagements, straight from the copy the Services section renders,
+  // so the two can't drift apart.
+  makesOffer: en.services.items.map((service) => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Service",
-      name: "AI consulting",
-      serviceType: "AI and LLM integration consulting",
-      description:
-        "Advising engineering teams on integrating LLMs into existing products: where AI genuinely fits, model selection, cost and latency tradeoffs, and the guardrails production use requires.",
+      name: service.name,
+      serviceType: "AI and software consulting",
+      description: `${service.summary} ${service.outcome}`,
       areaServed: "Worldwide",
     },
+  })),
+};
+
+/**
+ * A second node for the consulting practice itself. Person answers "who is
+ * Linder Hassinger"; this answers "who does AI consulting" — a different query
+ * and a different entity, even though one person is behind both.
+ */
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://linderhassinger.dev/#practice",
+  name: "Linder Hassinger — AI consulting",
+  url: "https://linderhassinger.dev/en#services",
+  description: en.services.subtitle,
+  provider: { "@type": "Person", name: "Linder Hassinger" },
+  areaServed: "Worldwide",
+  availableLanguage: ["en", "es"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lima",
+    addressCountry: "PE",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: en.services.title,
+    itemListElement: en.services.items.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        description: service.summary,
+      },
+    })),
   },
 };
 
@@ -163,6 +199,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
         />
         {children}
       </body>
