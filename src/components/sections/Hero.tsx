@@ -9,8 +9,9 @@ import {
   type Variants,
 } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { ArrowDown } from "lucide-react";
-import { SiReact, SiNextdotjs, SiOpenai, SiPython, SiDjango } from "react-icons/si";
+import Image from "next/image";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { SiReact, SiNextdotjs, SiOpenai, SiPython, SiDjango, SiWhatsapp } from "react-icons/si";
 import { TbBrain } from "react-icons/tb";
 import { ctaHref, ctaLinkProps } from "@/lib/site";
 import { readableAccent } from "@/lib/project-meta";
@@ -90,6 +91,82 @@ function MagneticButton({
   );
 }
 
+/** Free live workshop — the WhatsApp group is the signup list. */
+const WORKSHOP_GROUP_URL = "https://chat.whatsapp.com/JXcIkzee7vpLqdypTPF6ln";
+
+/**
+ * Sits under the hero CTAs so it reads as a time-boxed offer, not the page's
+ * identity. The QR is desktop-only: on a phone the visitor already has
+ * WhatsApp one tap away, and a QR they cannot scan is dead weight.
+ */
+function WorkshopBanner() {
+  const t = useTranslations("hero.workshop");
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.div variants={item} className="mb-10">
+      <div className="relative mx-auto max-w-xl">
+        <div
+          aria-hidden
+          className="absolute -inset-px rounded-2xl bg-[linear-gradient(120deg,rgba(37,211,102,0.5),rgba(124,58,237,0.5),rgba(37,211,102,0.5))] opacity-60 blur-[2px]"
+        />
+        <div className="relative flex flex-col items-center gap-4 rounded-2xl bg-[#0b0b12]/90 p-5 backdrop-blur-xl">
+          <div className="text-center">
+            <div className="mb-2 flex flex-wrap items-center justify-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-400/15 px-2.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-widest text-emerald-300">
+                <motion.span
+                  aria-hidden
+                  className="h-1.5 w-1.5 rounded-full bg-emerald-400"
+                  animate={reduceMotion ? undefined : { opacity: [1, 0.25, 1] }}
+                  transition={{ duration: 1.6, repeat: Infinity }}
+                />
+                {t("badge")}
+              </span>
+              <span className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-widest text-white/55">
+                {t("date")}
+              </span>
+            </div>
+
+            <h2 className="font-heading text-xl font-bold leading-snug text-white sm:text-2xl">
+              {t("title")}
+            </h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-white/55">{t("subtitle")}</p>
+
+            <a
+              href={WORKSHOP_GROUP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-4 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-[#06251a] outline-none transition-all duration-300 hover:bg-[#1fbe5a] hover:shadow-[0_0_32px_rgba(37,211,102,0.45)] focus-visible:ring-2 focus-visible:ring-white/70"
+            >
+              <SiWhatsapp size={16} />
+              {t("cta")}
+              <ArrowRight
+                size={15}
+                className="transition-transform duration-300 group-hover:translate-x-0.5"
+              />
+            </a>
+          </div>
+
+          <div className="hidden shrink-0 flex-col items-center gap-2 sm:flex">
+            <div className="rounded-xl bg-white p-2 shadow-[0_0_36px_rgba(37,211,102,0.28)]">
+              <Image
+                src="/workshop-qr.png"
+                alt={t("qr_alt")}
+                width={96}
+                height={96}
+                className="h-24 w-24 rounded-md"
+              />
+            </div>
+            <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+              {t("qr_hint")}
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function Hero() {
   const t = useTranslations("hero");
   const reduceMotion = useReducedMotion();
@@ -98,7 +175,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden py-28"
     >
       <HeroBackdrop />
 
@@ -146,6 +223,8 @@ export function Hero() {
         animate="show"
         className="relative z-10 mx-auto max-w-4xl px-4 text-center"
       >
+        <WorkshopBanner />
+
         <motion.div variants={item} className="mb-4">
           <span className="glass inline-flex items-center gap-2 rounded-full border border-purple-400/25 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-purple-200">
             <span className="h-1.5 w-1.5 rounded-full bg-green-400" aria-hidden />

@@ -24,7 +24,16 @@
       "Senior Software Developer",
       "Full Stack Engineer",
       "Next.js Expert"
-    ]
+    ],
+    "workshop": {
+      "badge": "Free",
+      "date": "Thu, September 17",
+      "title": "Live AI workshop",
+      "subtitle": "How to actually ship AI to production. Join the WhatsApp group to get the link and the materials.",
+      "cta": "Join the group",
+      "qr_alt": "QR code to join the AI workshop WhatsApp group",
+      "qr_hint": "Scan the QR"
+    }
   },
   "clients": {
     "title": "Shipped work for"
@@ -180,7 +189,12 @@
         "title": "Software Instructor",
         "company": "Tecsup",
         "period": "Mar 2021 – Jul 2024",
-        "tags": ["React", "Python", "Swift", "Firebase"],
+        "tags": [
+          "React",
+          "Python",
+          "Swift",
+          "Firebase"
+        ],
         "context": "Technical university — Lima, Peru",
         "bullets": [
           "Taught Programming Fundamentals, Advanced Mobile Programming, and Intro to Databases to cohorts of 20–40 students per semester",
@@ -213,7 +227,13 @@
         "title": "Software Developer",
         "company": "Perú Masivo",
         "period": "Jul 2019 – Jan 2020",
-        "tags": ["Laravel", "AWS", "React", "Docker", "Dialogflow"],
+        "tags": [
+          "Laravel",
+          "AWS",
+          "React",
+          "Docker",
+          "Dialogflow"
+        ],
         "context": "Logistics company — Lima, Peru",
         "bullets": [
           "Designed and built an ERP covering logistics and maintenance workflows, replacing manual spreadsheet-based processes",
@@ -225,7 +245,13 @@
         "title": "Mobile Developer",
         "company": "DogHouser",
         "period": "May 2019 – Mar 2020",
-        "tags": ["Node.js", "AWS", "React", "Swift", "Java"],
+        "tags": [
+          "Node.js",
+          "AWS",
+          "React",
+          "Swift",
+          "Java"
+        ],
         "context": "Pet-care marketplace startup — Lima, Peru",
         "bullets": [
           "Developed native iOS and Android applications for a pet-care marketplace connecting dog owners with trusted caregivers",
@@ -236,7 +262,14 @@
         "title": "Software Developer",
         "company": "Guvery Latam SAC",
         "period": "Aug 2017 – Apr 2019",
-        "tags": ["PHP", "Node.js", "GCP", "Azure", "Docker", "Swift"],
+        "tags": [
+          "PHP",
+          "Node.js",
+          "GCP",
+          "Azure",
+          "Docker",
+          "Swift"
+        ],
         "context": "E-commerce logistics startup — Lima, Peru",
         "bullets": [
           "Implemented Social Login (Google & Facebook) across buyer and traveler user flows, reducing signup friction",
@@ -269,7 +302,11 @@
       "Something else"
     ],
     "timeline_label": "When does it start?",
-    "timelines": ["As soon as possible", "In 1–3 months", "Still exploring"],
+    "timelines": [
+      "As soon as possible",
+      "In 1–3 months",
+      "Still exploring"
+    ],
     "error_name": "Please enter your name (min. 2 characters)",
     "error_email": "Please enter a valid email address",
     "error_message": "Please write a message (min. 10 characters)",
