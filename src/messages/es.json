@@ -24,16 +24,17 @@
       "Senior Software Developer",
       "Full Stack Engineer",
       "Experto en Next.js"
-    ],
-    "workshop": {
-      "badge": "Gratis",
-      "date": "Jue 17 de septiembre",
-      "title": "Workshop de IA en vivo",
-      "subtitle": "Cómo llevar IA a producción de verdad. Únete al grupo de WhatsApp para recibir el enlace y el material.",
-      "cta": "Unirme al grupo",
-      "qr_alt": "Código QR para unirte al grupo de WhatsApp del workshop de IA",
-      "qr_hint": "Escanea el QR"
-    }
+    ]
+  },
+  "workshop": {
+    "badge": "Gratis",
+    "date": "Jue 17 de septiembre",
+    "title": "Workshop de IA en vivo",
+    "subtitle": "Cómo llevar IA a producción de verdad. Únete al grupo de WhatsApp para recibir el enlace y el material.",
+    "cta": "Unirme al grupo",
+    "qr_alt": "Código QR para unirte al grupo de WhatsApp del workshop de IA",
+    "qr_hint": "Escanea el QR",
+    "dismiss": "Cerrar aviso del workshop"
   },
   "clients": {
     "title": "Trabajo entregado para"

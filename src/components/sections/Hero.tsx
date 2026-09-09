@@ -13,7 +13,7 @@ import Image from "next/image";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { SiReact, SiNextdotjs, SiOpenai, SiPython, SiDjango, SiWhatsapp } from "react-icons/si";
 import { TbBrain } from "react-icons/tb";
-import { ctaHref, ctaLinkProps } from "@/lib/site";
+import { ctaHref, ctaLinkProps, WORKSHOP_GROUP_URL } from "@/lib/site";
 import { readableAccent } from "@/lib/project-meta";
 import { Typewriter } from "@/components/ui/AnimatedText";
 import { HeroBackdrop } from "@/components/three/HeroBackdrop";
@@ -91,16 +91,13 @@ function MagneticButton({
   );
 }
 
-/** Free live workshop — the WhatsApp group is the signup list. */
-const WORKSHOP_GROUP_URL = "https://chat.whatsapp.com/JXcIkzee7vpLqdypTPF6ln";
-
 /**
  * Sits under the hero CTAs so it reads as a time-boxed offer, not the page's
  * identity. The QR is desktop-only: on a phone the visitor already has
  * WhatsApp one tap away, and a QR they cannot scan is dead weight.
  */
 function WorkshopBanner() {
-  const t = useTranslations("hero.workshop");
+  const t = useTranslations("workshop");
   const reduceMotion = useReducedMotion();
 
   return (

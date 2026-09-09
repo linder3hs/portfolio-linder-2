@@ -1,5 +1,6 @@
 import { Footer } from '@/components/ui/Footer';
 import { Navbar } from '@/components/ui/Navbar';
+import { WorkshopBar } from '@/components/ui/WorkshopBar';
 import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -85,6 +86,7 @@ export default async function LocaleLayout({
         <Navbar />
         <div id="content">{children}</div>
         <Footer />
+        <WorkshopBar />
       </div>
     </NextIntlClientProvider>
   );

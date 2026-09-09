@@ -24,16 +24,17 @@
       "Senior Software Developer",
       "Full Stack Engineer",
       "Next.js Expert"
-    ],
-    "workshop": {
-      "badge": "Free",
-      "date": "Thu, September 17",
-      "title": "Live AI workshop",
-      "subtitle": "How to actually ship AI to production. Join the WhatsApp group to get the link and the materials.",
-      "cta": "Join the group",
-      "qr_alt": "QR code to join the AI workshop WhatsApp group",
-      "qr_hint": "Scan the QR"
-    }
+    ]
+  },
+  "workshop": {
+    "badge": "Free",
+    "date": "Thu, September 17",
+    "title": "Live AI workshop",
+    "subtitle": "How to actually ship AI to production. Join the WhatsApp group to get the link and the materials.",
+    "cta": "Join the group",
+    "qr_alt": "QR code to join the AI workshop WhatsApp group",
+    "qr_hint": "Scan the QR",
+    "dismiss": "Dismiss workshop notice"
   },
   "clients": {
     "title": "Shipped work for"

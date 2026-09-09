@@ -25,3 +25,9 @@ export const CTA_IS_EXTERNAL = Boolean(BOOKING_URL);
 export const ctaLinkProps = CTA_IS_EXTERNAL
   ? { target: "_blank" as const, rel: "noopener noreferrer" }
   : {};
+
+/**
+ * WhatsApp group for the free live workshop — the group doubles as the signup
+ * list, so this is the only registration step there is.
+ */
+export const WORKSHOP_GROUP_URL = "https://chat.whatsapp.com/JXcIkzee7vpLqdypTPF6ln";
