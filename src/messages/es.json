@@ -11,6 +11,23 @@
     "writing": "Escritos",
     "cta": "Hablemos"
   },
+  "command": {
+    "open": "Abrir búsqueda",
+    "title": "Paleta de comandos",
+    "placeholder": "Busca secciones, proyectos, escritos…",
+    "empty": "Sin resultados",
+    "groups": {
+      "sections": "Secciones",
+      "projects": "Proyectos",
+      "writing": "Escritos",
+      "actions": "Acciones"
+    },
+    "actions": {
+      "book_call": "Agendar llamada",
+      "switch_to_es": "Cambiar a español",
+      "switch_to_en": "Cambiar a inglés"
+    }
+  },
   "hero": {
     "greeting": "Hola, soy",
     "name": "Linder Hassinger",

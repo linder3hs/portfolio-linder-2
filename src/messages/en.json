@@ -11,6 +11,23 @@
     "writing": "Writing",
     "cta": "Let's talk"
   },
+  "command": {
+    "open": "Open search",
+    "title": "Command palette",
+    "placeholder": "Search sections, projects, writing…",
+    "empty": "No results",
+    "groups": {
+      "sections": "Sections",
+      "projects": "Projects",
+      "writing": "Writing",
+      "actions": "Actions"
+    },
+    "actions": {
+      "book_call": "Book a call",
+      "switch_to_es": "Switch to Spanish",
+      "switch_to_en": "Switch to English"
+    }
+  },
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Linder Hassinger",

@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { BOOKING_URL, ctaLinkProps } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { CommandPalette } from "./CommandPalette";
 import { LanguageToggle } from "./LanguageToggle";
 import { Logo } from "./Logo";
 
@@ -198,6 +199,8 @@ export function Navbar() {
           */}
           <CtaButton isHome={isHome} label={t("cta")} className="hidden sm:inline-flex" />
 
+          {/* Only way into the palette on touch devices, where there is no ⌘K. */}
+          <CommandPalette />
           <LanguageToggle />
           <button
             type="button"

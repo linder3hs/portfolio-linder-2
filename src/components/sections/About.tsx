@@ -9,7 +9,9 @@ import { BOOKING_URL } from "@/lib/site";
 import { readableAccent } from "@/lib/project-meta";
 
 const stats = [
-  { target: 8, suffix: "+", labelKey: "stats.years_label", color: "#7C3AED" },
+  // Matches the "9+" in the bio and the messages file; the stat was left at 8
+  // when the rest of the copy was bumped.
+  { target: 9, suffix: "+", labelKey: "stats.years_label", color: "#7C3AED" },
   { target: 50, suffix: "+", labelKey: "stats.projects_label", color: "#A855F7" },
   { target: 20, suffix: "+", labelKey: "stats.technologies_label", color: "#C084FC" },
   { target: 3, suffix: "+", labelKey: "stats.ai_label", color: "#74AA9C" },

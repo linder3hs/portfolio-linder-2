@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
 
 interface CountUpProps {
   target: number;
@@ -9,35 +8,63 @@ interface CountUpProps {
   duration?: number;
 }
 
+/**
+ * Counts up to `target` the first time it scrolls into view.
+ *
+ * It renders the *final* value on the server and on first paint, and only
+ * drops to 0 once the animation is actually about to run. The previous version
+ * started at 0 and relied on an observer callback to ever leave it, so any
+ * browser where that callback didn't fire — reduced motion, a hydration hiccup,
+ * an element already in view at load — was left showing "0+" forever. The
+ * failure mode now is "no animation", not "wrong number".
+ */
 export function CountUp({ target, suffix = "", duration = 1800 }: CountUpProps) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const reduceMotion = useReducedMotion();
-  const started = useRef(false);
 
   useEffect(() => {
-    if (!isInView || started.current || reduceMotion) return;
-    started.current = true;
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const startTime = performance.now();
+    let frame = 0;
 
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(tick);
+    const animate = () => {
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        // Ease out cubic.
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.round(eased * target));
+        if (progress < 1) frame = requestAnimationFrame(tick);
+      };
+
+      setCount(0);
+      frame = requestAnimationFrame(tick);
     };
 
-    requestAnimationFrame(tick);
-  }, [isInView, target, duration, reduceMotion]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        animate();
+      },
+      // A sliver of the number is enough; the card around it is already
+      // animating in at this point.
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [target, duration]);
 
   return (
     <span ref={ref}>
-      {/* Reduced motion shows the final number rather than ticking up to it. */}
-      {reduceMotion ? target : count}
+      {count}
       {suffix}
     </span>
   );
