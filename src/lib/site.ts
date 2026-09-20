@@ -32,5 +32,14 @@ export const ctaLinkProps = CTA_IS_EXTERNAL
  */
 export const WORKSHOP_GROUP_URL = "https://chat.whatsapp.com/JXcIkzee7vpLqdypTPF6ln";
 
-/** Where plan enquiries land until a real checkout exists. */
-export const CONTACT_EMAIL = "linderhassinger00@gmail.com";
+/**
+ * Direct line for plan signups. There is no gateway on purpose: Yape and Plin
+ * are free between people, so a card processor would only take a cut of a
+ * S/ 15 membership.
+ */
+export const WHATSAPP_NUMBER = "51967617166";
+
+/** wa.me link with the first message already written. */
+export function whatsappUrl(text: string): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}

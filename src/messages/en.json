@@ -398,10 +398,10 @@
     "popular": "Most picked",
     "sold_out": "Sold out",
     "seats": "{seats} seats",
-    "cta": "I want this plan",
-    "cta_waitlist": "Join the waitlist",
-    "mail_subject": "Plan {plan} — I want in",
-    "mail_body": "Hi Linder,\n\nI want to join the {plan} plan. Tell me how to pay and how we start.\n\nName:\nWhat I'm building:\n",
-    "payments_note": "Card payments through Culqi are on the way. For now we set it up by email and I send you the payment link."
+    "cta": "Chat on WhatsApp",
+    "cta_waitlist": "Ask for a seat",
+    "payments_note": "No card gateway on purpose: you pay by Yape or Plin and none of it goes to commissions. Write to me on WhatsApp, we sort out the plan and I send you the access the same day.",
+    "wa_message": "Hi Linder! I want to join the {plan} plan. How do I pay?",
+    "payment_methods": "Yape · Plin"
   }
 }

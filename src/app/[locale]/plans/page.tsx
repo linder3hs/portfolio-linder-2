@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Check, Sparkles } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { routing } from "@/i18n/routing";
 import { plans } from "@/lib/plans";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { whatsappUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -55,13 +56,11 @@ export default async function PlansPage({
           const name = isEs ? plan.name.es : plan.name.en;
           const perks = isEs ? plan.perks.es : plan.perks.en;
           /*
-           * ponytail: the "checkout" is an email with the plan already in the
-           * subject. Culqi is not affiliated yet, and a button that pretends to
-           * charge is worse than one that starts a conversation.
+           * ponytail: the "checkout" is a WhatsApp message with the plan
+           * already written in it. Payment is settled by Yape or Plin in the
+           * same chat — no gateway, no commission on a S/ 15 membership.
            */
-          const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-            t("mail_subject", { plan: name }),
-          )}&body=${encodeURIComponent(t("mail_body", { plan: name }))}`;
+          const href = whatsappUrl(t("wa_message", { plan: name }));
 
           return (
             <div key={plan.id} className="relative h-full">
@@ -122,14 +121,17 @@ export default async function PlansPage({
                 </ul>
 
                 <a
-                  href={mailto}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
-                    "mt-7 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/70",
+                    "mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/70",
                     plan.featured
-                      ? "bg-primary text-white hover:bg-violet-500 hover:shadow-[0_0_32px_rgba(124,58,237,0.5)]"
+                      ? "bg-[#25D366] text-[#06251a] hover:bg-[#1fbe5a] hover:shadow-[0_0_32px_rgba(37,211,102,0.45)]"
                       : "glass gradient-border text-white/85 hover:text-white",
                   )}
                 >
+                  <SiWhatsapp size={15} aria-hidden />
                   {plan.soldOut ? t("cta_waitlist") : t("cta")}
                 </a>
               </article>
@@ -138,9 +140,12 @@ export default async function PlansPage({
         })}
       </div>
 
-      <p className="mx-auto mt-10 max-w-xl text-center text-xs leading-relaxed text-white/40">
-        {t("payments_note")}
-      </p>
+      <div className="mx-auto mt-10 max-w-xl text-center">
+        <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-white/60">
+          {t("payment_methods")}
+        </p>
+        <p className="mt-4 text-xs leading-relaxed text-white/40">{t("payments_note")}</p>
+      </div>
     </main>
   );
 }
