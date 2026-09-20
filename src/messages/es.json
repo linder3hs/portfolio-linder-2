@@ -9,7 +9,9 @@
     "all_projects": "Todos los proyectos",
     "toggle_menu": "Abrir o cerrar el menú de navegación",
     "writing": "Escritos",
-    "cta": "Hablemos"
+    "cta": "Hablemos",
+    "workshops": "Workshops",
+    "plans": "Planes"
   },
   "command": {
     "open": "Abrir búsqueda",
@@ -25,7 +27,9 @@
     "actions": {
       "book_call": "Agendar llamada",
       "switch_to_es": "Cambiar a español",
-      "switch_to_en": "Cambiar a inglés"
+      "switch_to_en": "Cambiar a inglés",
+      "workshops": "Calendario de workshops",
+      "plans": "Planes de membresía"
     }
   },
   "hero": {
@@ -45,12 +49,8 @@
   },
   "workshop": {
     "badge": "Gratis",
-    "date": "Jue 17 de septiembre",
     "title": "Workshop de IA en vivo",
-    "subtitle": "Cómo llevar IA a producción de verdad. Únete al grupo de WhatsApp para recibir el enlace y el material.",
     "cta": "Unirme al grupo",
-    "qr_alt": "Código QR para unirte al grupo de WhatsApp del workshop de IA",
-    "qr_hint": "Escanea el QR",
     "dismiss": "Cerrar aviso del workshop"
   },
   "clients": {
@@ -365,5 +365,43 @@
     "read": "Leer",
     "next_post": "Siguiente nota",
     "reading_time": "{minutes} min de lectura"
+  },
+  "workshops": {
+    "eyebrow": "Workshops en vivo",
+    "title": "Calendario de workshops",
+    "subtitle": "Sesiones gratuitas en vivo, jueves de por medio. Construyo algo real en pantalla y respondo lo que salga — nada de teoría en diapositivas.",
+    "weekdays": [
+      "L",
+      "M",
+      "M",
+      "J",
+      "V",
+      "S",
+      "D"
+    ],
+    "free": "Gratis",
+    "live": "En vivo",
+    "next": "Próximo",
+    "duration": "{minutes} min",
+    "timezone": "Hora Perú (GMT-5)",
+    "join": "Unirme al grupo",
+    "group_note": "El grupo de WhatsApp es la inscripción: por ahí salen el enlace y el material.",
+    "qr_alt": "Código QR para unirte al grupo de WhatsApp del workshop de IA",
+    "qr_hint": "Escanea el QR",
+    "empty": "No hay fechas en el calendario ahora. Las nuevas salen primero en el grupo."
+  },
+  "plans": {
+    "eyebrow": "Membresía",
+    "title": "Planes",
+    "subtitle": "Apoya el trabajo y llévate las grabaciones, las plantillas y tiempo conmigo. Mensual, cancelas cuando quieras.",
+    "per_month": "/mes",
+    "popular": "Más elegido",
+    "sold_out": "Sin cupos",
+    "seats": "{seats} cupos",
+    "cta": "Quiero este plan",
+    "cta_waitlist": "Lista de espera",
+    "mail_subject": "Plan {plan} — quiero entrar",
+    "mail_body": "Hola Linder,\n\nQuiero entrar al plan {plan}. Cuéntame cómo pago y cómo arrancamos.\n\nNombre:\nQué estoy construyendo:\n",
+    "payments_note": "Los pagos con tarjeta vía Culqi vienen en camino. Por ahora lo coordinamos por correo y te mando el enlace de pago."
   }
 }

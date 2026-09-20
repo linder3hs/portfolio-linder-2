@@ -31,3 +31,6 @@ export const ctaLinkProps = CTA_IS_EXTERNAL
  * list, so this is the only registration step there is.
  */
 export const WORKSHOP_GROUP_URL = "https://chat.whatsapp.com/JXcIkzee7vpLqdypTPF6ln";
+
+/** Where plan enquiries land until a real checkout exists. */
+export const CONTACT_EMAIL = "linderhassinger00@gmail.com";

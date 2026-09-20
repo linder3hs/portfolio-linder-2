@@ -14,7 +14,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Calendar,
+  CalendarDays,
   CornerDownLeft,
+  CreditCard,
   FileText,
   FolderGit2,
   Hash,
@@ -197,6 +199,22 @@ export function CommandPalette() {
     });
 
     const actionItems: Item[] = [
+      {
+        id: "action-workshops",
+        group: "actions",
+        label: t("actions.workshops"),
+        keywords: "workshops calendario calendar eventos events talleres",
+        icon: CalendarDays,
+        run: () => go("/workshops"),
+      },
+      {
+        id: "action-plans",
+        group: "actions",
+        label: t("actions.plans"),
+        keywords: "plans planes membresia membership suscripcion precios pricing",
+        icon: CreditCard,
+        run: () => go("/plans"),
+      },
       {
         id: "action-call",
         group: "actions",

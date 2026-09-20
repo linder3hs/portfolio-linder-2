@@ -57,9 +57,6 @@ export function WorkshopBar() {
                     />
                     {t("badge")}
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-white/45">
-                    {t("date")}
-                  </span>
                 </div>
                 <p className="mt-0.5 truncate text-sm font-semibold text-white">
                   {t("title")}

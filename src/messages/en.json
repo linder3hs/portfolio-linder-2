@@ -9,7 +9,9 @@
     "all_projects": "All projects",
     "toggle_menu": "Toggle navigation menu",
     "writing": "Writing",
-    "cta": "Let's talk"
+    "cta": "Let's talk",
+    "workshops": "Workshops",
+    "plans": "Plans"
   },
   "command": {
     "open": "Open search",
@@ -25,7 +27,9 @@
     "actions": {
       "book_call": "Book a call",
       "switch_to_es": "Switch to Spanish",
-      "switch_to_en": "Switch to English"
+      "switch_to_en": "Switch to English",
+      "workshops": "Workshop calendar",
+      "plans": "Membership plans"
     }
   },
   "hero": {
@@ -45,12 +49,8 @@
   },
   "workshop": {
     "badge": "Free",
-    "date": "Thu, September 17",
     "title": "Live AI workshop",
-    "subtitle": "How to actually ship AI to production. Join the WhatsApp group to get the link and the materials.",
     "cta": "Join the group",
-    "qr_alt": "QR code to join the AI workshop WhatsApp group",
-    "qr_hint": "Scan the QR",
     "dismiss": "Dismiss workshop notice"
   },
   "clients": {
@@ -365,5 +365,43 @@
     "read": "Read",
     "next_post": "Next note",
     "reading_time": "{minutes} min read"
+  },
+  "workshops": {
+    "eyebrow": "Live workshops",
+    "title": "Workshop calendar",
+    "subtitle": "Free live sessions, every other Thursday. I build something real on screen and answer whatever comes up — no slides-only theory.",
+    "weekdays": [
+      "M",
+      "T",
+      "W",
+      "T",
+      "F",
+      "S",
+      "S"
+    ],
+    "free": "Free",
+    "live": "Live",
+    "next": "Next",
+    "duration": "{minutes} min",
+    "timezone": "Peru time (GMT-5)",
+    "join": "Join the group",
+    "group_note": "The WhatsApp group is the signup: that's where the link and the material go out.",
+    "qr_alt": "QR code to join the AI workshop WhatsApp group",
+    "qr_hint": "Scan the QR",
+    "empty": "No dates on the calendar right now. New ones go out in the group first."
+  },
+  "plans": {
+    "eyebrow": "Membership",
+    "title": "Plans",
+    "subtitle": "Support the work and get the recordings, the templates and time with me. Monthly, cancel whenever.",
+    "per_month": "/month",
+    "popular": "Most picked",
+    "sold_out": "Sold out",
+    "seats": "{seats} seats",
+    "cta": "I want this plan",
+    "cta_waitlist": "Join the waitlist",
+    "mail_subject": "Plan {plan} — I want in",
+    "mail_body": "Hi Linder,\n\nI want to join the {plan} plan. Tell me how to pay and how we start.\n\nName:\nWhat I'm building:\n",
+    "payments_note": "Card payments through Culqi are on the way. For now we set it up by email and I send you the payment link."
   }
 }

@@ -18,6 +18,13 @@ const sectionLinks = [
   { key: "experience", id: "experience" },
 ];
 
+/** Standalone routes, not anchors on the home page. */
+const routeLinks = [
+  { key: "workshops", href: "/workshops" },
+  { key: "plans", href: "/plans" },
+  { key: "writing", href: "/writing" },
+];
+
 /**
  * Tracks which section is in view. IntersectionObserver instead of a scroll
  * handler: no per-event layout reads, and the listener is registered once.
@@ -143,7 +150,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-6 lg:flex lg:gap-8">
           {sectionLinks.map(({ key, id }) => {
             const isActive = isHome && activeSection === id;
             const href = isHome ? `#${id}` : `/#${id}`;
@@ -183,12 +190,15 @@ export function Navbar() {
             );
           })}
 
-          <Link
-            href="/writing"
-            className="rounded text-sm font-medium text-white/62 outline-none transition-colors duration-200 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
-          >
-            {t("writing")}
-          </Link>
+          {routeLinks.map(({ key, href }) => (
+            <Link
+              key={key}
+              href={href}
+              className="rounded text-sm font-medium text-white/62 outline-none transition-colors duration-200 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+            >
+              {t(key)}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -204,7 +214,7 @@ export function Navbar() {
           <LanguageToggle />
           <button
             type="button"
-            className="rounded text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60 md:hidden"
+            className="rounded text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60 lg:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -223,7 +233,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-white/[0.07] bg-black/50 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-white/[0.07] bg-black/50 backdrop-blur-xl lg:hidden"
           >
             <nav aria-label="Mobile" className="flex flex-col gap-1 px-6 py-4">
               {sectionLinks.map(({ key, id }) =>
@@ -247,13 +257,16 @@ export function Navbar() {
                   </Link>
                 ),
               )}
-              <Link
-                href="/writing"
-                onClick={closeMenu}
-                className="rounded py-2 text-sm font-medium text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
-              >
-                {t("writing")}
-              </Link>
+              {routeLinks.map(({ key, href }) => (
+                <Link
+                  key={key}
+                  href={href}
+                  onClick={closeMenu}
+                  className="rounded py-2 text-sm font-medium text-white/75 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/60"
+                >
+                  {t(key)}
+                </Link>
+              ))}
               <Link
                 href="/projects"
                 onClick={closeMenu}

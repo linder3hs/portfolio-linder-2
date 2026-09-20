@@ -104,6 +104,18 @@ export function Footer() {
               </Link>
             ))}
             <Link
+              href="/workshops"
+              className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
+            >
+              {nav("workshops")}
+            </Link>
+            <Link
+              href="/plans"
+              className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
+            >
+              {nav("plans")}
+            </Link>
+            <Link
               href="/writing"
               className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
             >

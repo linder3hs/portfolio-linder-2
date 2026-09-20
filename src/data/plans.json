@@ -1,0 +1,78 @@
+[
+  {
+    "id": "cafe",
+    "price": 15,
+    "featured": true,
+    "name": { "en": "Café", "es": "Café" },
+    "tagline": {
+      "en": "Everything I record and template, in your inbox.",
+      "es": "Todo lo que grabo y plantillo, en tu correo."
+    },
+    "perks": {
+      "en": [
+        "Workshop recordings",
+        "Claude Code templates (CLAUDE.md, commands, prompts)",
+        "Private community group",
+        "Posts and messages for members only"
+      ],
+      "es": [
+        "Grabaciones de los workshops",
+        "Plantillas de Claude Code (CLAUDE.md, comandos, prompts)",
+        "Grupo privado de la comunidad",
+        "Publicaciones y mensajes solo para miembros"
+      ]
+    }
+  },
+  {
+    "id": "builders",
+    "price": 75,
+    "seats": 30,
+    "name": { "en": "Builders", "es": "Builders" },
+    "tagline": {
+      "en": "You are building something and want eyes on it every month.",
+      "es": "Estás construyendo algo y quieres ojos encima cada mes."
+    },
+    "perks": {
+      "en": [
+        "Everything in Café",
+        "Two live sessions a month reviewing ideas and projects",
+        "Work-in-progress updates on what I ship",
+        "Feedback from the community on your project",
+        "Monthly demo day"
+      ],
+      "es": [
+        "Todo lo de Café",
+        "Dos sesiones en vivo al mes revisando ideas y proyectos",
+        "Avances de lo que voy construyendo",
+        "Feedback de la comunidad sobre tu proyecto",
+        "Demo day mensual"
+      ]
+    }
+  },
+  {
+    "id": "mentoria",
+    "price": 85,
+    "seats": 8,
+    "name": { "en": "1:1 Mentoring", "es": "Mentoría 1:1" },
+    "tagline": {
+      "en": "Your code, your architecture, your career — one on one.",
+      "es": "Tu código, tu arquitectura, tu carrera — uno a uno."
+    },
+    "perks": {
+      "en": [
+        "Everything in Builders",
+        "Up to three 30-minute 1:1 calls a month",
+        "Code, architecture or portfolio review",
+        "A roadmap built around your goals",
+        "Priority on messages"
+      ],
+      "es": [
+        "Todo lo de Builders",
+        "Hasta tres llamadas 1:1 de 30 minutos al mes",
+        "Revisión de código, arquitectura o portafolio",
+        "Roadmap armado según tus objetivos",
+        "Prioridad en los mensajes"
+      ]
+    }
+  }
+]
