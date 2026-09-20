@@ -1,34 +1,18 @@
 [
   {
-    "id": "ia-en-produccion",
+    "id": "ia-para-automatizar-procesos",
     "date": "2026-09-24",
     "time": "18:00",
     "durationMin": 90,
     "level": { "en": "Intro", "es": "Intro" },
     "title": {
-      "en": "From idea to production with the Claude API",
-      "es": "De la idea a producción con la Claude API"
+      "en": "AI for automating processes",
+      "es": "IA para automatizar procesos"
     },
     "summary": {
-      "en": "We build a real feature end to end: prompt design, streaming, cost control and the deploy. No slides-only theory — you leave with working code.",
-      "es": "Construimos una feature real de punta a punta: diseño del prompt, streaming, control de costos y el deploy. Nada de teoría en diapositivas — te llevas código que corre."
+      "en": "Which parts of your work are worth automating with AI and which are not. We build a real automation live, from the first idea to the process actually running.",
+      "es": "Qué partes de tu trabajo vale la pena automatizar con IA y cuáles no. Armamos una automatización real en vivo, desde la idea hasta el proceso corriendo."
     },
-    "topics": ["Claude API", "Prompting", "Next.js", "Deploy"]
-  },
-  {
-    "id": "claude-code-agentes",
-    "date": "2026-10-01",
-    "time": "18:00",
-    "durationMin": 90,
-    "level": { "en": "Intermediate", "es": "Intermedio" },
-    "title": {
-      "en": "Claude Code: agents that ship your code",
-      "es": "Claude Code: agentes que sacan tu código"
-    },
-    "summary": {
-      "en": "How I set up CLAUDE.md, skills, subagents and hooks on real projects, and where an agent still needs a human in the loop.",
-      "es": "Cómo configuro CLAUDE.md, skills, subagentes y hooks en proyectos reales, y dónde un agente todavía necesita a un humano al mando."
-    },
-    "topics": ["Claude Code", "MCP", "Subagentes", "CI"]
+    "topics": ["IA", "Automatización", "Workflows", "Casos reales"]
   }
 ]

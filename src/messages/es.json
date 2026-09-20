@@ -369,7 +369,7 @@
   "workshops": {
     "eyebrow": "Workshops en vivo",
     "title": "Calendario de workshops",
-    "subtitle": "Sesiones gratuitas en vivo, jueves de por medio. Construyo algo real en pantalla y respondo lo que salga — nada de teoría en diapositivas.",
+    "subtitle": "Sesiones gratuitas en vivo. Construyo algo real en pantalla y respondo lo que salga — nada de teoría en diapositivas.",
     "weekdays": [
       "L",
       "M",
@@ -407,7 +407,7 @@
   "community": {
     "eyebrow": "Comunidad",
     "title": "Aprende conmigo, no solo me contrates",
-    "subtitle": "Workshops gratuitos en vivo jueves de por medio, y una membresía para las grabaciones, las plantillas y tiempo conmigo.",
+    "subtitle": "Un workshop gratuito en vivo, y una membresía para las grabaciones, las plantillas y tiempo conmigo.",
     "workshops_label": "Próximos workshops",
     "plans_label": "Membresía",
     "payment": "Yape · Plin",

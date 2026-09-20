@@ -369,7 +369,7 @@
   "workshops": {
     "eyebrow": "Live workshops",
     "title": "Workshop calendar",
-    "subtitle": "Free live sessions, every other Thursday. I build something real on screen and answer whatever comes up — no slides-only theory.",
+    "subtitle": "Free live sessions. I build something real on screen and answer whatever comes up — no slides-only theory.",
     "weekdays": [
       "M",
       "T",
@@ -407,7 +407,7 @@
   "community": {
     "eyebrow": "Community",
     "title": "Learn with me, not just hire me",
-    "subtitle": "Free live workshops every other Thursday, and a membership for the recordings, the templates and time with me.",
+    "subtitle": "A free live workshop, and a membership for the recordings, the templates and time with me.",
     "workshops_label": "Next workshops",
     "plans_label": "Membership",
     "payment": "Yape · Plin",
