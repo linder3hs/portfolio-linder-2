@@ -403,5 +403,17 @@
     "payments_note": "Sin pasarela a propósito: pagas por Yape o Plin y nada se va en comisiones. Escríbeme por WhatsApp, coordinamos el plan y te mando el acceso el mismo día.",
     "wa_message": "¡Hola Linder! Quiero entrar al plan {plan}. ¿Cómo hago el pago?",
     "payment_methods": "Yape · Plin"
+  },
+  "community": {
+    "eyebrow": "Comunidad",
+    "title": "Aprende conmigo, no solo me contrates",
+    "subtitle": "Workshops gratuitos en vivo jueves de por medio, y una membresía para las grabaciones, las plantillas y tiempo conmigo.",
+    "workshops_label": "Próximos workshops",
+    "plans_label": "Membresía",
+    "payment": "Yape · Plin",
+    "popular": "Más elegido",
+    "from_price": "Desde S/ {price} al mes",
+    "see_calendar": "Ver el calendario completo",
+    "see_plans": "Ver los planes"
   }
 }

@@ -7,6 +7,7 @@ import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Experience } from "@/components/sections/Experience";
+import { Community } from "@/components/sections/Community";
 import { Contact } from "@/components/sections/Contact";
 import { AskLinder } from "@/components/ai/AskLinder";
 
@@ -48,6 +49,9 @@ export default async function Home({
       <AskLinder />
       <Divider />
       <Experience />
+      <Divider />
+      {/* Second door: the consulting sections sell to companies, this to devs. */}
+      <Community />
       <Divider />
       <Contact />
     </main>

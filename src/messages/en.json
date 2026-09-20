@@ -403,5 +403,17 @@
     "payments_note": "No card gateway on purpose: you pay by Yape or Plin and none of it goes to commissions. Write to me on WhatsApp, we sort out the plan and I send you the access the same day.",
     "wa_message": "Hi Linder! I want to join the {plan} plan. How do I pay?",
     "payment_methods": "Yape · Plin"
+  },
+  "community": {
+    "eyebrow": "Community",
+    "title": "Learn with me, not just hire me",
+    "subtitle": "Free live workshops every other Thursday, and a membership for the recordings, the templates and time with me.",
+    "workshops_label": "Next workshops",
+    "plans_label": "Membership",
+    "payment": "Yape · Plin",
+    "popular": "Most picked",
+    "from_price": "From S/ {price} a month",
+    "see_calendar": "See the full calendar",
+    "see_plans": "See the plans"
   }
 }
