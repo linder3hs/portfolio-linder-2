@@ -1,5 +1,6 @@
 "use client";
 
+import { Globe } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useTransition } from "react";
@@ -26,9 +27,14 @@ export function LanguageToggle() {
       disabled={isPending}
       lang={locale === "en" ? "es" : "en"}
       aria-label={locale === "en" ? "Cambiar idioma a español" : "Switch language to English"}
-      className="rounded-full border border-white/20 px-3 py-1.5 font-mono text-xs font-semibold tracking-widest text-white/75 outline-none transition-all duration-300 hover:border-purple-400/50 hover:text-white focus-visible:ring-2 focus-visible:ring-purple-400 disabled:opacity-50"
+      // Borderless next to the palette button and the CTA: three outlined
+      // controls in a row read as a toolbar, which is not what this is.
+      className="flex items-center gap-1 rounded-full px-2 py-1.5 text-white/55 outline-none transition-colors duration-300 hover:bg-white/5 hover:text-white focus-visible:ring-2 focus-visible:ring-purple-400 disabled:opacity-50"
     >
-      {locale === "en" ? "ES" : "EN"}
+      <Globe size={15} aria-hidden />
+      <span className="font-mono text-[10px] font-semibold tracking-widest">
+        {locale === "en" ? "ES" : "EN"}
+      </span>
     </button>
   );
 }

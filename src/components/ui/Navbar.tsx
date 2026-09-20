@@ -141,13 +141,10 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
-          className="flex items-center gap-2.5 rounded outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          className="flex items-center rounded outline-none focus-visible:ring-2 focus-visible:ring-white/60"
           aria-label="Linder Hassinger — home"
         >
           <Logo size={26} />
-          <span className="font-heading hidden text-sm font-semibold tracking-tight text-white/80 transition-colors hover:text-white sm:block">
-            Linder Hassinger
-          </span>
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-6 lg:flex lg:gap-8">
