@@ -8,7 +8,7 @@ import {
   useSpring,
   type Variants,
 } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowDown } from "lucide-react";
 import { SiReact, SiNextdotjs, SiOpenai, SiPython, SiDjango } from "react-icons/si";
 import { TbBrain } from "react-icons/tb";
@@ -92,6 +92,7 @@ function MagneticButton({
 
 export function Hero() {
   const t = useTranslations("hero");
+  const locale = useLocale();
   const reduceMotion = useReducedMotion();
   const roles = t.raw("roles") as string[];
 
@@ -179,23 +180,28 @@ export function Hero() {
         </motion.p>
 
         {/*
-          Contact is the primary action, not "view my work": this page exists to
-          start conversations, and the work is one scroll away either way.
+          The courses are the primary action while a cohort is open; contact
+          stays beside it, and the work is one scroll away either way.
         */}
         <motion.div variants={item} className="flex flex-wrap justify-center gap-4">
+          {/*
+            ponytail: a plain anchor with the locale written in, so it keeps the
+            magnetic motion.a. Costs a full page load instead of a client-side
+            transition; swap for motion.create(Link) if that ever shows.
+          */}
           <MagneticButton
-            href={ctaHref()}
-            {...ctaLinkProps}
+            href={`/${locale}/courses`}
             className="group relative block overflow-hidden rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white outline-none transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            <span className="relative z-10">{t("cta_contact")}</span>
+            <span className="relative z-10">{t("cta_courses")}</span>
           </MagneticButton>
 
           <MagneticButton
-            href="#projects"
+            href={ctaHref()}
+            {...ctaLinkProps}
             className="gradient-border glass group relative block overflow-hidden rounded-full px-8 py-3.5 text-sm font-semibold text-white/85 outline-none transition-colors duration-300 hover:text-white focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            <span className="relative z-10">{t("cta_work")}</span>
+            <span className="relative z-10">{t("cta_contact")}</span>
           </MagneticButton>
         </motion.div>
 
