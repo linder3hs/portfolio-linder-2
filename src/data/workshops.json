@@ -1,18 +1,1 @@
-[
-  {
-    "id": "ia-para-automatizar-procesos",
-    "date": "2026-09-24",
-    "time": "18:00",
-    "durationMin": 90,
-    "level": { "en": "Intro", "es": "Intro" },
-    "title": {
-      "en": "AI for automating processes",
-      "es": "IA para automatizar procesos"
-    },
-    "summary": {
-      "en": "Which parts of your work are worth automating with AI and which are not. We build a real automation live, from the first idea to the process actually running.",
-      "es": "Qué partes de tu trabajo vale la pena automatizar con IA y cuáles no. Armamos una automatización real en vivo, desde la idea hasta el proceso corriendo."
-    },
-    "topics": ["IA", "Automatización", "Workflows", "Casos reales"]
-  }
-]
+[]

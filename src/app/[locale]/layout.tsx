@@ -2,6 +2,7 @@ import { Footer } from '@/components/ui/Footer';
 import { Navbar } from '@/components/ui/Navbar';
 import { WorkshopBar } from '@/components/ui/WorkshopBar';
 import { routing } from '@/i18n/routing';
+import { workshops } from '@/lib/workshops';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
@@ -86,7 +87,8 @@ export default async function LocaleLayout({
         <Navbar />
         <div id="content">{children}</div>
         <Footer />
-        <WorkshopBar />
+        {/* Nothing to promote between dates. */}
+        {workshops.length > 0 && <WorkshopBar />}
       </div>
     </NextIntlClientProvider>
   );

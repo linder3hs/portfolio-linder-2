@@ -116,6 +116,10 @@ export function Community() {
               </span>
             </div>
 
+            {workshops.length === 0 && (
+              <p className="text-sm leading-relaxed text-white/55">{tw("empty")}</p>
+            )}
+
             <ul className="space-y-4">
               {workshops.map((workshop) => (
                 <li key={workshop.id} className="flex gap-4">
