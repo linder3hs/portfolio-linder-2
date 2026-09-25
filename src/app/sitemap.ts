@@ -50,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: buildDate,
     },
     {
+      path: "/courses",
+      priority: 0.8,
+      changeFrequency: "monthly",
+      lastModified: buildDate,
+    },
+    {
       path: "/workshops",
       priority: 0.8,
       changeFrequency: "weekly",

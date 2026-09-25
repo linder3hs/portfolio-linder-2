@@ -2,9 +2,10 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight, CalendarDays, GraduationCap } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/calendar";
+import { courses } from "@/lib/courses";
 import { plans } from "@/lib/plans";
 import { workshops } from "@/lib/workshops";
 
@@ -12,7 +13,8 @@ import { workshops } from "@/lib/workshops";
  * The other half of what Linder sells: the consulting sections above are aimed
  * at companies, this one at developers. It sits after the proof and before the
  * contact form so it reads as a second door, not as a banner interrupting the
- * pitch — and it summarises /workshops and /plans rather than repeating them.
+ * pitch — and it summarises /courses, /workshops and /plans rather than
+ * repeating them.
  */
 export function Community() {
   const t = useTranslations("community");
@@ -48,7 +50,58 @@ export function Community() {
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* Courses first and full-width at md: the one offer with a deadline. */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <motion.article
+            {...reveal}
+            className="glass flex flex-col rounded-2xl border border-white/[0.08] p-6 sm:p-7 md:col-span-2 lg:col-span-1"
+          >
+            <div className="mb-5 flex items-center gap-2">
+              <GraduationCap size={15} className="text-purple-300" aria-hidden />
+              <span className="font-mono text-[11px] uppercase tracking-widest text-white/50">
+                {t("courses_label")}
+              </span>
+              <span className="ml-auto rounded-full bg-primary/20 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-purple-200">
+                {t("starts", {
+                  date: formatDate(courses[0].startDate, tag, { day: "numeric", month: "short" }),
+                })}
+              </span>
+            </div>
+
+            <ul className="space-y-3">
+              {courses.map((course) => (
+                <li
+                  key={course.id}
+                  className="flex items-baseline justify-between gap-4 border-b border-white/[0.06] pb-3 last:border-0"
+                >
+                  <span className="min-w-0">
+                    <span className="block font-semibold leading-snug text-white">
+                      {isEs ? course.title.es : course.title.en}
+                    </span>
+                    <span className="mt-1 block font-mono text-[11px] text-white/45">
+                      {isEs ? course.level.es : course.level.en} · {course.time}
+                    </span>
+                  </span>
+                  <span className="shrink-0 font-mono text-sm text-white/55">
+                    S/ {course.price}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/courses"
+              className="group mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium text-purple-300 outline-none transition-colors hover:text-purple-200 focus-visible:ring-2 focus-visible:ring-white/60"
+            >
+              {t("see_courses")}
+              <ArrowRight
+                size={14}
+                className="transition-transform duration-300 group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </Link>
+          </motion.article>
+
           <motion.article
             {...reveal}
             className="glass flex flex-col rounded-2xl border border-white/[0.08] p-6 sm:p-7"

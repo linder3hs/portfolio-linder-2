@@ -19,6 +19,7 @@ import {
   CreditCard,
   FileText,
   FolderGit2,
+  GraduationCap,
   Hash,
   Languages,
   Search,
@@ -199,6 +200,14 @@ export function CommandPalette() {
     });
 
     const actionItems: Item[] = [
+      {
+        id: "action-courses",
+        group: "actions",
+        label: t("actions.courses"),
+        keywords: "courses cursos curso clases fundamentos ia avanzada temario",
+        icon: GraduationCap,
+        run: () => go("/courses"),
+      },
       {
         id: "action-workshops",
         group: "actions",

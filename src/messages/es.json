@@ -11,7 +11,8 @@
     "writing": "Escritos",
     "cta": "Hablemos",
     "workshops": "Workshops",
-    "plans": "Planes"
+    "plans": "Planes",
+    "courses": "Cursos"
   },
   "command": {
     "open": "Abrir búsqueda",
@@ -29,7 +30,8 @@
       "switch_to_es": "Cambiar a español",
       "switch_to_en": "Cambiar a inglés",
       "workshops": "Calendario de workshops",
-      "plans": "Planes de membresía"
+      "plans": "Planes de membresía",
+      "courses": "Cursos en vivo"
     }
   },
   "hero": {
@@ -407,13 +409,47 @@
   "community": {
     "eyebrow": "Comunidad",
     "title": "Aprende conmigo, no solo me contrates",
-    "subtitle": "Un workshop gratuito en vivo, y una membresía para las grabaciones, las plantillas y tiempo conmigo.",
+    "subtitle": "Un workshop gratuito en vivo, cursos de 8 semanas y una membresía para las grabaciones, las plantillas y tiempo conmigo.",
     "workshops_label": "Próximos workshops",
     "plans_label": "Membresía",
     "payment": "Yape · Plin",
     "popular": "Más elegido",
     "from_price": "Desde S/ {price} al mes",
     "see_calendar": "Ver el calendario completo",
-    "see_plans": "Ver los planes"
+    "see_plans": "Ver los planes",
+    "courses_label": "Cursos · 8 semanas",
+    "starts": "Inicio {date}",
+    "see_courses": "Ver temarios y precios"
+  },
+  "courses": {
+    "eyebrow": "Cursos en vivo · 8 semanas",
+    "title": "Cursos",
+    "subtitle": "Dos cursos en vivo, los martes y jueves. Fundamentos si empiezas desde cero; IA Avanzada si ya programas y quieres construir con IA.",
+    "live": "En vivo",
+    "first_cohort": "Primera cohorte",
+    "starts": "Inicio: {date}",
+    "schedule": "Martes y jueves",
+    "timezone": "Hora Perú",
+    "load": "{sessions} sesiones · {hours} horas",
+    "launch_price": "Precio de lanzamiento · curso completo",
+    "installments": "o en 2 cuotas de S/ {amount}",
+    "syllabus": "Temario · {weeks} semanas",
+    "final_project": "Proyecto final",
+    "requires": "Qué necesitas",
+    "cta": "Reservar mi cupo",
+    "wa_message": "¡Hola Linder! Quiero reservar mi cupo en el curso {course}. ¿Cómo hago el pago?",
+    "includes_title": "Qué incluye cada curso",
+    "includes": [
+      "16 clases en vivo",
+      "Grabaciones de todas las sesiones",
+      "Ejercicios con feedback",
+      "Repositorio con todo el código",
+      "Grupo privado de la comunidad",
+      "Certificado de participación"
+    ],
+    "session_format": "Cada sesión: 20 min de dudas · 60 min programando en vivo · 30 min de ejercicio con feedback.",
+    "back_to_back": "Los dos cursos van seguidos los mismos días: Fundamentos de 19:00 a 21:00 e IA Avanzada de 21:00 a 23:00. Puedes llevar uno y seguir con el otro.",
+    "builders": "Los miembros de <link>Builders</link> tienen 20% de descuento. Los cupos del precio de lanzamiento son limitados.",
+    "payment_methods": "Precios en soles · Yape · Plin"
   }
 }

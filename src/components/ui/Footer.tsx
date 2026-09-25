@@ -104,6 +104,12 @@ export function Footer() {
               </Link>
             ))}
             <Link
+              href="/courses"
+              className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
+            >
+              {nav("courses")}
+            </Link>
+            <Link
               href="/workshops"
               className="rounded text-white/60 hover:text-white text-sm transition-colors duration-200"
             >

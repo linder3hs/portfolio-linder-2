@@ -1,0 +1,96 @@
+[
+  {
+    "id": "fundamentos-de-software",
+    "startDate": "2026-10-27",
+    "time": "19:00",
+    "durationMin": 120,
+    "sessions": 16,
+    "hours": 32,
+    "price": 325,
+    "regularPrice": 425,
+    "installment": 175,
+    "level": { "en": "From zero", "es": "Desde cero" },
+    "title": { "en": "Software Fundamentals", "es": "Fundamentos de Software" },
+    "summary": {
+      "en": "Programming basics, learned properly. You write every line and build two projects from scratch. AI only comes in the last week, once you can judge what it answers.",
+      "es": "Las bases de la programación, bien aprendidas. Escribes cada línea y construyes dos proyectos desde cero. La IA entra recién en la última semana, cuando ya sabes juzgar lo que te responde."
+    },
+    "syllabus": {
+      "en": [
+        { "title": "How it all works (and your first program)", "body": "What happens when you run a program. Terminal, files and environment. You write your first code line by line." },
+        { "title": "Programming logic", "body": "Variables, conditionals and loops. Solving problems by hand until it comes naturally." },
+        { "title": "Functions and data structures", "body": "Lists, objects and dictionaries. Organising information and not repeating code." },
+        { "title": "Your first project from scratch", "body": "A complete app built by you, no copy-paste. From the idea to code that works." },
+        { "title": "Git and GitHub", "body": "History, branches, pull requests and teamwork. Your code saved and in order." },
+        { "title": "How the web works", "body": "HTTP, client and server, JSON. You call your first API and see what travels underneath." },
+        { "title": "Databases and your own API", "body": "Modelling information, SQL and a full CRUD. Second project, end to end." },
+        { "title": "Deployment and first contact with AI", "body": "You publish your project on the internet. Only now do we use AI: what to ask it and how to review what it gives back." }
+      ],
+      "es": [
+        { "title": "Cómo funciona todo (y tu primer programa)", "body": "Qué pasa cuando corres un programa. Terminal, archivos y entorno. Escribes tu primer código línea por línea." },
+        { "title": "Lógica de programación", "body": "Variables, condicionales y bucles. Resolver problemas a mano hasta que te salga natural." },
+        { "title": "Funciones y estructuras de datos", "body": "Listas, objetos y diccionarios. Organizar la información y no repetir código." },
+        { "title": "Tu primer proyecto desde cero", "body": "Una aplicación completa construida por ti, sin copiar y pegar. De la idea al código que funciona." },
+        { "title": "Git y GitHub", "body": "Historial, ramas, pull requests y trabajo en equipo. Tu código guardado y ordenado." },
+        { "title": "Cómo funciona la web", "body": "HTTP, cliente y servidor, JSON. Consumes tu primera API y entiendes qué viaja por detrás." },
+        { "title": "Bases de datos y tu propia API", "body": "Modelar la información, SQL y un CRUD completo. Segundo proyecto, de punta a punta." },
+        { "title": "Despliegue y primer contacto con IA", "body": "Publicas tu proyecto en internet. Recién aquí usamos IA: qué pedirle y cómo revisar lo que entrega." }
+      ]
+    },
+    "finalProject": {
+      "en": "Two projects written by you: a complete app and an app with a database, published on your GitHub.",
+      "es": "Dos proyectos escritos por ti: una aplicación completa y una app con base de datos, publicadas en tu GitHub."
+    },
+    "requires": {
+      "en": "A computer with internet and the will to write code by hand. No prior experience needed.",
+      "es": "Una computadora con internet y ganas de escribir código a mano. No necesitas experiencia previa."
+    }
+  },
+  {
+    "id": "ia-avanzada",
+    "startDate": "2026-10-27",
+    "time": "21:00",
+    "durationMin": 120,
+    "sessions": 16,
+    "hours": 32,
+    "price": 650,
+    "regularPrice": 850,
+    "installment": 350,
+    "level": { "en": "Advanced", "es": "Avanzado" },
+    "title": { "en": "Advanced AI", "es": "IA Avanzada" },
+    "summary": {
+      "en": "For people who already code and want to build with AI: Skills, spec-driven development, MCP, RAG and automated releases to production.",
+      "es": "Para quienes ya programan y quieren construir con IA: Skills, spec-driven development, MCP, RAG y pases a producción automatizados."
+    },
+    "syllabus": {
+      "en": [
+        { "title": "LLMs in practice + your first Skills", "body": "How to pick a model, manage context and costs. Your environment set up, and Skills you will reuse in every project." },
+        { "title": "Spec-Driven Development, done right", "body": "Writing the spec before the code and getting the AI to follow it from start to finish." },
+        { "title": "SDD + custom superpowers", "body": "Commands, subagents and your own skills for your stack: the AI working the way your team works." },
+        { "title": "MCP: use the existing ones and build your own", "body": "Connecting AI to your APIs, your repo and your database. We build an MCP server from scratch." },
+        { "title": "RAG from scratch", "body": "Embeddings, chunking, search and citations. Your own information inside the answers." },
+        { "title": "RAG in production", "body": "Evaluation, reranking, real documents and the most common traps. When NOT to use RAG." },
+        { "title": "From repo to production I", "body": "Automating the release: continuous integration, tests and AI-assisted reviews." },
+        { "title": "From repo to production II", "body": "Automatic deploys, monitoring, rollback and keeping the monthly spend in check." }
+      ],
+      "es": [
+        { "title": "Los LLM en la práctica + tus primeras Skills", "body": "Cómo elegir modelo, manejar el contexto y los costos. Dejas tu entorno listo y creas Skills que vas a reutilizar en cada proyecto." },
+        { "title": "Spec-Driven Development, bien hecho", "body": "Escribir la especificación antes que el código y lograr que la IA la siga de principio a fin." },
+        { "title": "SDD + superpoderes a medida", "body": "Comandos, subagentes y skills propias para tu stack: que la IA trabaje como trabaja tu equipo." },
+        { "title": "MCP: usa los que existen y crea el tuyo", "body": "Conectar la IA a tus APIs, tu repositorio y tu base de datos. Construimos un MCP desde cero." },
+        { "title": "RAG desde cero", "body": "Embeddings, chunking, búsqueda y citas. Tu propia información dentro de las respuestas." },
+        { "title": "RAG en producción", "body": "Evaluación, reranking, documentos reales y las trampas más comunes. Cuándo NO usar RAG." },
+        { "title": "Del repo a producción I", "body": "Automatizar el pase a producción: integración continua, pruebas y revisiones asistidas por IA." },
+        { "title": "Del repo a producción II", "body": "Despliegue automático, monitoreo, rollback y control del gasto mes a mes." }
+      ]
+    },
+    "finalProject": {
+      "en": "An AI project connected to your own data, deployed automatically and with its cost measured.",
+      "es": "Un proyecto con IA conectado a tus propios datos, desplegado automáticamente y con su costo medido."
+    },
+    "requires": {
+      "en": "Knowing how to code (or coming from Fundamentals) and an account with access to an AI model.",
+      "es": "Saber programar (o venir del curso de Fundamentos) y una cuenta con acceso a un modelo de IA."
+    }
+  }
+]

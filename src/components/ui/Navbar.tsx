@@ -20,6 +20,7 @@ const sectionLinks = [
 
 /** Standalone routes, not anchors on the home page. */
 const routeLinks = [
+  { key: "courses", href: "/courses" },
   { key: "workshops", href: "/workshops" },
   { key: "plans", href: "/plans" },
   { key: "writing", href: "/writing" },
