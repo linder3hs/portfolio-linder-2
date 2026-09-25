@@ -27,6 +27,12 @@ export function addMinutes(time: string, minutes: number): string {
   return `${String(Math.floor(total / 60)).padStart(2, "0")}:${String(total % 60).padStart(2, "0")}`;
 }
 
+/** `"2026-10-27"` + 7 → `"2026-11-03"`. UTC throughout, like the rest. */
+export function addDays(date: string, days: number): string {
+  const [year, month, day] = date.split("-").map(Number);
+  return new Date(Date.UTC(year, month - 1, day + days)).toISOString().slice(0, 10);
+}
+
 /** Formats a `YYYY-MM-DD` string without ever touching the local timezone. */
 export function formatDate(
   date: string,

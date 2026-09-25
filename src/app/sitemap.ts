@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
+import { courses } from "@/lib/courses";
 import { projects } from "@/lib/projects";
 import { posts } from "@/lib/posts";
 
@@ -78,6 +79,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       changeFrequency: "monthly" as const,
       lastModified: new Date(post.date),
+    })),
+    ...courses.map((course) => ({
+      path: `/courses/${course.id}`,
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+      lastModified: buildDate,
     })),
     ...projects.map((project) => ({
       path: `/projects/${project.slug}`,

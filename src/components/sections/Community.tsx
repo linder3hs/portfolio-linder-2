@@ -75,9 +75,12 @@ export function Community() {
                   className="flex items-baseline justify-between gap-4 border-b border-white/[0.06] pb-3 last:border-0"
                 >
                   <span className="min-w-0">
-                    <span className="block font-semibold leading-snug text-white">
+                    <Link
+                      href={`/courses/${course.id}`}
+                      className="block rounded font-semibold leading-snug text-white outline-none hover:text-purple-200 focus-visible:ring-2 focus-visible:ring-white/60"
+                    >
                       {isEs ? course.title.es : course.title.en}
-                    </span>
+                    </Link>
                     <span className="mt-1 block font-mono text-[11px] text-white/45">
                       {isEs ? course.level.es : course.level.en} · {course.time}
                     </span>
