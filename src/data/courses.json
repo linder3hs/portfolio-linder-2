@@ -21,6 +21,10 @@
       "en": "Programming basics, learned properly. You write every line and build two projects from scratch. AI only comes in the last week, once you can judge what it answers.",
       "es": "Las bases de la programación, bien aprendidas. Escribes cada línea y construyes dos proyectos desde cero. La IA entra recién en la última semana, cuando ya sabes juzgar lo que te responde."
     },
+    "tagline": {
+      "en": "The basics, learned properly: two projects written by you. AI only comes in the last week.",
+      "es": "Las bases, bien aprendidas: dos proyectos escritos por ti. La IA entra recién en la última semana."
+    },
     "syllabus": {
       "en": [
         {
@@ -214,6 +218,10 @@
     "summary": {
       "en": "For people who already code and want to build with AI: Skills, spec-driven development, MCP, RAG and automated releases to production.",
       "es": "Para quienes ya programan y quieren construir con IA: Skills, spec-driven development, MCP, RAG y pases a producción automatizados."
+    },
+    "tagline": {
+      "en": "Skills, spec-driven development, MCP, RAG and automated releases to production.",
+      "es": "Skills, spec-driven development, MCP, RAG y pases a producción automatizados."
     },
     "syllabus": {
       "en": [

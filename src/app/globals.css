@@ -36,11 +36,6 @@
   to   { transform: rotate(0deg); }
 }
 
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
 @keyframes glitch {
   0%, 90%, 100% { transform: translate(0); clip-path: none; }
   92% { transform: translate(-3px, 1px); clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); }
@@ -122,21 +117,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.text-shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(192,132,252,0.8) 0%,
-    rgba(255,255,255,1) 40%,
-    rgba(124,58,237,0.8) 60%,
-    rgba(192,132,252,0.8) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
 }
 
 .text-glitch {
@@ -223,14 +203,6 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  /* The shimmer is a gradient animation on text — freeze it on a legible frame
-     rather than leaving the text mid-sweep. */
-  .text-shimmer {
-    background: linear-gradient(90deg, #ffffff, #C084FC);
-    background-clip: text;
-    -webkit-background-clip: text;
   }
 }
 

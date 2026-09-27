@@ -23,6 +23,8 @@ export interface Course {
   level: Localized;
   title: Localized;
   summary: Localized;
+  /** One line for the home hero, where the summary would be too long. */
+  tagline: Localized;
   /** The three cards on the PDF cover. */
   highlights: PerLocale<{ title: string; body: string }[]>;
   /** What the hero panel types out: a terminal or a file. */

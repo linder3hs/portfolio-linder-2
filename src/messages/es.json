@@ -35,19 +35,29 @@
     }
   },
   "hero": {
-    "greeting": "Hola, soy",
-    "name": "Linder Hassinger",
     "subtitle": "AI Tech Lead y consultor. Llevo IA a producción para empresas que ya tienen un producto — con 8+ años construyendo los sistemas web, móvil e iOS donde tiene que integrarse.",
-    "cta_courses": "Ver los cursos",
-    "cta_contact": "Hablemos de tu proyecto",
-    "roles": [
-      "AI Tech Lead",
-      "Consultor de IA",
-      "Experto en Python y Django",
-      "Senior Software Developer",
-      "Full Stack Engineer",
-      "Experto en Next.js"
-    ]
+    "badge": "Inscripciones abiertas · Inicio {date}",
+    "title_1": "Programa bien.",
+    "title_2": "Construye con IA.",
+    "lead": "Dos cursos en vivo de {weeks} semanas, martes y jueves por la noche. Y mentoría 1:1 para cuando necesitas a alguien mirando tu código, tu arquitectura o tu portafolio.",
+    "cta_courses": "Reservar mi cupo",
+    "cta_mentoring": "Ver la mentoría 1:1",
+    "by_name": "Con Linder Hassinger",
+    "by_detail": "Full-stack desde 2017 · Enseña programación desde 2022",
+    "courses_label": "Cursos en vivo",
+    "schedule": "Martes y jueves · hora Perú",
+    "length": "{weeks} semanas · {sessions} clases",
+    "price_note": "Precio de lanzamiento · o en 2 cuotas",
+    "builders": "Miembros Builders: −20%",
+    "mentoring_body": "Hasta 3 llamadas de 30 min al mes: código, arquitectura o portafolio.",
+    "includes": [
+      "16 clases en vivo",
+      "Grabaciones de cada sesión",
+      "Ejercicios con feedback",
+      "Grupo privado",
+      "Certificado"
+    ],
+    "payment": "Reservas por WhatsApp · Yape o Plin"
   },
   "workshop": {
     "badge": "Gratis",
