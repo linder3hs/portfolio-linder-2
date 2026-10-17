@@ -33,16 +33,20 @@
     }
   },
   "hero": {
+    "greeting": "Hola, soy",
+    "name": "Linder Hassinger",
     "subtitle": "AI Tech Lead y consultor. Llevo IA a producción para empresas que ya tienen un producto — con 8+ años construyendo los sistemas web, móvil e iOS donde tiene que integrarse.",
-    "badge": "Mentoría 1:1 · Cupos abiertos",
-    "title_1": "Programa bien.",
-    "title_2": "Construye con IA.",
-    "lead": "Mentoría 1:1 para cuando necesitas a alguien con experiencia mirando tu código, tu arquitectura o tu portafolio, y un roadmap armado según tus objetivos.",
-    "cta_book": "Reservar mi cupo",
-    "cta_plans": "Ver todos los planes",
-    "by_name": "Con Linder Hassinger",
-    "by_detail": "Full-stack desde 2017 · Enseña programación desde 2022",
-    "payment": "Reservas por WhatsApp · Yape o Plin"
+    "cta_work": "Ver mi trabajo",
+    "cta_contact": "Hablemos de tu proyecto",
+    "mentoring_extra": "¿Eres dev? También doy mentoría 1:1",
+    "roles": [
+      "AI Tech Lead",
+      "Consultor de IA",
+      "Experto en Python y Django",
+      "Senior Software Developer",
+      "Full Stack Engineer",
+      "Experto en Next.js"
+    ]
   },
   "workshop": {
     "badge": "Gratis",
