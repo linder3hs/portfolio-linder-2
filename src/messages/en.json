@@ -11,8 +11,7 @@
     "writing": "Writing",
     "cta": "Let's talk",
     "workshops": "Workshops",
-    "plans": "Plans",
-    "courses": "Courses"
+    "plans": "Plans"
   },
   "command": {
     "open": "Open search",
@@ -30,33 +29,19 @@
       "switch_to_es": "Switch to Spanish",
       "switch_to_en": "Switch to English",
       "workshops": "Workshop calendar",
-      "plans": "Membership plans",
-      "courses": "Live courses"
+      "plans": "Membership plans"
     }
   },
   "hero": {
     "subtitle": "AI Tech Lead and consultant. I take AI to production for companies that already have a product — backed by 8+ years building the web, mobile, and iOS systems it has to plug into.",
-    "badge": "Enrollment open · Starts {date}",
+    "badge": "1:1 mentoring · Spots open",
     "title_1": "Code well.",
     "title_2": "Build with AI.",
-    "lead": "Two {weeks}-week live courses, taught in Spanish on Tuesday and Thursday evenings. And 1:1 mentoring for when you need someone looking at your code, your architecture or your portfolio.",
-    "cta_courses": "Reserve my seat",
-    "cta_mentoring": "See 1:1 mentoring",
+    "lead": "1:1 mentoring for when you need an experienced eye on your code, your architecture or your portfolio, and a roadmap built around your goals.",
+    "cta_book": "Reserve my spot",
+    "cta_plans": "See all plans",
     "by_name": "With Linder Hassinger",
     "by_detail": "Full-stack since 2017 · Teaching programming since 2022",
-    "courses_label": "Live courses",
-    "schedule": "Tue and Thu · Peru time",
-    "length": "{weeks} weeks · {sessions} classes",
-    "price_note": "Launch price · or in 2 installments",
-    "builders": "Builders members: −20%",
-    "mentoring_body": "Up to three 30-minute calls a month: code, architecture or portfolio.",
-    "includes": [
-      "16 live classes",
-      "Recordings of every session",
-      "Exercises with feedback",
-      "Private group",
-      "Certificate"
-    ],
     "payment": "Reserve on WhatsApp · Yape or Plin"
   },
   "workshop": {
@@ -419,63 +404,13 @@
   "community": {
     "eyebrow": "Community",
     "title": "Learn with me, not just hire me",
-    "subtitle": "A free live workshop, 8-week courses, and a membership for the recordings, the templates and time with me.",
+    "subtitle": "A free live workshop, and a membership for the recordings, the templates and time with me.",
     "workshops_label": "Next workshops",
     "plans_label": "Membership",
     "payment": "Yape · Plin",
     "popular": "Most picked",
     "from_price": "From S/ {price} a month",
     "see_calendar": "See the full calendar",
-    "see_plans": "See the plans",
-    "courses_label": "Courses · 8 weeks",
-    "starts": "Starts {date}",
-    "see_courses": "See syllabus and prices"
-  },
-  "courses": {
-    "meta_title": "Live courses",
-    "meta_description": "Two 8-week live courses with Linder Hassinger: Software Fundamentals and Advanced AI. Tuesdays and Thursdays, starting {date}. Taught in Spanish.",
-    "title": "Two courses, the same nights",
-    "subtitle": "Tuesdays and Thursdays for 8 weeks, starting {date}, taught in Spanish. Fundamentals if you are starting from zero; Advanced AI if you already code and want to build with AI.",
-    "schedule_caption": "Every Tuesday and Thursday, Peru time",
-    "view_course": "See the course",
-    "cta": "Reserve my seat",
-    "wa_message": "Hi Linder! I want to reserve a seat in the {course} course. How do I pay?",
-    "launch_price": "Launch price",
-    "regular_price": "Regular price S/ {price}",
-    "installments": "or 2 installments of S/ {amount}",
-    "includes_title": "Both courses include",
-    "includes": [
-      "16 live classes",
-      "Recordings of every session",
-      "Exercises with feedback",
-      "Repo with all the code",
-      "Private community group",
-      "Certificate of participation"
-    ],
-    "builders": "<link>Builders</link> members get 20% off.",
-    "payment_note": "Prices in soles. Reserve on WhatsApp and pay by Yape or Plin.",
-    "back": "All courses",
-    "snippet_label": "An example of what you write in the course",
-    "starts_label": "Starts",
-    "schedule_label": "Schedule",
-    "schedule_days": "Tuesday and Thursday, Peru time",
-    "length_label": "Length",
-    "length_value": "{weeks} weeks",
-    "length_detail": "{sessions} live classes, {hours} hours",
-    "see_syllabus": "See the syllabus",
-    "syllabus_title": "What you will learn, week by week",
-    "syllabus_note": "Each week starts on Tuesday.",
-    "week": "Week {n}",
-    "format_title": "What each class looks like",
-    "format_subtitle": "Two hours live, from {start} to {end}.",
-    "minutes": "{minutes} min",
-    "final_project": "Final project",
-    "requires": "What you need",
-    "price_title": "Reserve your seat",
-    "price_note": "Launch price for the first cohort. Seats at this price are limited.",
-    "includes_one": "What it includes",
-    "instructor": "Taught by <b>Linder Hassinger</b>, full-stack developer since 2017. Teaching programming since 2022, also on <link>YouTube</link>.",
-    "other_later": "If you already code, the same night at {time}",
-    "other_earlier": "If you are starting from zero, the same night at {time}"
+    "see_plans": "See the plans"
   }
 }

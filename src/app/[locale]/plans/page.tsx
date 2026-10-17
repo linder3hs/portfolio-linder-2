@@ -63,7 +63,7 @@ export default async function PlansPage({
           const href = whatsappUrl(t("wa_message", { plan: name }));
 
           return (
-            // The id is the anchor the home hero links to (/plans#mentoria).
+            // The id is an anchor, so a plan can be linked to directly (/plans#mentoria).
             <div key={plan.id} id={plan.id} className="relative h-full">
               {plan.featured && (
                 <div

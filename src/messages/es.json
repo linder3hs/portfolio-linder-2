@@ -11,8 +11,7 @@
     "writing": "Escritos",
     "cta": "Hablemos",
     "workshops": "Workshops",
-    "plans": "Planes",
-    "courses": "Cursos"
+    "plans": "Planes"
   },
   "command": {
     "open": "Abrir búsqueda",
@@ -30,33 +29,19 @@
       "switch_to_es": "Cambiar a español",
       "switch_to_en": "Cambiar a inglés",
       "workshops": "Calendario de workshops",
-      "plans": "Planes de membresía",
-      "courses": "Cursos en vivo"
+      "plans": "Planes de membresía"
     }
   },
   "hero": {
     "subtitle": "AI Tech Lead y consultor. Llevo IA a producción para empresas que ya tienen un producto — con 8+ años construyendo los sistemas web, móvil e iOS donde tiene que integrarse.",
-    "badge": "Inscripciones abiertas · Inicio {date}",
+    "badge": "Mentoría 1:1 · Cupos abiertos",
     "title_1": "Programa bien.",
     "title_2": "Construye con IA.",
-    "lead": "Dos cursos en vivo de {weeks} semanas, martes y jueves por la noche. Y mentoría 1:1 para cuando necesitas a alguien mirando tu código, tu arquitectura o tu portafolio.",
-    "cta_courses": "Reservar mi cupo",
-    "cta_mentoring": "Ver la mentoría 1:1",
+    "lead": "Mentoría 1:1 para cuando necesitas a alguien con experiencia mirando tu código, tu arquitectura o tu portafolio, y un roadmap armado según tus objetivos.",
+    "cta_book": "Reservar mi cupo",
+    "cta_plans": "Ver todos los planes",
     "by_name": "Con Linder Hassinger",
     "by_detail": "Full-stack desde 2017 · Enseña programación desde 2022",
-    "courses_label": "Cursos en vivo",
-    "schedule": "Martes y jueves · hora Perú",
-    "length": "{weeks} semanas · {sessions} clases",
-    "price_note": "Precio de lanzamiento · o en 2 cuotas",
-    "builders": "Miembros Builders: −20%",
-    "mentoring_body": "Hasta 3 llamadas de 30 min al mes: código, arquitectura o portafolio.",
-    "includes": [
-      "16 clases en vivo",
-      "Grabaciones de cada sesión",
-      "Ejercicios con feedback",
-      "Grupo privado",
-      "Certificado"
-    ],
     "payment": "Reservas por WhatsApp · Yape o Plin"
   },
   "workshop": {
@@ -419,63 +404,13 @@
   "community": {
     "eyebrow": "Comunidad",
     "title": "Aprende conmigo, no solo me contrates",
-    "subtitle": "Un workshop gratuito en vivo, cursos de 8 semanas y una membresía para las grabaciones, las plantillas y tiempo conmigo.",
+    "subtitle": "Un workshop gratuito en vivo y una membresía para las grabaciones, las plantillas y tiempo conmigo.",
     "workshops_label": "Próximos workshops",
     "plans_label": "Membresía",
     "payment": "Yape · Plin",
     "popular": "Más elegido",
     "from_price": "Desde S/ {price} al mes",
     "see_calendar": "Ver el calendario completo",
-    "see_plans": "Ver los planes",
-    "courses_label": "Cursos · 8 semanas",
-    "starts": "Inicio {date}",
-    "see_courses": "Ver temarios y precios"
-  },
-  "courses": {
-    "meta_title": "Cursos en vivo",
-    "meta_description": "Dos cursos en vivo de 8 semanas con Linder Hassinger: Fundamentos de Software e IA Avanzada. Martes y jueves, desde el {date}.",
-    "title": "Dos cursos, las mismas noches",
-    "subtitle": "Martes y jueves durante 8 semanas, desde el {date}. Fundamentos si empiezas desde cero; IA Avanzada si ya programas y quieres construir con IA.",
-    "schedule_caption": "Cada martes y jueves, hora Perú",
-    "view_course": "Ver el curso",
-    "cta": "Reservar mi cupo",
-    "wa_message": "¡Hola Linder! Quiero reservar mi cupo en el curso {course}. ¿Cómo hago el pago?",
-    "launch_price": "Precio de lanzamiento",
-    "regular_price": "Precio regular S/ {price}",
-    "installments": "o 2 cuotas de S/ {amount}",
-    "includes_title": "Los dos cursos incluyen",
-    "includes": [
-      "16 clases en vivo",
-      "Grabaciones de todas las sesiones",
-      "Ejercicios con feedback",
-      "Repositorio con todo el código",
-      "Grupo privado de la comunidad",
-      "Certificado de participación"
-    ],
-    "builders": "Los miembros de <link>Builders</link> tienen 20% de descuento.",
-    "payment_note": "Precios en soles. Reservas por WhatsApp y pagas por Yape o Plin.",
-    "back": "Todos los cursos",
-    "snippet_label": "Ejemplo de lo que escribes en el curso",
-    "starts_label": "Inicio",
-    "schedule_label": "Horario",
-    "schedule_days": "Martes y jueves, hora Perú",
-    "length_label": "Duración",
-    "length_value": "{weeks} semanas",
-    "length_detail": "{sessions} clases en vivo, {hours} horas",
-    "see_syllabus": "Ver el temario",
-    "syllabus_title": "Lo que vas a aprender, semana a semana",
-    "syllabus_note": "Cada semana empieza el martes.",
-    "week": "Semana {n}",
-    "format_title": "Cómo es cada clase",
-    "format_subtitle": "Dos horas en vivo, de {start} a {end}.",
-    "minutes": "{minutes} min",
-    "final_project": "Proyecto final",
-    "requires": "Qué necesitas",
-    "price_title": "Reserva tu cupo",
-    "price_note": "Precio de lanzamiento para la primera cohorte. Los cupos a este precio son limitados.",
-    "includes_one": "Qué incluye",
-    "instructor": "Lo dicta <b>Linder Hassinger</b>, desarrollador full-stack desde 2017. Enseña programación desde 2022, también en <link>YouTube</link>.",
-    "other_later": "Si ya programas, la misma noche a las {time}",
-    "other_earlier": "Si vienes desde cero, la misma noche a las {time}"
+    "see_plans": "Ver los planes"
   }
 }

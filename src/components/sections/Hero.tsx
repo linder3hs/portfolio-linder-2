@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type CSSProperties } from "react";
+import { useRef } from "react";
 import {
   motion,
   useMotionValue,
@@ -10,10 +10,8 @@ import {
 } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Check, Video } from "lucide-react";
-import { Link } from "@/i18n/navigation";
-import { formatDate } from "@/lib/calendar";
-import { courses, pick } from "@/lib/courses";
 import { plans } from "@/lib/plans";
+import { whatsappUrl } from "@/lib/site";
 import { Logo } from "@/components/ui/Logo";
 
 const container: Variants = {
@@ -77,22 +75,19 @@ function MagneticButton({
 }
 
 /**
- * The home hero is a billboard for what is open right now: the two live
- * courses, listed like the evening's schedule, and the 1:1 mentoring plan.
- * Times, prices, seats and the start date all come from the course and plan
- * data, so the hero moves with them. The consulting pitch starts at Services.
+ * The home hero sells what is open right now: the 1:1 mentoring plan. Price,
+ * seats and perks are read from plans.json, so the hero moves with the data.
+ * The consulting pitch starts at Services.
  */
 export function Hero() {
   const t = useTranslations("hero");
-  const tc = useTranslations("courses");
   const tp = useTranslations("plans");
-  const locale = useLocale();
-  const tag = locale === "es" ? "es-PE" : "en-US";
-  const includes = t.raw("includes") as string[];
-  // Same night, back to back: sorted by start time, the list reads as the schedule.
-  const evening = [...courses].sort((a, b) => a.time.localeCompare(b.time));
-  const weeks = pick(evening[0].syllabus, locale).length;
-  const mentoring = plans.find((plan) => plan.id === "mentoria");
+  const isEs = useLocale() === "es";
+  const locale = isEs ? "es" : "en";
+  // ponytail: non-null on purpose — the hero is built around this plan, so
+  // renaming its id should break the build, not quietly empty the hero.
+  const mentoring = plans.find((plan) => plan.id === "mentoria")!;
+  const name = mentoring.name[locale];
 
   return (
     <section id="hero" className="relative flex min-h-screen flex-col overflow-hidden pt-16">
@@ -119,9 +114,7 @@ export function Hero() {
               className="inline-flex h-8 items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 font-mono text-[11px] uppercase tracking-[0.06em] text-zinc-300 sm:text-xs"
             >
               <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              {t("badge", {
-                date: formatDate(evening[0].startDate, tag, { day: "numeric", month: "short" }),
-              })}
+              {t("badge")}
             </motion.p>
 
             <motion.h1
@@ -137,7 +130,7 @@ export function Hero() {
               variants={item}
               className="mt-5 max-w-[34rem] text-base leading-relaxed text-white/60 sm:text-lg lg:mt-6"
             >
-              {t("lead", { weeks })}
+              {t("lead")}
             </motion.p>
 
             <motion.div
@@ -151,10 +144,12 @@ export function Hero() {
                 ever shows.
               */}
               <MagneticButton
-                href={`/${locale}/courses`}
+                href={whatsappUrl(tp("wa_message", { plan: name }))}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-primary px-6.5 text-[15px] font-semibold text-white outline-none transition-[background-color,box-shadow] duration-300 hover:bg-violet-500 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] focus-visible:ring-2 focus-visible:ring-white/70"
               >
-                {t("cta_courses")}
+                {t("cta_book")}
                 <ArrowRight
                   size={18}
                   className="transition-transform duration-300 group-hover:translate-x-0.5"
@@ -162,14 +157,12 @@ export function Hero() {
                 />
               </MagneticButton>
 
-              {mentoring && (
-                <MagneticButton
-                  href={`/${locale}/plans#${mentoring.id}`}
-                  className="inline-flex h-13 items-center justify-center rounded-full border border-white/15 px-6 text-[15px] font-medium text-white outline-none transition-colors duration-300 hover:border-white/30 focus-visible:ring-2 focus-visible:ring-white/70"
-                >
-                  {t("cta_mentoring")}
-                </MagneticButton>
-              )}
+              <MagneticButton
+                href={`/${locale}/plans`}
+                className="inline-flex h-13 items-center justify-center rounded-full border border-white/15 px-6 text-[15px] font-medium text-white outline-none transition-colors duration-300 hover:border-white/30 focus-visible:ring-2 focus-visible:ring-white/70"
+              >
+                {t("cta_plans")}
+              </MagneticButton>
             </motion.div>
 
             <motion.div variants={item} className="mt-8 flex items-center gap-3.5 lg:mt-11">
@@ -186,113 +179,54 @@ export function Hero() {
             </motion.div>
           </div>
 
-          <motion.div variants={item} className="flex flex-col gap-3 sm:gap-4">
-            <section
-              aria-label={t("courses_label")}
-              className="rounded-[18px] border border-white/[0.08] bg-[#111117] px-5 pb-4.5 pt-5 sm:rounded-[20px] sm:px-7 sm:pb-5 sm:pt-6"
-            >
-              <p className="flex flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.06em] text-white/55 sm:text-xs">
-                <span>{t("schedule")}</span>
-                <span>{t("length", { weeks, sessions: evening[0].sessions })}</span>
-              </p>
+          <motion.section
+            variants={item}
+            aria-label={name}
+            className="rounded-[18px] border border-white/[0.08] bg-[#111117] px-5 py-5 sm:rounded-[20px] sm:px-7 sm:py-6"
+          >
+            <p className="flex flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.06em] text-white/55 sm:text-xs">
+              <span className="flex items-center gap-2">
+                <Video size={15} strokeWidth={1.8} aria-hidden />
+                {name}
+              </span>
+              {mentoring.seats !== undefined && (
+                <span>{tp("seats", { seats: mentoring.seats })}</span>
+              )}
+            </p>
 
-              <ul className="mt-4 sm:mt-4.5">
-                {evening.map((course) => (
-                  <li key={course.id} className="border-t border-white/[0.07]">
-                    <Link
-                      href={`/courses/${course.id}`}
-                      style={{ "--accent": course.accent } as CSSProperties}
-                      className="group grid grid-cols-[3.25rem_minmax(0,1fr)] items-start gap-x-3.5 rounded-lg py-4.5 outline-none focus-visible:ring-2 focus-visible:ring-white/70 sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:gap-x-4.5 sm:py-5"
-                    >
-                      <span className="font-heading text-[19px] font-semibold leading-snug text-(--accent) sm:text-2xl sm:leading-tight">
-                        {course.time}
-                      </span>
-                      <span className="flex min-w-0 flex-col gap-1.5">
-                        <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-(--accent) sm:text-[11px]">
-                          {pick(course.level, locale)}
-                        </span>
-                        <span className="font-heading text-[17px] font-semibold tracking-[-0.01em] text-white transition-colors duration-300 group-hover:text-purple-100 sm:text-[19px]">
-                          {pick(course.title, locale)}
-                        </span>
-                        <span className="text-[13.5px] leading-relaxed text-white/60 sm:text-sm">
-                          {pick(course.tagline, locale)}
-                        </span>
-                      </span>
-                      <span className="col-start-2 mt-2 flex items-baseline gap-2 sm:col-start-3 sm:row-start-1 sm:mt-0 sm:flex-col sm:items-end sm:gap-0.5">
-                        <span className="font-heading text-[17px] font-semibold text-white sm:text-xl">
-                          S/ {course.price}
-                        </span>
-                        <s aria-hidden className="text-[12.5px] text-white/55 sm:text-[13px]">
-                          S/ {course.regularPrice}
-                        </s>
-                        <span className="sr-only">
-                          {tc("regular_price", { price: course.regularPrice })}
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <p className="mt-5 flex items-baseline gap-1.5">
+              <span className="font-heading text-4xl font-semibold text-white">
+                S/ {mentoring.price}
+              </span>
+              <span className="text-[13px] text-white/55">{tp("per_month")}</span>
+            </p>
 
-              <p className="flex flex-wrap justify-between gap-x-4 gap-y-1 border-t border-white/[0.07] pt-3.5 text-[12.5px] text-white/55 sm:pt-4 sm:text-[13px]">
-                <span>{t("price_note")}</span>
-                <span>{t("builders")}</span>
-              </p>
-            </section>
+            <p className="mt-2.5 text-[14px] leading-relaxed text-white/60 sm:text-[15px]">
+              {mentoring.tagline[locale]}
+            </p>
 
-            {/*
-              One grid, two arrangements: on a phone the description drops to
-              its own full-width row and the seats sit under the name; from sm
-              up the description sits under the name and the seats under the
-              price.
-            */}
-            {mentoring && (
-              <Link
-                href={`/plans#${mentoring.id}`}
-                className="grid grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3.5 rounded-[18px] border border-white/[0.08] bg-[#111117] px-5 py-4.5 outline-none transition-colors duration-300 hover:border-white/15 focus-visible:ring-2 focus-visible:ring-white/70 sm:gap-x-4.5 sm:rounded-[20px] sm:px-6 sm:py-5"
-              >
-                <span
-                  aria-hidden
-                  className="col-1 row-[1/3] flex size-10 items-center justify-center self-center rounded-[11px] bg-white/5 text-zinc-300 sm:size-11 sm:rounded-xl"
+            <ul className="mt-5 space-y-3 border-t border-white/[0.07] pt-5">
+              {mentoring.perks[locale].map((perk) => (
+                <li
+                  key={perk}
+                  className="flex gap-2.5 text-[13.5px] leading-relaxed text-white/70 sm:text-sm"
                 >
-                  <Video size={20} strokeWidth={1.8} />
-                </span>
-                <span className="font-heading col-2 row-1 self-end text-[17px] font-semibold text-white">
-                  {pick(mentoring.name, locale)}
-                </span>
-                <span className="col-[1/-1] row-3 mt-3 text-[13.5px] leading-relaxed text-white/60 sm:col-2 sm:row-2 sm:mt-1 sm:leading-normal">
-                  {t("mentoring_body")}
-                </span>
-                <span className="font-heading col-3 row-[1/3] self-center justify-self-end text-[17px] font-semibold text-white sm:row-1 sm:self-end sm:text-lg">
-                  S/ {mentoring.price}
-                  <span className="font-sans text-[12.5px] font-normal text-white/55 sm:text-[13px]">
-                    {tp("per_month")}
-                  </span>
-                </span>
-                {mentoring.seats !== undefined && (
-                  <span className="col-2 row-2 mt-0.5 self-start font-mono text-[10.5px] uppercase tracking-[0.08em] text-white/55 sm:col-3 sm:mt-1 sm:justify-self-end sm:text-[11px]">
-                    {tp("seats", { seats: mentoring.seats })}
-                  </span>
-                )}
-              </Link>
-            )}
-          </motion.div>
-        </div>
+                  <Check
+                    size={15}
+                    strokeWidth={2.2}
+                    className="mt-0.5 shrink-0 text-[#A99BFA]"
+                    aria-hidden
+                  />
+                  {perk}
+                </li>
+              ))}
+            </ul>
 
-        <motion.ul
-          variants={item}
-          className="flex flex-col gap-3 border-t border-white/[0.06] py-6 text-[13.5px] text-white/60 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-2 lg:text-[13px] lg:text-white/55"
-        >
-          {includes.map((line) => (
-            <li key={line} className="flex items-center gap-2.5 lg:gap-2">
-              <Check size={15} strokeWidth={2.2} className="shrink-0 text-[#A99BFA]" aria-hidden />
-              {line}
-            </li>
-          ))}
-          <li className="mt-1 text-[12.5px] text-white/55 lg:ml-auto lg:mt-0 lg:text-[13px]">
-            {t("payment")}
-          </li>
-        </motion.ul>
+            <p className="mt-5 border-t border-white/[0.07] pt-4 text-[12.5px] text-white/55 sm:text-[13px]">
+              {t("payment")}
+            </p>
+          </motion.section>
+        </div>
       </motion.div>
     </section>
   );
